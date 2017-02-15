@@ -270,3 +270,16 @@ of_v0.9.8/INSTALL.md
 of_v0.9.8/LICENSE.md
 of_v0.9.8/README.md
 
+#MyApps metadata
+of_v0.9.8/apps/myApps/3D_ENGINE/.settings/
+of_v0.9.8/apps/myApps/3D_ENGINE/bin/
+of_v0.9.8/apps/myApps/3D_ENGINE/obj/
+of_v0.9.8/apps/myApps/3D_ENGINE/.cproject
+of_v0.9.8/apps/myApps/3D_ENGINE/.project
+of_v0.9.8/apps/myApps/3D_ENGINE/addons.make
+of_v0.9.8/apps/myApps/3D_ENGINE/config.make
+of_v0.9.8/apps/myApps/3D_ENGINE/Makefile
+of_v0.9.8/apps/myApps/3D_ENGINE/qtcreator.qbs
+of_v0.9.8/apps/myApps/3D_ENGINE/template.xml
+
+
