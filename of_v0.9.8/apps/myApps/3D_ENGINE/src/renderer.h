@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "particleCloud.h"
 
 class Renderer
 {
@@ -10,9 +11,13 @@ public:
 
 	Renderer();
 
+	ParticleCloud * particleCloud;
+
 	void setup();
+	void update();
 	void draw();
-	void mouseDragged();
+
+	ofEasyCam cam;
 
 	~Renderer();
 };
