@@ -3,6 +3,9 @@
 #include "ofMain.h"
 
 #include "renderer.h"
+#include "menuInterface.h"
+#include "geometryToolsInterface.h"
+
 
 class ofApp : public ofBaseApp{
 
@@ -10,7 +13,9 @@ class ofApp : public ofBaseApp{
 
 		Renderer * renderer;
 
-		ofFbo fbo;
+		//Interface Tools
+		MenuBar * menuBar;
+		GeometryToolBar *geometryToolBar;
 
 		void setup();
 		void update();
@@ -28,4 +33,14 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+		//menu bar gui
+		ofxPanel menuPanel;
+		ofxButton geometryTools;
+		ofxButton drawTools;
+		ofxButton imageTools;
+		ofxButton cameraTools;
+
+		//geometry toolbar
+		ofxPanel geometryPanel;
+		ofxButton particleCloudButton;
 };

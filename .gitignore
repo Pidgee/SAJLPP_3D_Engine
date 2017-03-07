@@ -275,6 +275,7 @@ of_v0.9.8/projectGenerator-vs/
 of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.vcxproj
 of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.vcxproj.filters
 of_v0.9.8/apps/myApps/3D_ENGINE/icon.rc
+of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.qbs
 
 
 
