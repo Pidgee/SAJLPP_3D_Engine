@@ -14,6 +14,7 @@ public:
 	ParticleCloud * particleCloud;
 
 	void setup();
+	void keyPressed(int key);
 	void update();
 	void draw();
 
