@@ -19,11 +19,14 @@ public:
 
 	void setup();
 	void draw();
+	void show();
+	void hide();
 
 
 private:
 	ofxPanel* m_geometryPanel;
 	ofxButton* m_particleCloudButton;
+	bool visible;
 
 };
 

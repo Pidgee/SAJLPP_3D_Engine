@@ -3,8 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofBackground(100);
-	menuBar = new MenuBar(&menuPanel, &geometryTools, &drawTools, &imageTools, &cameraTools);
 	geometryToolBar = new GeometryToolBar(&geometryPanel, &particleCloudButton);
+	menuBar = new MenuBar(&menuPanel, &geometryTools, &drawTools, &imageTools, &cameraTools, geometryToolBar);
 	renderer = new Renderer();
 
 	menuBar->setup();

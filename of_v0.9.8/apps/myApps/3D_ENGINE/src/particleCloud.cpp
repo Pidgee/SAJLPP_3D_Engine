@@ -61,9 +61,9 @@ void ParticleCloud::drawCloud(int count, float radius, float origin[3])
 		ofVec3f position(x, y, z);
 		mesh.addVertex(position);
 	}
-	ofEnableDepthTest();
+	//ofEnableDepthTest();
 	glEnable(GL_POINT_SMOOTH);
-	glPointSize(3); 
+	glPointSize(3);
 }
 
 
