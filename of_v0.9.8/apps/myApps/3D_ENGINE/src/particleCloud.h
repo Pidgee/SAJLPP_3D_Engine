@@ -1,9 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
+#include "geometryObject.h"
 #include "ofxAssimpModelLoader.h"
 
-class ParticleCloud
+class ParticleCloud : public GeometryObject
 {
 
 public:
@@ -18,8 +19,23 @@ public:
 	int particleBufferHead;
 
 	void setup();
-	void update();
 	void draw();
+
+	//rotation transformations
+	void rotateX();
+	void rotateY();
+	void rotateZ();
+
+	//translation transformations
+	void translateX();
+	void translateY();
+	void translateZ();
+
+	//scale transformation
+	void scale();
+
+	//instance name
+	std::string id();
 
 	void drawCloud(int count, float radius, float origin[3]);
 

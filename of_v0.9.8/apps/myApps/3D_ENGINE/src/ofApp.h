@@ -6,6 +6,7 @@
 #include "menuInterface.h"
 #include "geometryToolsInterface.h"
 #include "imageToolsInterface.h"
+#include "drawToolsInterface.h"
 
 
 class ofApp : public ofBaseApp{
@@ -18,6 +19,7 @@ class ofApp : public ofBaseApp{
 		MenuBar* menuBar;
 		GeometryToolBar* geometryToolBar;
 		ImageToolBar* imageToolBar;
+		DrawToolBar* drawToolBar;
 
 		void setup();
 		void update();
@@ -50,4 +52,10 @@ class ofApp : public ofBaseApp{
 		ofxPanel imagePanel;
 		ofxButton importButton;
 		ofxButton exportButton;
+
+		//draw toolbar
+		ofxPanel drawPanel;
+		ofxButton lineButton;
+		ofxButton triangleButton;
+		ofxButton circleButton;
 };

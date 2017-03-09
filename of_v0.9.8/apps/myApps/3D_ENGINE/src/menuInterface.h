@@ -8,6 +8,7 @@
 #include "ofxGui.h"
 #include "geometryToolsInterface.h"
 #include "imageToolsInterface.h"
+#include "drawToolsInterface.h"
 
 #ifndef SRC_MENUINTERFACE_H_
 #define SRC_MENUINTERFACE_H_
@@ -18,12 +19,13 @@ public:
 
 	MenuBar(ofxPanel* p_menuPanel, ofxButton* p_geometryTools, ofxButton* p_drawTools,
 			ofxButton* p_imageTools, ofxButton* p_cameraTools, GeometryToolBar* p_geoToolBar,
-			ImageToolBar* p_imgToolBar);
+			ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar);
 
 	void setup();
 	void draw();
 	void geoToolsClicked();
 	void imgToolsClicked();
+	void drwToolsClicked();
 
 
 private:
@@ -34,6 +36,7 @@ private:
 	ofxButton* m_cameraTools;
 	GeometryToolBar* m_geoToolBar;
 	ImageToolBar* m_imgToolBar;
+	DrawToolBar* m_drwToolBar;
 
 
 };

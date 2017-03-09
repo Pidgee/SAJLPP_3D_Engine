@@ -21,13 +21,19 @@ void Renderer::update()
 void Renderer::draw()
 {
 	fbo.begin();
+	ofEnableDepthTest();
 	ofClear(255, 255, 255);
 	ofBackground(255, 255, 255);
 	cam.begin();
 	particleCloud->draw();
 	cam.end();
+	ofDisableDepthTest();
 	fbo.end();
 	fbo.draw(160, 90);
+}
+
+ParticleCloud* Renderer::renderParticleCloud() {
+
 }
 
 Renderer::~Renderer()

@@ -13,24 +13,26 @@
 //pure virtual class for geometric entities within the fbo
 class GeometryObject{
 public:
-	GeometryObject(){};
-	~GeometryObject(){};
 
 	//rotation transformations must be defined
-	virtual void rotateX();
-	virtual void rotateY();
-	virtual void rotateZ();
+	virtual void rotateX()=0;
+	virtual void rotateY()=0;
+	virtual void rotateZ()=0;
 
 	//translation transformations must be defines
-	virtual void translateX();
-	virtual void translateY();
-	virtual void translateZ();
+	virtual void translateX()=0;
+	virtual void translateY()=0;
+	virtual void translateZ()=0;
 
 	//scale transformation must be defined
-	virtual void scale();
+	virtual void scale()=0;
 
 	//instance of class must have a name
-	virtual std::string id();
+	virtual std::string id()=0;
+
+	virtual void draw()=0;
+
+	virtual void setup()=0;
 
 };
 
