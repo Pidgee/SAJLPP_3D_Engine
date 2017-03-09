@@ -5,17 +5,19 @@
 #include "renderer.h"
 #include "menuInterface.h"
 #include "geometryToolsInterface.h"
+#include "imageToolsInterface.h"
 
 
 class ofApp : public ofBaseApp{
 
 	public:
 
-		Renderer * renderer;
+		Renderer* renderer;
 
 		//Interface Tools
-		MenuBar * menuBar;
-		GeometryToolBar *geometryToolBar;
+		MenuBar* menuBar;
+		GeometryToolBar* geometryToolBar;
+		ImageToolBar* imageToolBar;
 
 		void setup();
 		void update();
@@ -43,4 +45,9 @@ class ofApp : public ofBaseApp{
 		//geometry toolbar
 		ofxPanel geometryPanel;
 		ofxButton particleCloudButton;
+
+		//image toolbar
+		ofxPanel imagePanel;
+		ofxButton importButton;
+		ofxButton exportButton;
 };

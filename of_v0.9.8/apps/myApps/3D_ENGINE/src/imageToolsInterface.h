@@ -4,6 +4,9 @@
  *  Created on: Mar 8, 2017
  *      Author: ada
  */
+#include "ofxGui.h"
+
+
 
 #ifndef SRC_IMAGETOOLSINTERFACE_H_
 #define SRC_IMAGETOOLSINTERFACE_H_
@@ -20,7 +23,7 @@ public:
 
 
 private:
-	ofxPanel* m_geometryPanel;
+	ofxPanel* m_imagePanel;
 	ofxButton* m_importButton;
 	ofxButton* m_exportButton;
 

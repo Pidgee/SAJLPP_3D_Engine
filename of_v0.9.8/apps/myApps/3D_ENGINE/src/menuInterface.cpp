@@ -6,16 +6,17 @@
  */
 #include "menuInterface.h"
 
+
 MenuBar::MenuBar(ofxPanel* p_menuPanel, ofxButton* p_geometryTools,
 		ofxButton* p_drawTools, ofxButton* p_imageTools,
-		ofxButton* p_cameraTools, GeometryToolBar* p_geoToolBar):
-		m_menuPanel(p_menuPanel), m_geometryTools(p_geometryTools), m_drawTools(p_drawTools),
-		m_imageTools(p_imageTools), m_cameraTools(p_cameraTools), m_geoToolBar(p_geoToolBar){
+		ofxButton* p_cameraTools, GeometryToolBar* p_geoToolBar,
+		ImageToolBar* p_imgToolBar):m_menuPanel(p_menuPanel), m_geometryTools(p_geometryTools),
+		m_drawTools(p_drawTools), m_imageTools(p_imageTools),
+		m_cameraTools(p_cameraTools), m_geoToolBar(p_geoToolBar), m_imgToolBar(p_imgToolBar){
 
 	m_geometryTools->addListener(this, &MenuBar::geoToolsClicked);
 	m_imageTools->addListener(this, &MenuBar::imgToolsClicked);
 }
-
 
 void MenuBar::setup() {
 	m_menuPanel->setup();
@@ -44,10 +45,12 @@ void MenuBar::draw() {
 
 
 void MenuBar::geoToolsClicked() {
+	m_imgToolBar->hide();
 	m_geoToolBar->show();
 }
 
 
 void MenuBar::imgToolsClicked() {
 	m_geoToolBar->hide();
+	m_imgToolBar->show();
 }
