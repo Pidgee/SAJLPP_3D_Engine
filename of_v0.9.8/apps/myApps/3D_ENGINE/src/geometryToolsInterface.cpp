@@ -5,11 +5,13 @@
  *      Author: ada
  */
 #include "geometryToolsInterface.h"
+#include <stdio.h>
 
 
 GeometryToolBar::GeometryToolBar(ofxPanel* p_geometryPanel,
-		ofxButton* p_particleCloudButton): m_geometryPanel(p_geometryPanel),
-		m_particleCloudButton(p_particleCloudButton), visible(false) {
+		ofxButton* p_particleCloudButton, Renderer* p_renderer): m_geometryPanel(p_geometryPanel),
+		m_particleCloudButton(p_particleCloudButton), m_renderer(p_renderer), visible(false) {
+	m_particleCloudButton->addListener(this,  &GeometryToolBar::renderParticleCloud);
 }
 
 void GeometryToolBar::setup() {
@@ -35,4 +37,9 @@ void GeometryToolBar::show(){
 
 void GeometryToolBar::hide() {
 	visible=false;
+}
+
+void GeometryToolBar::renderParticleCloud() {
+
+	m_renderer->renderParticleCloud();
 }

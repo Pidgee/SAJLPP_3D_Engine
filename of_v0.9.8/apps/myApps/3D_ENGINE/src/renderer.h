@@ -21,7 +21,7 @@ public:
 	void appendObject(GeometryObject*);
 
 	//geometryTools
-	ParticleCloud* renderParticleCloud();
+	void renderParticleCloud();
 
 	//imageTools
 	void renderImage();

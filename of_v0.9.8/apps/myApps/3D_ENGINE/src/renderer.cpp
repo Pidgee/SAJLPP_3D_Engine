@@ -6,8 +6,11 @@ void Renderer::setup()
 {
 	fbo.allocate(1280, 720);
 	fbo.begin();
-	particleCloud = new ParticleCloud;
-	particleCloud->setup();
+	for(int i=0; i<geometryObjectContainer.size(); i++){
+		geometryObjectContainer[i]->setup();
+	}
+	//particleCloud = new ParticleCloud;
+	//particleCloud->setup();
 	ofClear(255, 255, 255);
 	ofBackground(255, 255, 255);
 	fbo.end();
@@ -25,15 +28,19 @@ void Renderer::draw()
 	ofClear(255, 255, 255);
 	ofBackground(255, 255, 255);
 	cam.begin();
-	particleCloud->draw();
+	for(int i=0; i<geometryObjectContainer.size(); i++){
+		geometryObjectContainer[i]->draw();
+	}
 	cam.end();
 	ofDisableDepthTest();
 	fbo.end();
 	fbo.draw(160, 90);
 }
 
-ParticleCloud* Renderer::renderParticleCloud() {
-
+void Renderer::renderParticleCloud() {
+	ParticleCloud* part = new ParticleCloud;
+	part->setup();
+	geometryObjectContainer.push_back(part);
 }
 
 Renderer::~Renderer()
