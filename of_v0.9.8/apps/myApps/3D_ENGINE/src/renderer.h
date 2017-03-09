@@ -14,9 +14,12 @@ public:
 	ParticleCloud * particleCloud;
 
 	void setup();
-	void keyPressed(int key);
+	void exporter();
+	void importer();
 	void update();
 	void draw();
+
+	vector<pair<ofTexture,ofPoint>> liste_image;
 
 	ofEasyCam cam;
 

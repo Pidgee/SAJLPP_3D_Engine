@@ -29,7 +29,17 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
-	renderer->keyPressed(key);
+	if (key == 112 || key == 80) {
+
+		renderer->exporter();
+
+	}
+
+	else if (key == 79 || key == 111) {
+
+		renderer->importer();
+
+	}
 
 }
 
