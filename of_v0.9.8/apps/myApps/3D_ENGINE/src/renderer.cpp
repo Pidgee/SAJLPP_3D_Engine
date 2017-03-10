@@ -1,4 +1,5 @@
 ﻿#include "renderer.h"
+#include <string>
 
 Renderer::Renderer() {}
 
