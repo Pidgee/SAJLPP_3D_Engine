@@ -5,6 +5,7 @@
  *      Author: ada
  */
 #include "imageToolsInterface.h"
+#include "stdio.h"
 
 ImageToolBar::ImageToolBar(ofxPanel* p_imagePanel, ofxButton* p_importButton,
 		ofxButton* p_exportButton, ofxButton* p_teinte, ofxButton* p_composition, Renderer* p_renderer): 
@@ -60,9 +61,9 @@ void ImageToolBar::importer() {
 
 		string nom = resultat.fileName;
 
-		string nom_complet = nom;
+		string nom_complet = chemin;
 
-		temp.load(nom_complet);
+		temp.load(chemin);
 
 		ofVec3f coordonnee = demanderInfo();
 
@@ -82,11 +83,11 @@ ofVec3f ImageToolBar::demanderInfo() {
 
 	string s_z;
 
-	s_x = ofSystemTextBoxDialog("Quel est la coordonnée en x de l'image?");
+	s_x = ofSystemTextBoxDialog("Quel est la coordonnee en x de l'image?");
 
-	s_y = ofSystemTextBoxDialog("Quel est la coordonnée en y de l'image?");
+	s_y = ofSystemTextBoxDialog("Quel est la coordonnee en y de l'image?");
 
-	s_z = ofSystemTextBoxDialog("Quel est la coordonnée en z de l'image?");
+	s_z = ofSystemTextBoxDialog("Quel est la coordonnee en z de l'image?");
 
 	coordonnees[0] = stof(s_x);
 
@@ -110,7 +111,7 @@ void ImageToolBar::teinte() {
 
 		string nom = resultat.fileName;
 
-		string nom_complet = nom;
+		string nom_complet = chemin;
 
 		temp.load(nom_complet);
 
@@ -159,7 +160,7 @@ void ImageToolBar::composition() {
 
 		string nom = resultat.fileName;
 
-		string nom_complet = nom;
+		string nom_complet = chemin;
 
 		temp.load(nom_complet);
 
@@ -175,7 +176,7 @@ void ImageToolBar::composition() {
 
 			string nom1 = resultat1.fileName;
 
-			string nom_complet1 = nom1;
+			string nom_complet1 = chemin1;
 
 			temp1.load(nom_complet1);
 
