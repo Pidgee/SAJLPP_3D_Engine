@@ -166,11 +166,49 @@ void Renderer::draw()
 	fbo.draw(160, 90);
 }
 
+//Géométrie
 void Renderer::renderParticleCloud() {
 	ParticleCloud* part = new ParticleCloud;
 	part->setup();
 	geometryObjectContainer.push_back(part);
 }
+
+void Renderer::renderSphere()
+{
+	GeometryPrimitive* sphere = new GeometryPrimitive("sphere");
+	sphere->setup();
+	geometryObjectContainer.push_back(sphere);
+}
+
+void Renderer::renderCube()
+{
+	GeometryPrimitive* cube = new GeometryPrimitive("cube");
+	cube->setup();
+	geometryObjectContainer.push_back(cube);
+}
+
+void Renderer::renderCylinder()
+{
+	GeometryPrimitive* cylinder = new GeometryPrimitive("cylinder");
+	cylinder->setup();
+	geometryObjectContainer.push_back(cylinder);
+}
+
+void Renderer::renderCone()
+{
+	GeometryPrimitive* cone = new GeometryPrimitive("cone");
+	cone->setup();
+	geometryObjectContainer.push_back(cone);
+}
+
+void Renderer::renderModel()
+{
+	ImportModel* model = new ImportModel("TO DO");
+	model->setup();
+	geometryObjectContainer.push_back(model);
+}
+
+void
 
 Renderer::~Renderer()
 {

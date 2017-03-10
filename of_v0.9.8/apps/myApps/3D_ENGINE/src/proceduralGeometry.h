@@ -6,9 +6,10 @@ class ProceduralGeometry : public GeometryObject
 {
 public:
 
+	ProceduralGeometry(std::string p_path);
+
 	ofMesh mesh;
 	ofImage img;
-	std::string imgPath;
 	
 	void setup();
 	void draw();
@@ -28,5 +29,8 @@ public:
 
 	//instance name
 	std::string id();
+
+private:
+	std::string m_path;
 };
 

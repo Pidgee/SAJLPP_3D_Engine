@@ -3,6 +3,9 @@
 #include <vector>
 #include "ofMain.h"
 #include "particleCloud.h"
+#include "geometryPrimitive.h"
+#include "importModel.h"
+#include "proceduralGeometry.h"
 #include "imageObjet.h"
 
 class Renderer
@@ -25,6 +28,12 @@ public:
 
 	//geometryTools
 	void renderParticleCloud();
+	void renderSphere();
+	void renderCube();
+	void renderCylinder();
+	void renderCone();
+	void renderModel();
+	void renderProcedural();
 
 	//imageTools
 	void renderImage(ofImage* image, string nom, int x, int y, int z);

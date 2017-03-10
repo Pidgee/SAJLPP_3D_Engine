@@ -1,15 +1,18 @@
 #include "proceduralGeometry.h"
 
+ProceduralGeometry::ProceduralGeometry(std::string p_path) : m_path(p_path)
+{
+
+}
+
 void ProceduralGeometry::setup()
 {
 	ofSetVerticalSync(true);
 
-	// load an image from disk
-	img.load(imgPath);
+	// Charger un image
+	img.load(m_path);
 
-	// we're going to load a ton of points into an ofMesh
 	mesh.setMode(OF_PRIMITIVE_POINTS);
-
 	// Boucle dans l'image pour les coordonnées x et y
 	int skip = 4; // Limite le nombre de pixels analysés
 	for (int y = 0; y < img.getHeight(); y += skip) {

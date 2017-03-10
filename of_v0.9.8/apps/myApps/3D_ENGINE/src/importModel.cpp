@@ -5,6 +5,10 @@ GLfloat lightOneColor[] = { 0.99, 0.99, 0.99, 1.0 };
 GLfloat lightTwoPosition[] = { -40.0, 40, 100.0, 0.0 };
 GLfloat lightTwoColor[] = { 0.99, 0.99, 0.99, 1.0 };
 
+ImportModel::ImportModel(std::string p_path) : m_path(p_path) {
+
+}
+
 void ImportModel::setup()
 {
 	glShadeModel(GL_SMOOTH);
@@ -20,7 +24,7 @@ void ImportModel::setup()
 	glEnable(GL_COLOR_MATERIAL);
 
 	//Load l'image au chemin modelPath
-	model.loadModel(modelPath);
+	model.loadModel(m_path);
 }
 
 void ImportModel::draw()

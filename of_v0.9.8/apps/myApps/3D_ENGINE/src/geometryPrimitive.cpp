@@ -1,8 +1,27 @@
 #include "geometryPrimitive.h"
 
+GeometryPrimitive::GeometryPrimitive(std::string p_type) : m_type(p_type)
+{
+	
+}
+
 void GeometryPrimitive::setup()
 {
-	selectPrimitive(primitiveName);
+	if (m_type == "sphere") {
+		setupSphere(100);
+	}
+	else if (m_type == "cube") {
+		setupCube(150);
+	}
+	else if (m_type == "cylinder") {
+		setupCylinder(100, 200);
+	}
+	else if (m_type == "cone") {
+		setupCone(100, 200);
+	}
+	else {
+		
+	}
 }
 
 void GeometryPrimitive::draw()
@@ -23,15 +42,15 @@ void GeometryPrimitive::setupTetrahedron(float width)
 	mesh.addVertex(ofPoint(width, -width, -width));
 }
 
-void GeometryPrimitive::setupHexahedron(float width)
+void GeometryPrimitive::setupCube(float width)
 {
 	//Position, rayon et couleur initiaux du cube
 	mesh.clear();
-	hexahedron.set(width);
+	cube.set(width);
 	ofFill();
 	ofSetColor(0, 0, 0, 0.4);
-	hexahedron.setPosition(0, 0, 0);
-	mesh = hexahedron.getMesh();
+	cube.setPosition(0, 0, 0);
+	mesh = cube.getMesh();
 	
 }
 
@@ -137,11 +156,6 @@ void GeometryPrimitive::setupCone(float radius, float height)
 	ofSetColor(0, 0, 0, 0.4);
 	cone.setPosition(0, 0, 0);
 	mesh = cone.getConeMesh();
-}
-
-void GeometryPrimitive::selectPrimitive(std::string primitiveName)
-{
-
 }
 
 void GeometryPrimitive::rotateX() {

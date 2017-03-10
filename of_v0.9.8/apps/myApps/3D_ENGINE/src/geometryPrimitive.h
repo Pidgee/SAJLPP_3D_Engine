@@ -8,10 +8,10 @@ class GeometryPrimitive : public GeometryObject
 
 public:
 
-	std::string primitiveName;
-
+	GeometryPrimitive(std::string p_type);
+	
 	void setupTetrahedron(float width);
-	void setupHexahedron(float width);
+	void setupCube(float width);
 	void setupOctahedron(float width);
 	void setupDodecahedron(float width);
 	void setupIcosahedron(float width);
@@ -19,10 +19,8 @@ public:
 	void setupCylinder(float radius, float height);
 	void setupCone(float radius, float height);
 
-	void selectPrimitive(std::string primitiveName);
-
 	of3dPrimitive tetrahedron;
-	ofBoxPrimitive hexahedron;
+	ofBoxPrimitive cube;
 	of3dPrimitive octahedron;
 	of3dPrimitive dodecahedron;
 	of3dPrimitive icosahedron;
@@ -49,4 +47,7 @@ public:
 
 	//instance name
 	std::string id();
+
+private:
+	std::string m_type;
 };

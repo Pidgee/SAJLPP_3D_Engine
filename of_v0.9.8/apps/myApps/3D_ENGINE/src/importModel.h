@@ -9,8 +9,9 @@ class ImportModel : public GeometryObject
 
 public:
 
+	ImportModel(std::string p_path);
+
 	ofxAssimpModelLoader model;
-	std::string modelPath;
 
 	void setup();
 	void draw();
@@ -30,4 +31,7 @@ public:
 
 	//instance name
 	std::string id();
+
+private:
+	std::string m_path;
 };
