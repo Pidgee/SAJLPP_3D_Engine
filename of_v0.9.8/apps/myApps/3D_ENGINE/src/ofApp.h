@@ -39,14 +39,6 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-
-		//image toolbar widgets
-		ofxPanel imagePanel;
-		ofxButton importButton;
-		ofxButton exportButton;
-		ofxButton teinteButton;
-		ofxButton compositionButton;
-
 		//draw toolbar widgets
 		ofxPanel drawPanel;
 		ofxButton lineButton;

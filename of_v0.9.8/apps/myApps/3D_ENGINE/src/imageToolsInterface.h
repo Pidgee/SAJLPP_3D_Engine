@@ -14,7 +14,7 @@ class ImageToolBar
 {
 public:
 
-	ImageToolBar(ofxPanel* p_imagePanel, ofxButton* p_importButton, ofxButton* p_exportButton, ofxButton* m_teinte, ofxButton* m_composition, Renderer* p_renderer);
+	ImageToolBar(Renderer* p_renderer);
 
 	void setup();
 	void draw();
@@ -28,11 +28,11 @@ public:
 
 
 private:
-	ofxPanel* m_imagePanel;
-	ofxButton* m_importButton;
-	ofxButton* m_exportButton;
-	ofxButton* m_teinte;
-	ofxButton* m_composition;
+	ofxPanel m_imagePanel;
+	ofxButton m_importButton;
+	ofxButton m_exportButton;
+	ofxButton m_teinte;
+	ofxButton m_composition;
 	Renderer* m_renderer;
 	
 	bool visible;
