@@ -4,13 +4,11 @@
 void ofApp::setup(){
 	ofBackground(100);
 	renderer = new Renderer();
-	geometryToolBar = new GeometryToolBar(&geometryPanel, &particleCloudButton, renderer);
+	geometryToolBar = new GeometryToolBar(renderer);
 	imageToolBar = new ImageToolBar(&imagePanel, &importButton, &exportButton, &teinteButton, &compositionButton, renderer);
 	drawToolBar = new DrawToolBar(&drawPanel, &lineButton, &triangleButton, &circleButton);
-	transformationToolBar = new TransformationToolBar(&transformPanel,&rotateXSlider, &rotateYSlider, &rotateZSlider,
-			&translateXSlider, &translateYSlider, &translateZSlider, &scaleSlider, &transformButton, renderer);
-	menuBar = new MenuBar(&menuPanel, &geometryTools, &drawTools, &imageTools, &cameraTools,
-			geometryToolBar, imageToolBar, drawToolBar);
+	transformationToolBar = new TransformationToolBar();
+	menuBar = new MenuBar(geometryToolBar, imageToolBar, drawToolBar);
 
 	menuBar->setup();
 	transformationToolBar->setup();

@@ -38,17 +38,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
-		//menu bar widgets
-		ofxPanel menuPanel;
-		ofxButton geometryTools;
-		ofxButton drawTools;
-		ofxButton imageTools;
-		ofxButton cameraTools;
 
-		//geometry toolbar widgets
-		ofxPanel geometryPanel;
-		ofxButton particleCloudButton;
 
 		//image toolbar widgets
 		ofxPanel imagePanel;
@@ -63,16 +53,6 @@ class ofApp : public ofBaseApp{
 		ofxButton triangleButton;
 		ofxButton circleButton;
 
-		//transform toolbar widgets
-		ofxPanel transformPanel;
-		ofxFloatSlider rotateXSlider;
-		ofxFloatSlider rotateYSlider;
-		ofxFloatSlider rotateZSlider;
-		ofxFloatSlider translateXSlider;
-		ofxFloatSlider translateYSlider;
-		ofxFloatSlider translateZSlider;
-		ofxFloatSlider scaleSlider;
-		ofxButton transformButton;
 
 
 
