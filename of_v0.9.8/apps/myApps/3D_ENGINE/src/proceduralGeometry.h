@@ -1,22 +1,15 @@
 #pragma once
-
-#include "ofMain.h"
 #include "geometryObject.h"
+#include "ofMain.h"
 
-class ParticleCloud : public GeometryObject
+class ProceduralGeometry : public GeometryObject
 {
-
 public:
 
-	ParticleCloud();
-
-	float cloudRadius;
-	int particleCount;
-	float origin[3];
-
-	int particleBufferSize;
-	int particleBufferHead;
-
+	ofMesh mesh;
+	ofImage img;
+	std::string imgPath;
+	
 	void setup();
 	void draw();
 
@@ -35,10 +28,5 @@ public:
 
 	//instance name
 	std::string id();
-
-	void drawCloud(int count, float radius, float origin[3]);
-
-	ofMesh mesh;
-
-	~ParticleCloud();
 };
+

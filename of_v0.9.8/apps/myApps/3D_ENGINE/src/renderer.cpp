@@ -9,8 +9,6 @@ void Renderer::setup()
 	for(int i=0; i<geometryObjectContainer.size(); i++){
 		geometryObjectContainer[i]->setup();
 	}
-	//particleCloud = new ParticleCloud;
-	//particleCloud->setup();
 	ofClear(255, 255, 255);
 	ofBackground(255, 255, 255);
 	fbo.end();
