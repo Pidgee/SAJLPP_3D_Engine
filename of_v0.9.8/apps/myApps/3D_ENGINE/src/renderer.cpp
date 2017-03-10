@@ -6,8 +6,11 @@ void Renderer::setup()
 {
 	fbo.allocate(1280, 720);
 	fbo.begin();
-	particleCloud = new ParticleCloud;
-	particleCloud->setup();
+	for(int i=0; i<geometryObjectContainer.size(); i++){
+		geometryObjectContainer[i]->setup();
+	}
+	//particleCloud = new ParticleCloud;
+	//particleCloud->setup();
 	ofClear(255, 255, 255);
 	ofBackground(255, 255, 255);
 	fbo.end();
@@ -15,7 +18,70 @@ void Renderer::setup()
 
 void Renderer::update()
 {
+}
 
+ofVec3f convertionRGB_HSV(ofColor couleur) {
+
+	ofVec3f hsv;
+
+	float val_r = couleur.r/255;
+	float val_g = couleur.g/255;
+	float val_b = couleur.b/255;
+
+	float maximum1 = max(val_r, val_g);
+	float maximum = max(maximum1, val_b);
+	float minimum1 = min(val_r, val_g);
+	float minimum = min(minimum1, val_b);
+
+	float delta = maximum - minimum;
+
+	//Détermine le hue.
+	if (delta == 0) {
+		hsv[0] = 0;
+	}
+	else if (maximum == val_r) {
+
+		float diff = val_g - val_b;
+
+		int div = diff / delta;
+
+		int resultat = div % 6;
+
+		hsv[0] = resultat;
+	}
+	else if (maximum == val_g) {
+
+		float diff = val_b - val_r;
+
+		float div = diff / delta;
+
+		float resultat = div + 2;
+
+		hsv[0] = resultat;
+	}
+	else if (maximum == val_b) {
+
+		float diff = val_r - val_g;
+
+		float div = diff / delta;
+
+		float resultat = div + 4;
+
+		hsv[0] = resultat;
+	}
+
+	//Détermine la saturation.
+	if (maximum == 0) {
+		hsv[1] = 0;
+	}
+	else {
+		hsv[1] = delta / maximum;
+	}
+
+	//Détermine la value.
+	hsv[2] = maximum;
+
+	return hsv;
 }
 
 void Renderer::exporter()
@@ -39,62 +105,110 @@ void Renderer::exporter()
 	}
 }
 
-void Renderer::importer() {
+void Renderer::renderImage(ofImage * image, string nom, int x, int y, int z) {
 
-	ofFileDialogResult resultat = ofSystemLoadDialog("Importation d'image");
+	imageObjet* im = new imageObjet;
 
-	if (resultat.bSuccess) {
+	im->setup();
 
-		ofImage temp;
+	ofImage temp = *image;
 
-		string chemin = resultat.filePath;
+	im->setImage(image);
 
-		string nom = resultat.fileName;
+	im->p1.set(x - (temp.getWidth() / 2), y - (temp.getHeight() / 2), z);
 
-		string nom_complet = nom;
+	im->p2.set(x - (temp.getWidth() / 2), y + (temp.getHeight() / 2), z);
 
-		temp.load(nom_complet);
+	im->p3.set(x + (temp.getWidth() / 2), y - (temp.getHeight() / 2), z);
 
-		ofTexture texture = temp.getTexture();
+	im->p4.set(x + (temp.getWidth() / 2), y + (temp.getHeight() / 2), z);
 
-		ofPoint point(liste_image.size()*300, liste_image.size() * 300, liste_image.size() * 300);
+	im->nom = nom;
 
-		pair<ofTexture, ofPoint> position_im(texture, point);
+	geometryObjectContainer.push_back(im);
 
-		liste_image.push_back(position_im);
+}
 
-	}
+void Renderer::renderImage(ofImage * image, string nom, int x, int y, int z, ofColor couleur) {
+
+	imageObjet* im = new imageObjet;
+
+	imageObjet* image_teinte = new imageObjet;
+
+	im->setImage(image);
+
+	ofImage teinte = im->ajouter_teinte(couleur);
+
+	image_teinte->setup();
+
+	image_teinte->setImage(&teinte);
+
+	ofImage temp = *image;
+
+	image_teinte->p1.set(x - (temp.getWidth() / 2), y - (temp.getHeight() / 2), z);
+
+	image_teinte->p2.set(x - (temp.getWidth() / 2), y + (temp.getHeight() / 2), z);
+
+	image_teinte->p3.set(x + (temp.getWidth() / 2), y - (temp.getHeight() / 2), z);
+
+	image_teinte->p4.set(x + (temp.getWidth() / 2), y + (temp.getHeight() / 2), z);
+
+	image_teinte->nom = nom;
+
+	geometryObjectContainer.push_back(image_teinte);
+
+}
+
+void Renderer::renderImage(ofImage * image, string nom, int x, int y, int z, ofImage *image1) {
+
+	imageObjet* im = new imageObjet;
+
+	imageObjet* image_compose = new imageObjet;
+
+	im->setImage(image);
+
+	ofImage compose = im->ajouter_image(image1);
+
+	image_compose->setup();
+
+	image_compose->setImage(&compose);
+
+	ofImage temp = *image;
+
+	image_compose->p1.set(x - (temp.getWidth() / 2), y - (temp.getHeight() / 2), z);
+
+	image_compose->p2.set(x - (temp.getWidth() / 2), y + (temp.getHeight() / 2), z);
+
+	image_compose->p3.set(x + (temp.getWidth() / 2), y - (temp.getHeight() / 2), z);
+
+	image_compose->p4.set(x + (temp.getWidth() / 2), y + (temp.getHeight() / 2), z);
+
+	image_compose->nom = nom;
+
+	geometryObjectContainer.push_back(image_compose);
+
 }
 
 void Renderer::draw()
 {
 	fbo.begin();
+	ofEnableDepthTest();
 	ofClear(255, 255, 255);
 	ofBackground(255, 255, 255);
 	cam.begin();
-	particleCloud->draw();
-
-	if (liste_image.size() != 0) {
-
-		int i;
-
-		for (i = 0; i < liste_image.size(); i++) {
-
-			pair<ofTexture, ofPoint> position_im;
-
-			position_im = liste_image[i];
-
-			ofTexture im = position_im.first;
-
-			ofPoint position = position_im.second;
-
-			im.draw(position.x-(im.getWidth()) / 2, position.y-(im.getHeight()) / 2, position.z, im.getWidth(), im.getHeight());
-		}
+	for(int i=0; i<geometryObjectContainer.size(); i++){
+		geometryObjectContainer[i]->draw();
 	}
-
 	cam.end();
+	ofDisableDepthTest();
 	fbo.end();
 	fbo.draw(160, 90);
+}
+
+void Renderer::renderParticleCloud() {
+	ParticleCloud* part = new ParticleCloud;
+	part->setup();
+	geometryObjectContainer.push_back(part);
 }
 
 Renderer::~Renderer()

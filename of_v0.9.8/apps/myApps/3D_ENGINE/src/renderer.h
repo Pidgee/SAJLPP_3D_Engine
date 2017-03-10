@@ -1,7 +1,9 @@
 #pragma once
 
+#include <vector>
 #include "ofMain.h"
 #include "particleCloud.h"
+#include "imageObjet.h"
 
 class Renderer
 {
@@ -12,16 +14,31 @@ public:
 	Renderer();
 
 	ParticleCloud * particleCloud;
+		
 
 	void setup();
 	void exporter();
-	void importer();
+	ofVec3f convertionRGB_HSV(ofColor couleur);
 	void update();
+
 	void draw();
 
-	vector<pair<ofTexture,ofPoint>> liste_image;
+	void appendObject(GeometryObject*);
+
+	//geometryTools
+	void renderParticleCloud();
+
+	//imageTools
+	void renderImage(ofImage* image, string nom, int x, int y, int z);
+	void renderImage(ofImage* image, string nom, int x, int y, int z, ofColor couleur);
+	void renderImage(ofImage* image, string nom, int x, int y, int z, ofImage* image1);
 
 	ofEasyCam cam;
 
 	~Renderer();
+
+private:
+	//geometryObject container
+	std::vector<GeometryObject*> geometryObjectContainer;
+
 };
