@@ -7,6 +7,7 @@
 #include "geometryToolsInterface.h"
 #include "imageToolsInterface.h"
 #include "drawToolsInterface.h"
+#include "transformToolsInterface.h"
 
 
 class ofApp : public ofBaseApp{
@@ -20,6 +21,7 @@ class ofApp : public ofBaseApp{
 		GeometryToolBar* geometryToolBar;
 		ImageToolBar* imageToolBar;
 		DrawToolBar* drawToolBar;
+		TransformationToolBar* transformationToolBar;
 
 		void setup();
 		void update();
@@ -37,25 +39,43 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		//menu bar gui
+		//menu bar widgets
 		ofxPanel menuPanel;
 		ofxButton geometryTools;
 		ofxButton drawTools;
 		ofxButton imageTools;
 		ofxButton cameraTools;
 
-		//geometry toolbar
+		//geometry toolbar widgets
 		ofxPanel geometryPanel;
 		ofxButton particleCloudButton;
 
-		//image toolbar
+		//image toolbar widgets
 		ofxPanel imagePanel;
 		ofxButton importButton;
 		ofxButton exportButton;
+		ofxButton teinteButton;
+		ofxButton compositionButton;
 
-		//draw toolbar
+		//draw toolbar widgets
 		ofxPanel drawPanel;
 		ofxButton lineButton;
 		ofxButton triangleButton;
 		ofxButton circleButton;
+
+		//transform toolbar widgets
+		ofxPanel transformPanel;
+		ofxFloatSlider rotateXSlider;
+		ofxFloatSlider rotateYSlider;
+		ofxFloatSlider rotateZSlider;
+		ofxFloatSlider translateXSlider;
+		ofxFloatSlider translateYSlider;
+		ofxFloatSlider translateZSlider;
+		ofxFloatSlider scaleSlider;
+		ofxButton transformButton;
+
+
+
+
+
 };
