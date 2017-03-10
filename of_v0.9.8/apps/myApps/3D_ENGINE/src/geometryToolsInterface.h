@@ -16,7 +16,7 @@ class GeometryToolBar
 {
 public:
 
-	GeometryToolBar(ofxPanel* p_geometryPanel, ofxButton* p_particleCloudButton, Renderer* p_renderer);
+	GeometryToolBar(Renderer* p_renderer);
 
 	void setup();
 	void draw();
@@ -25,8 +25,8 @@ public:
 	void renderParticleCloud();
 
 private:
-	ofxPanel* m_geometryPanel;
-	ofxButton* m_particleCloudButton;
+	ofxPanel m_geometryPanel;
+	ofxButton m_particleCloudButton;
 	Renderer* m_renderer;
 	bool visible;
 
