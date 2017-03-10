@@ -13,7 +13,7 @@
 class TransformationToolBar{
 
 public:
-	TransformationToolBar(ofxFloatSlider* p_rotateXSlider, ofxFloatSlider* p_rotateYSlider,
+	TransformationToolBar(ofxPanel* p_transformPanel, ofxFloatSlider* p_rotateXSlider, ofxFloatSlider* p_rotateYSlider,
 			ofxFloatSlider* p_rotateZSlider,ofxFloatSlider* p_translateXSlider, ofxFloatSlider* p_translateYSlider,
 			ofxFloatSlider* p_translateZSlider, ofxFloatSlider* p_scaleSlider, ofxButton* p_transformButton,
 			Renderer* p_renderer);
@@ -23,7 +23,7 @@ public:
 	void transform();
 
 private:
-	ofxPanel* transformPanel;
+	ofxPanel* m_transformPanel;
 
 	//rotation control
 	ofxFloatSlider* m_rotateXSlider;
@@ -38,8 +38,11 @@ private:
 	//scale control
 	ofxFloatSlider* m_scaleSlider;
 
+	//group
+	ofxGuiGroup transformGroup;
+
 	//transform command
-	ofxButton* m_transformButton;
+	ofxButton* transformButton;
 
 	//renderer
 	Renderer* m_renderer;
