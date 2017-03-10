@@ -3,12 +3,17 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofBackground(100);
-	menuBar = new MenuBar(&menuPanel, &geometryTools, &drawTools, &imageTools, &cameraTools);
-	geometryToolBar = new GeometryToolBar(&geometryPanel, &particleCloudButton);
 	renderer = new Renderer();
+	geometryToolBar = new GeometryToolBar(&geometryPanel, &particleCloudButton, renderer);
+	imageToolBar = new ImageToolBar(&imagePanel, &importButton, &exportButton);
+	drawToolBar = new DrawToolBar(&drawPanel, &lineButton, &triangleButton, &circleButton);
+	menuBar = new MenuBar(&menuPanel, &geometryTools, &drawTools, &imageTools, &cameraTools,
+			geometryToolBar, imageToolBar, drawToolBar);
 
 	menuBar->setup();
 	geometryToolBar->setup();
+	imageToolBar->setup();
+	drawToolBar->setup();
 	renderer->setup();
 
 }
@@ -22,6 +27,8 @@ void ofApp::update(){
 void ofApp::draw(){
 	menuBar->draw();
 	geometryToolBar->draw();
+	imageToolBar->draw();
+	drawToolBar->draw();
 	renderer->draw();
 
 }

@@ -17,10 +17,6 @@ void ParticleCloud::setup()
 
 }
 
-void ParticleCloud::update()
-{
-
-}
 
 void ParticleCloud::draw()
 {
@@ -61,11 +57,34 @@ void ParticleCloud::drawCloud(int count, float radius, float origin[3])
 		ofVec3f position(x, y, z);
 		mesh.addVertex(position);
 	}
-	ofEnableDepthTest();
 	glEnable(GL_POINT_SMOOTH);
-	glPointSize(3); 
+	glPointSize(3);
 }
 
+void ParticleCloud::rotateX() {
+}
+
+void ParticleCloud::rotateY() {
+}
+
+void ParticleCloud::rotateZ() {
+}
+
+void ParticleCloud::translateX() {
+}
+
+void ParticleCloud::translateY() {
+}
+
+void ParticleCloud::translateZ() {
+}
+
+void ParticleCloud::scale() {
+}
+
+std::string ParticleCloud::id() {
+	return "Foo";
+}
 
 ParticleCloud::~ParticleCloud()
 {

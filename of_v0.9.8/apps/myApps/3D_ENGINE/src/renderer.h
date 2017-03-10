@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include "ofMain.h"
 #include "particleCloud.h"
 
@@ -17,7 +18,20 @@ public:
 	void update();
 	void draw();
 
+	void appendObject(GeometryObject*);
+
+	//geometryTools
+	void renderParticleCloud();
+
+	//imageTools
+	void renderImage();
+
 	ofEasyCam cam;
 
 	~Renderer();
+
+private:
+	//geometryObject container
+	std::vector<GeometryObject*> geometryObjectContainer;
+
 };
