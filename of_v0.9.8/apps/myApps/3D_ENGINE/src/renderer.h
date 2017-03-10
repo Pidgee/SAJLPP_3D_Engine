@@ -23,8 +23,6 @@ public:
 
 	void draw();
 
-	void appendObject(GeometryObject*);
-
 	//geometryTools
 	void renderParticleCloud();
 
