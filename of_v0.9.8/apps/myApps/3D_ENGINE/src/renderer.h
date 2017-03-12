@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "particleCloud.h"
 #include "drawing.h"
+#include "imageObjet.h"
 
 class Renderer
 {
@@ -14,18 +15,24 @@ public:
 	Renderer();
 
 	ParticleCloud * particleCloud;
+		
 
 	void setup();
+	void exporter();
+	ofVec3f convertionRGB_HSV(ofColor couleur);
 	void update();
+
 	void draw();
 
 	void appendObject(GeometryObject*);
 
 	//geometryTools
-	ParticleCloud* renderParticleCloud();
+	void renderParticleCloud();
 
 	//imageTools
-	void renderImage();
+	void renderImage(ofImage* image, string nom, int x, int y, int z);
+	void renderImage(ofImage* image, string nom, int x, int y, int z, ofColor couleur);
+	void renderImage(ofImage* image, string nom, int x, int y, int z, ofImage* image1);
 
 	ofEasyCam cam;
 
