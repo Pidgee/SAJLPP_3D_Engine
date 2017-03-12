@@ -123,7 +123,7 @@ void TransformationToolBar::pageUp() {
 			name="nul";
 			selected=false;
 		}
-		//items[i].operator =(selected);
+		items[i].operator =(selected);
 		items[i].setName(name);
 		items[i].getName();
 	}
