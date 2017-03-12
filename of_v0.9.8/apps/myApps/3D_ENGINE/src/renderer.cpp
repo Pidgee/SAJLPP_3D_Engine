@@ -207,8 +207,10 @@ void Renderer::renderProcedural(string path)
 }
 
 void Renderer::renderTransformation(float rotX, float rotY, float rotZ, float transX, float transY, float transZ, float scale) {
-	for (int i = 0; i<geometryObjectContainer.size(); i++) {
-		geometryObjectContainer[i]->rotateX(rotX);
+	for(int i=0; i<geometryObjectContainer.size(); i++){
+		if(geometryObjectContainer[i]->getSelected()){
+			geometryObjectContainer[i]->rotateX(rotX);
+		}
 	}
 }
 
