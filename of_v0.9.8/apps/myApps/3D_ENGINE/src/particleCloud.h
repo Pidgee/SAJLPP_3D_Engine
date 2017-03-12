@@ -21,18 +21,18 @@ public:
 	void setup();
 	void draw();
 
-	//rotation transformations
-	void rotateX();
-	void rotateY();
-	void rotateZ();
+	bool getSelected();
+	void setSelected(bool val);
 
-	//translation transformations
-	void translateX();
-	void translateY();
-	void translateZ();
+	void rotateX(float x);
+	void rotateY(float y);
+	void rotateZ(float z);
+	void translateX(float x);
+	void translateY(float y);
+	void translateZ(float z);
+	void scale(float scale);
 
-	//scale transformation
-	void scale();
+
 
 	//instance name
 	std::string id();
@@ -40,6 +40,9 @@ public:
 	void drawCloud(int count, float radius, float origin[3]);
 
 	ofMesh mesh;
+
+private:
+	bool select;
 
 	~ParticleCloud();
 };
