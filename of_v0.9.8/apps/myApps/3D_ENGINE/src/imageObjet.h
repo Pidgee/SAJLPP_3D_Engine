@@ -28,7 +28,8 @@ public:
 
 	void setImage(ofImage * image_param);
 
-	bool selected();
+	bool getSelected();
+	void setSelected(bool val);
 
 	//rotation transformations
 	void rotateX(float x);

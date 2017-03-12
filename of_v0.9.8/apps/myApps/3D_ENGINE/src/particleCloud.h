@@ -21,7 +21,8 @@ public:
 	void setup();
 	void draw();
 
-	bool selected();
+	bool getSelected();
+	void setSelected(bool val);
 
 	void rotateX(float x);
 	void rotateY(float y);

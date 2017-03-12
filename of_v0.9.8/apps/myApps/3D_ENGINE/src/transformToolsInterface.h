@@ -68,11 +68,11 @@ private:
 	//update toggle names
 	void updateNames();
 	void applyTransform();
-	void actionItem1();
-	void actionItem2();
-	void actionItem3();
-	void actionItem4();
-	void actionItem5();
+	void actionItem1(bool & inval);
+	void actionItem2(bool & inval);
+	void actionItem3(bool & inval);
+	void actionItem4(bool & inval);
+	void actionItem5(bool & inval);
 
 };
 

@@ -87,12 +87,12 @@ void ParticleCloud::ParticleCloud::translateZ(float z) {
 void ParticleCloud::ParticleCloud::scale(float scale) {
 }
 
-bool ParticleCloud::selected() {
-	if(select)
-		select=false;
-	else
-		select=true;
+bool ParticleCloud::getSelected() {
 	return select;
+}
+
+void ParticleCloud::setSelected(bool val) {
+	select=val;
 }
 
 ParticleCloud::~ParticleCloud()
