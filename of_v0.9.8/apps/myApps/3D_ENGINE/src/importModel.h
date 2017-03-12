@@ -2,20 +2,16 @@
 
 #include "ofMain.h"
 #include "geometryObject.h"
+#include "ofxAssimpModelLoader.h"
 
-class ParticleCloud : public GeometryObject
+class ImportModel : public GeometryObject
 {
 
 public:
 
-	ParticleCloud();
+	ImportModel(std::string p_path);
 
-	float cloudRadius;
-	int particleCount;
-	float origin[3];
-
-	int particleBufferSize;
-	int particleBufferHead;
+	ofxAssimpModelLoader model;
 
 	void setup();
 	void draw();
@@ -36,9 +32,6 @@ public:
 	//instance name
 	std::string id();
 
-	void drawCloud(int count, float radius, float origin[3]);
-
-	ofMesh mesh;
-
-	~ParticleCloud();
+private:
+	std::string m_path;
 };
