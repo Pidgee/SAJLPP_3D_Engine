@@ -201,14 +201,19 @@ void Renderer::renderCone()
 	geometryObjectContainer.push_back(cone);
 }
 
-void Renderer::renderModel()
+void Renderer::renderModel(string path)
 {
-	ImportModel* model = new ImportModel("TO DO");
+	ImportModel* model = new ImportModel(path);
 	model->setup();
 	geometryObjectContainer.push_back(model);
 }
 
-void
+void Renderer::renderProcedural(string path)
+{
+	ProceduralGeometry* procedural = new ProceduralGeometry(path);
+	procedural->setup();
+	geometryObjectContainer.push_back(procedural);
+}
 
 Renderer::~Renderer()
 {

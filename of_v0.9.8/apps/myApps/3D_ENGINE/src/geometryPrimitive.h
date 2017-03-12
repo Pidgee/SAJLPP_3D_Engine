@@ -28,6 +28,8 @@ public:
 	ofCylinderPrimitive cylinder;
 	ofConePrimitive cone;
 	ofMesh mesh;
+	of3dPrimitive primitive;
+	ofMaterial material;
 
 	void setup();
 	void draw();

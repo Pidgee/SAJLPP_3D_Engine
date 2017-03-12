@@ -1,6 +1,6 @@
 #include "proceduralGeometry.h"
 
-ProceduralGeometry::ProceduralGeometry(std::string p_path) : m_path(p_path)
+ProceduralGeometry::ProceduralGeometry(string p_path) : m_path(p_path)
 {
 
 }
@@ -9,14 +9,13 @@ void ProceduralGeometry::setup()
 {
 	ofSetVerticalSync(true);
 
-	// Charger un image
+	// Charger une image
 	img.load(m_path);
 
 	mesh.setMode(OF_PRIMITIVE_POINTS);
 	// Boucle dans l'image pour les coordonnées x et y
-	int skip = 4; // Limite le nombre de pixels analysés
-	for (int y = 0; y < img.getHeight(); y += skip) {
-		for (int x = 0; x < img.getWidth(); x += skip) {
+	for (int y = 0; y < img.getHeight(); y ++) {
+		for (int x = 0; x < img.getWidth(); x ++) {
 			ofColor color = img.getColor(x, y);
 			if (color.a > 0) {
 				// Modifier l'étendue de la composante alpha pour un meilleur résultat
