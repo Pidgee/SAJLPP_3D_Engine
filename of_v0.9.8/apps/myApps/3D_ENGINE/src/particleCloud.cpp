@@ -1,6 +1,6 @@
 #include "particleCloud.h"
 
-ParticleCloud::ParticleCloud() {}
+ParticleCloud::ParticleCloud():select(false) {}
 
 void ParticleCloud::setup()
 {
@@ -61,29 +61,37 @@ void ParticleCloud::drawCloud(int count, float radius, float origin[3])
 	glPointSize(3);
 }
 
-void ParticleCloud::rotateX() {
+void ParticleCloud::rotateX(float x) {
 }
 
-void ParticleCloud::rotateY() {
+void ParticleCloud::rotateY(float y ) {
 }
 
-void ParticleCloud::rotateZ() {
+void ParticleCloud::rotateZ(float z) {
 }
 
-void ParticleCloud::translateX() {
+void ParticleCloud::translateX(float x) {
 }
 
-void ParticleCloud::translateY() {
+void ParticleCloud::translateY(float y) {
 }
 
-void ParticleCloud::translateZ() {
+void ParticleCloud::translateZ(float z) {
 }
 
-void ParticleCloud::scale() {
+void ParticleCloud::scale(float scale) {
 }
 
 std::string ParticleCloud::id() {
 	return "Foo";
+}
+
+bool ParticleCloud::selected() {
+	if(select)
+		select=false;
+	else
+		select=true;
+	return select;
 }
 
 ParticleCloud::~ParticleCloud()

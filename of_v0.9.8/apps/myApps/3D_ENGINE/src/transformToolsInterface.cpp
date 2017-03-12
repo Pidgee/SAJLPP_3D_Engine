@@ -7,10 +7,11 @@
 #include "transformToolsInterface.h"
 
 //contructor class for transform toolbar
-TransformationToolBar::TransformationToolBar(): m_transformPanel(ofxPanel()),
-		m_rotateXSlider(ofxFloatSlider()), m_rotateYSlider(ofxFloatSlider()), m_rotateZSlider(ofxFloatSlider()),
-		m_translateXSlider(ofxFloatSlider()), m_translateYSlider(ofxFloatSlider()), m_translateZSlider(ofxFloatSlider()),
-		m_scaleSlider(ofxFloatSlider()), transformButton(ofxButton()),transformGroup(ofxGuiGroup()), item_1(ofxButton()){
+
+TransformationToolBar::TransformationToolBar(Renderer* p_renderer): currentPage(0), m_renderer(p_renderer), numberOfObjects(0), lastPage(0), wait(false){
+	pageUpButton.addListener(this,  &TransformationToolBar::pageUp);
+	pageDownButton.addListener(this,  &TransformationToolBar::pageDown);
+	transformButton.addListener(this,  &TransformationToolBar::applyTransform);
 
 }
 
@@ -61,4 +62,75 @@ void TransformationToolBar::draw() {
 
 //private listener method for transform button
 void TransformationToolBar::transform() {
+}
+
+//action listener for pageUp button
+void TransformationToolBar::pageUp() {
+	if(!wait){
+	std::cout<<"Hello"<<std::endl;
+	int pagesAvailable = 1+((m_renderer->getNumberOfObjects())-1)/5;
+	if(pagesAvailable !=0)
+		currentPage = (currentPage+1)%pagesAvailable;
+	updateNames();
+	}
+}
+
+//action listener for pageDwon button
+void TransformationToolBar::pageDown() {
+
+	if(!wait){
+	int pagesAvailable = (m_renderer->getNumberOfObjects())/5;
+	if(pagesAvailable !=0)
+		currentPage = abs(currentPage-1)%pagesAvailable;
+	updateNames();
+	}
+}
+
+
+void TransformationToolBar::updateNames() {
+	int startIndice = currentPage*5;
+	bool selected =false;
+	std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
+	std::string name = "nul";
+	for(int i=0; i<5; i++){
+		if(startIndice+i < objectContainer->size()){
+			name = (((*objectContainer)[startIndice+i])->id());
+			selected = (((*objectContainer)[startIndice+i])->selected());
+		}
+		else{
+			name="nul";
+			selected=false;
+		}
+		items[i].operator =(selected);
+		items[i].setName(name);
+		items[i].getName();
+	}
+
+}
+
+
+void TransformationToolBar::applyTransform() {
+	float rotx = 0;
+	float roty = 0;
+	float rotz = 0;
+	float transx = 0;
+	float transy = 0;
+	float transz = 0;
+	float scale = 0;
+	m_renderer->renderTransformation(rotx, roty, rotz, transx, transz, transy, scale);
+}
+
+void TransformationToolBar::actionItem1() {
+}
+
+void TransformationToolBar::actionItem2() {
+}
+
+void TransformationToolBar::actionItem3() {
+}
+
+void TransformationToolBar::actionItem4() {
+}
+
+void TransformationToolBar::actionItem5() {
 }

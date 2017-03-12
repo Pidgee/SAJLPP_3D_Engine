@@ -28,6 +28,8 @@ public:
 
 	void setImage(ofImage * image_param);
 
+	bool selected();
+
 	//rotation transformations
 	void rotateX(/*int angle*/);
 	void rotateY(/*int angle*/);
@@ -45,4 +47,7 @@ public:
 	string id();
 
 	~imageObjet();
+
+private:
+	bool select;
 };
