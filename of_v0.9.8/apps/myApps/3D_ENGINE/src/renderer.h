@@ -12,20 +12,16 @@ public:
 
 	ofFbo fbo;
 	Drawing* drawing;
-
 	Renderer();
-
-	ParticleCloud * particleCloud;
 		
 
 	void setup();
-	void exporter();
-	ofVec3f convertionRGB_HSV(ofColor couleur);
 	void update();
-
 	void draw();
 
-	void appendObject(GeometryObject*);
+	//getters
+	std::vector<GeometryObject*>* getObjects();
+	int getNumberOfObjects();
 
 	//geometryTools
 	void renderParticleCloud();
@@ -39,7 +35,11 @@ public:
 	void renderImage(ofImage* image, string nom, int x, int y, int z);
 	void renderImage(ofImage* image, string nom, int x, int y, int z, ofColor couleur);
 	void renderImage(ofImage* image, string nom, int x, int y, int z, ofImage* image1);
+	void exporter();
+	ofVec3f convertionRGB_HSV(ofColor couleur);
 
+	//transformationTools
+	void renderTransformation();
 	ofEasyCam cam;
 
 	~Renderer();

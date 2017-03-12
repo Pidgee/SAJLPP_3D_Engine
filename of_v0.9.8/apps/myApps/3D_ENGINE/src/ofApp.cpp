@@ -7,7 +7,7 @@ void ofApp::setup(){
 	geometryToolBar = new GeometryToolBar(renderer);
 	imageToolBar = new ImageToolBar(renderer);
 	drawToolBar = new DrawToolBar(renderer);
-	transformationToolBar = new TransformationToolBar();
+	transformationToolBar = new TransformationToolBar(renderer);
 	menuBar = new MenuBar(geometryToolBar, imageToolBar, drawToolBar);
 
 	menuBar->setup();
@@ -21,7 +21,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+	transformationToolBar->update();
 }
 
 //--------------------------------------------------------------
