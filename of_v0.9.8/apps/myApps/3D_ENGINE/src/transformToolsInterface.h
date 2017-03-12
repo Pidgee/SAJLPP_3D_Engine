@@ -13,26 +13,13 @@
 class TransformationToolBar{
 
 public:
-	TransformationToolBar(Renderer* p_renderer);
+	TransformationToolBar();
 
 	void draw();
 	void setup();
-	void update();
 	void transform();
-	void pageUp();
-	void pageDown();
 
 private:
-
-	int currentPage;
-	int numberOfObjects;
-	int lastPage;
-	bool wait;
-
-	//renderer
-	Renderer* m_renderer;
-
-	//widgets
 	ofxPanel m_transformPanel;
 
 	//rotation control
@@ -50,25 +37,20 @@ private:
 
 	//group
 	ofxGuiGroup transformGroup;
-	ofxGuiGroup selectGroup;
 
 	//transform command
-	ofxButton pageUpButton;
-	ofxButton pageDownButton;
-	ofxToggle item_1;
-	ofxToggle item_2;
-	ofxToggle item_3;
-	ofxToggle item_4;
-	ofxToggle item_5;
-
-	ofxToggle items[5]={item_1, item_2, item_3, item_4, item_5};
+	ofxButton pageUp;
+	ofxButton pageDown;
+	ofxButton item_1;
+	ofxButton item_2;
+	ofxButton item_3;
+	ofxButton item_4;
+	ofxButton item_5;
 
 	ofxButton transformButton;
 
-	//update toggle names
-	void updateNames();
-	void refreshPanel();
-	void applyTransform();
+	//renderer
+	Renderer* m_renderer;
 
 
 };

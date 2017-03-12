@@ -23,7 +23,7 @@ void imageObjet::draw()
 	
 }
 
-void imageObjet::rotateX(float x) {
+void imageObjet::rotateX(/*int angle*/) {
 
 	//p1.set(p1.x, p1.y* cos(angle) + p1.z * sin(angle), p1.z *cos(angle) - p1.y*sin(angle));
 	//p2.set(p2.x, p2.y* cos(angle) + p2.z * sin(angle), p2.z *cos(angle) - p2.y*sin(angle));
@@ -32,7 +32,7 @@ void imageObjet::rotateX(float x) {
 
 }
 
-void imageObjet::rotateY(float y) {
+void imageObjet::rotateY(/*int angle*/) {
 
 	//p1.set(p1.x* cos(angle) + p1.z * sin(angle), p1.y, p1.z *cos(angle) - p1.x*sin(angle));
 	//p2.set(p2.x* cos(angle) + p2.z * sin(angle), p2.y, p2.z *cos(angle) - p2.x*sin(angle));
@@ -41,7 +41,7 @@ void imageObjet::rotateY(float y) {
 
 }
 
-void imageObjet::rotateZ(float z) {
+void imageObjet::rotateZ(/*int angle*/) {
 
 	//p1.set(p1.x * cos(angle) + p1.y * sin(angle), p1.y*cos(angle) - p1.x*sin(angle), p1.z);
 	//p2.set(p2.x * cos(angle) + p2.y * sin(angle), p2.y*cos(angle) - p2.x*sin(angle), p2.z);
@@ -50,7 +50,7 @@ void imageObjet::rotateZ(float z) {
 
 }
 
-void imageObjet::translateX(float x) {
+void imageObjet::translateX(/*int valeur*/) {
 
 	//coordX += valeur;
 
@@ -60,7 +60,7 @@ void imageObjet::translateX(float x) {
 	//p4.set(p4.x + valeur, p4.y, p4.z);
 }
 
-void imageObjet::translateY(float y) {
+void imageObjet::translateY(/*int valeur*/) {
 
 	//coordY += valeur;
 
@@ -71,7 +71,7 @@ void imageObjet::translateY(float y) {
 	
 }
 
-void imageObjet::translateZ(float z) {
+void imageObjet::translateZ(/*int valeur*/) {
 
 	//coordZ += valeur;
 
@@ -82,7 +82,7 @@ void imageObjet::translateZ(float z) {
 
 }
 
-void imageObjet::scale(float scale) {
+void imageObjet::scale(/*float proportion*/) {
 
 	//width *= proportion;
 	//height *= proportion;
