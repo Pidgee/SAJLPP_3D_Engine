@@ -7,38 +7,36 @@
 #include "imageToolsInterface.h"
 #include "stdio.h"
 
-ImageToolBar::ImageToolBar(ofxPanel* p_imagePanel, ofxButton* p_importButton,
-		ofxButton* p_exportButton, ofxButton* p_teinte, ofxButton* p_composition, Renderer* p_renderer): 
-	m_imagePanel(p_imagePanel), m_importButton(p_importButton),
-		m_exportButton(p_exportButton), m_teinte(p_teinte),m_composition(p_composition), m_renderer(p_renderer), visible(false){
-	m_exportButton->addListener(this, &ImageToolBar::exporter);
-	m_importButton->addListener(this, &ImageToolBar::importer);
-	m_teinte->addListener(this, &ImageToolBar::teinte);
-	m_composition->addListener(this, &ImageToolBar::composition);
+ImageToolBar::ImageToolBar(Renderer* p_renderer):
+	m_imagePanel(ofxPanel()), m_importButton(ofxButton()), m_exportButton(ofxButton()), m_teinte(ofxButton()),m_composition(ofxButton()), m_renderer(p_renderer), visible(false){
+	m_exportButton.addListener(this, &ImageToolBar::exporter);
+	m_importButton.addListener(this, &ImageToolBar::importer);
+	m_teinte.addListener(this, &ImageToolBar::teinte);
+	m_composition.addListener(this, &ImageToolBar::composition);
 }
 
 void ImageToolBar::setup() {
-	m_imagePanel->setup();
-	m_imagePanel->setName("Image Tools");
-	m_imagePanel->setPosition(5,90);
-	m_imagePanel->add(m_importButton->setup("Import Image"));
-	m_imagePanel->add(m_exportButton->setup("Export Image"));
-	m_imagePanel->add(m_teinte->setup("Teinte Image"));
-	m_imagePanel->add(m_composition->setup("Composition Image"));
+	m_imagePanel.setup();
+	m_imagePanel.setName("Image Tools");
+	m_imagePanel.setPosition(5,90);
+	m_imagePanel.add(m_importButton.setup("Import Image"));
+	m_imagePanel.add(m_exportButton.setup("Export Image"));
+	m_imagePanel.add(m_teinte.setup("Teinte Image"));
+	m_imagePanel.add(m_composition.setup("Composition Image"));
 
 
-	m_imagePanel->setSize(150,200);
-	m_importButton->setSize(150,15);
-	m_exportButton->setSize(150,15);
-	m_teinte->setSize(150, 15);
-	m_composition->setSize(150, 15);
+	m_imagePanel.setSize(150,200);
+	m_importButton.setSize(150,15);
+	m_exportButton.setSize(150,15);
+	m_teinte.setSize(150, 15);
+	m_composition.setSize(150, 15);
 
 
 }
 
 void ImageToolBar::draw() {
 	if(visible)
-		m_imagePanel->draw();
+		m_imagePanel.draw();
 }
 
 void ImageToolBar::show() {

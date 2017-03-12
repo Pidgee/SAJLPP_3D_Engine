@@ -5,8 +5,8 @@ void ofApp::setup(){
 	ofBackground(100);
 	renderer = new Renderer();
 	geometryToolBar = new GeometryToolBar(renderer);
-	imageToolBar = new ImageToolBar(&imagePanel, &importButton, &exportButton, &teinteButton, &compositionButton, renderer);
-	drawToolBar = new DrawToolBar(&drawPanel, &lineButton, &triangleButton, &circleButton);
+	imageToolBar = new ImageToolBar(renderer);
+	drawToolBar = new DrawToolBar(renderer);
 	transformationToolBar = new TransformationToolBar();
 	menuBar = new MenuBar(geometryToolBar, imageToolBar, drawToolBar);
 
