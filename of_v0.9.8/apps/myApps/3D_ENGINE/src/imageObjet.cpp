@@ -197,10 +197,6 @@ bool imageObjet::getSelected() {
 	return select;
 }
 
-void imageObjet::setSelected(bool val) {
-	select = val;
-}
-
 imageObjet::~imageObjet()
 {
 
