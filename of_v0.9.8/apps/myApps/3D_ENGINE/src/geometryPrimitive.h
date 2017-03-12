@@ -22,6 +22,8 @@ public:
 	ofMesh mesh;
 	of3dPrimitive primitive;
 
+	ofVec3f position;
+
 	void setup();
 	void draw();
 

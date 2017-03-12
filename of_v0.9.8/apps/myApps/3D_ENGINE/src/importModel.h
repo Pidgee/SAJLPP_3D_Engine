@@ -12,6 +12,7 @@ public:
 	ImportModel(std::string p_path);
 
 	ofxAssimpModelLoader model;
+	ofPoint position;
 
 	void setup();
 	void draw();

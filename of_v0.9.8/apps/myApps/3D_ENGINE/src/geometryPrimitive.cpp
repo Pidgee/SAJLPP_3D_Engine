@@ -27,8 +27,8 @@ void GeometryPrimitive::setup()
 
 void GeometryPrimitive::draw()
 {
-	//primitive.setColor(0, 0, 0, 0.4);
-	primitive.setPosition(0, 0, 0);
+	position = ofVec3f(0, 0, 0);
+	primitive.setPosition(position);
 	ofFill();
 	mesh = primitive.getMesh();
 	mesh.enableColors();
@@ -74,24 +74,43 @@ void GeometryPrimitive::setupCone(float radius, float height)
 
 
 void GeometryPrimitive::rotateX(float x) {
+	position = primitive.getPosition();
+	primitive.rotateAround(ofQuaternion(x, ofVec3f(1,0,0)), position);
+	position = primitive.getPosition();
 }
 
 void GeometryPrimitive::rotateY(float y) {
+	position = primitive.getPosition();
+	primitive.rotateAround(ofQuaternion(y, ofVec3f(0, 1, 0)), position);
+	position = primitive.getPosition();
 }
 
 void GeometryPrimitive::rotateZ(float z) {
+	position = primitive.getPosition();
+	primitive.rotateAround(ofQuaternion(z, ofVec3f(0, 0, 1)), position);
+	position = primitive.getPosition();
 }
 
 void GeometryPrimitive::translateX(float x) {
+	position = primitive.getPosition();
+	primitive.setPosition(position[0] + x, position[1], position[2]);
+	position = primitive.getPosition();
 }
 
 void GeometryPrimitive::translateY(float y) {
+	position = primitive.getPosition();
+	primitive.setPosition(position[0], position[1] + y, position[2]);
+	position = primitive.getPosition();
 }
 
 void GeometryPrimitive::translateZ(float z) {
+	position = primitive.getPosition();
+	primitive.setPosition(position[0], position[1], position[2] + z);
+	position = primitive.getPosition();
 }
 
 void GeometryPrimitive::scale(float scale) {
+	primitive.setScale(scale);
 }
 
 bool GeometryPrimitive::getSelected() {
