@@ -10,6 +10,10 @@
 //contructor class for transform toolbar
 TransformationToolBar::TransformationToolBar(Renderer* p_renderer): currentPage(0), m_renderer(p_renderer), numberOfObjects(0), lastPage(0), wait(false){
 	pageUpButton.addListener(this,  &TransformationToolBar::pageUp);
+	pageDownButton.addListener(this,  &TransformationToolBar::pageDown);
+	transformButton.addListener(this,  &TransformationToolBar::applyTransform);
+
+
 
 }
 
@@ -142,8 +146,15 @@ void TransformationToolBar::refreshPanel() {
 	//add group for transformation widgets
 	m_transformPanel.add(transformGroup.setup());
 	m_transformPanel.add(transformButton.setup("APPLY TRANSFORM"));
-
-
 }
 
-
+void TransformationToolBar::applyTransform() {
+	float rotx = 0;
+	float roty = 0;
+	float rotz = 0;
+	float transx = 0;
+	float transy = 0;
+	float transz = 0;
+	float scale = 0;
+	m_renderer->renderTransformation(rotx, roty, rotz, transx, transz, transy, scale);
+}

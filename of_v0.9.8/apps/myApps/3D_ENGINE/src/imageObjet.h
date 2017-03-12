@@ -29,17 +29,17 @@ public:
 	void setImage(ofImage * image_param);
 
 	//rotation transformations
-	void rotateX(/*int angle*/);
-	void rotateY(/*int angle*/);
-	void rotateZ(/*int angle*/);
+	void rotateX(float x);
+	void rotateY(float y);
+	void rotateZ(float z);
 
 	//translation transformations
-	void translateX(/*int valeur*/);
-	void translateY(/*int valeur*/);
-	void translateZ(/*int valeur*/);
+	void translateX(float x);
+	void translateY(float y);
+	void translateZ(float z);
 
 	//scale transformation
-	void scale(/*float proportion*/);
+	void scale(float scale);
 
 	//instance name
 	string id();

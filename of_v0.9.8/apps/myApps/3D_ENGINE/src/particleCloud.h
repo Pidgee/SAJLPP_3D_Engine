@@ -21,18 +21,15 @@ public:
 	void setup();
 	void draw();
 
-	//rotation transformations
-	void rotateX();
-	void rotateY();
-	void rotateZ();
+	void rotateX(float x);
+	void rotateY(float y);
+	void rotateZ(float z);
+	void translateX(float x);
+	void translateY(float y);
+	void translateZ(float z);
+	void scale(float scale);
 
-	//translation transformations
-	void translateX();
-	void translateY();
-	void translateZ();
 
-	//scale transformation
-	void scale();
 
 	//instance name
 	std::string id();

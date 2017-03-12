@@ -61,29 +61,30 @@ void ParticleCloud::drawCloud(int count, float radius, float origin[3])
 	glPointSize(3);
 }
 
-void ParticleCloud::rotateX() {
-}
-
-void ParticleCloud::rotateY() {
-}
-
-void ParticleCloud::rotateZ() {
-}
-
-void ParticleCloud::translateX() {
-}
-
-void ParticleCloud::translateY() {
-}
-
-void ParticleCloud::translateZ() {
-}
-
-void ParticleCloud::scale() {
-}
 
 std::string ParticleCloud::id() {
-	return "Foo";
+	return "Particle Cloud";
+}
+
+void ParticleCloud::rotateX(float x) {
+}
+
+void ParticleCloud::rotateY(float y) {
+}
+
+void ParticleCloud::ParticleCloud::rotateZ(float z) {
+}
+
+void ParticleCloud::ParticleCloud::translateX(float x) {
+}
+
+void ParticleCloud::ParticleCloud::translateY(float y) {
+}
+
+void ParticleCloud::ParticleCloud::translateZ(float z) {
+}
+
+void ParticleCloud::ParticleCloud::scale(float scale) {
 }
 
 ParticleCloud::~ParticleCloud()
