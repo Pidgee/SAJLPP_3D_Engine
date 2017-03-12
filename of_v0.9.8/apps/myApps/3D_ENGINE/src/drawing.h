@@ -29,9 +29,9 @@ public:
 	void drawCircleCursor(int x, int y);
 
 	//draw forms
-	void drawLine(int startX, int startY, int endX, int endY);
-	void drawTriangle(int point1X, int point1Y, int point2X, int point2Y, int point3X, int point3Y);
-	void drawCircle(int centerX, int centerY, int radiusX, int radiusY);
+	void drawLine(float startX, float startY, float endX, float endY);
+	void drawTriangle(float point1X, float point1Y, float point2X, float point2Y, float point3X, float point3Y);
+	void drawCircle(float centerX, float centerY, float radiusX, float radiusY);
 
 	//rotation transformations
 	void rotateX();

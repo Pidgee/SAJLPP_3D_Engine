@@ -1,7 +1,7 @@
 ﻿#include "renderer.h"
 #include <string>
 
-Renderer::Renderer() {}
+Renderer::Renderer():drawingToolActivated(false) {}
 
 void Renderer::setup()
 {
@@ -192,23 +192,51 @@ void Renderer::renderImage(ofImage * image, string nom, int x, int y, int z, ofI
 
 void Renderer::draw()
 {
-	fbo.begin();
-	ofEnableDepthTest();
-	ofClear(255, 255, 255);
-	ofBackground(255, 255, 255);
-	cam.begin();
-	for(int i=0; i<geometryObjectContainer.size(); i++){
-		geometryObjectContainer[i]->draw();
-	}
-	cam.end();
-	ofDisableDepthTest();
-	fbo.end();
-	fbo.draw(160, 90);
+	
+		fbo.begin();
+		ofEnableDepthTest();
+		ofClear(255, 255, 255);
+		ofBackground(255, 255, 255);
+		cam.begin();
+		for(int i=0; i<geometryObjectContainer.size(); i++){
+			geometryObjectContainer[i]->draw();
+		}
+		cam.end();
+		ofDisableDepthTest();
+		fbo.end();
+		fbo.draw(160, 90);
+	
+	
+	
 }
 
 /*ParticleCloud* Renderer::renderParticleCloud() {
 }*/
 
+void Renderer::renderDrawing() {
+	Drawing* drawing = new Drawing();
+	drawing->setup();
+	drawingToolActivated = true;
+}
+
+
+void Renderer::drawLine(float x1, float y1, float x2, float y2) {
+	drawing->drawLine(x1, y1, x2, y2);
+	
+}
+
+void Renderer::drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3) {
+	drawing->drawTriangle(x1, y1, x2, y2, x3, y3);
+}
+
+void Renderer::drawCircle(float x1, float y1, float x2, float y2) {
+	drawing->drawCircle(x1, y1, x2, y2);
+}
+
+void Renderer::saveDrawing() {
+	geometryObjectContainer.push_back(drawing);
+	drawingToolActivated = false;
+}
 
 
 void Renderer::renderParticleCloud() {

@@ -57,12 +57,12 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+	drawToolBar->mousePressed(x, y, button);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+	drawToolBar->mouseReleased(x, y, button);
 }
 
 //--------------------------------------------------------------
