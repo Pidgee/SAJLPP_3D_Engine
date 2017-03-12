@@ -31,10 +31,12 @@ void Renderer::draw()
 	fbo.end();
 	fbo.draw(160, 90);
 }
-
+/*
 ParticleCloud* Renderer::renderParticleCloud() {
 
 }
+*/
+
 
 Renderer::~Renderer()
 {
