@@ -170,7 +170,9 @@ void Renderer::renderParticleCloud() {
 
 void Renderer::renderTransformation(float rotX, float rotY, float rotZ, float transX, float transY, float transZ, float scale) {
 	for(int i=0; i<geometryObjectContainer.size(); i++){
-		geometryObjectContainer[i]->rotateX(rotX);
+		if(geometryObjectContainer[i]->getSelected()){
+			geometryObjectContainer[i]->rotateX(rotX);
+		}
 	}
 }
 
