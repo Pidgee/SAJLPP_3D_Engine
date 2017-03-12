@@ -1,6 +1,6 @@
 #include "importModel.h"
 
-ImportModel::ImportModel(std::string p_path) : m_path(p_path) {
+ImportModel::ImportModel(std::string p_path) : m_path(p_path), select(false) {
 
 }
 
@@ -37,6 +37,14 @@ void ImportModel::translateZ() {
 }
 
 void ImportModel::scale() {
+}
+
+bool ImportModel::getSelected() {
+	return select;
+}
+
+void ImportModel::setSelected(bool val) {
+	select = val;
 }
 
 std::string ImportModel::id() {

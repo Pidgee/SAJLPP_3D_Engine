@@ -28,7 +28,8 @@ public:
 
 	void setImage(ofImage * image_param);
 
-	bool selected();
+	bool getSelected();
+	void setSelected(bool val);
 
 	//rotation transformations
 	void rotateX(/*int angle*/);
@@ -44,7 +45,7 @@ public:
 	void scale(/*float proportion*/);
 
 	//instance name
-	string id();
+	std::string id();
 
 	~imageObjet();
 

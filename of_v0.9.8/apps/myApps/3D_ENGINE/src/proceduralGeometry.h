@@ -14,6 +14,9 @@ public:
 	void setup();
 	void draw();
 
+	bool getSelected();
+	void setSelected(bool val);
+
 	//rotation transformations
 	void rotateX();
 	void rotateY();
@@ -32,5 +35,6 @@ public:
 
 private:
 	string m_path;
+	bool select;
 };
 

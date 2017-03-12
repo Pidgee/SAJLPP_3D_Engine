@@ -34,6 +34,9 @@ public:
 	void setup();
 	void draw();
 
+	bool getSelected();
+	void setSelected(bool val);
+
 	//rotation transformations
 	void rotateX();
 	void rotateY();
@@ -51,5 +54,6 @@ public:
 	std::string id();
 
 private:
+	bool select;
 	std::string m_type;
 };

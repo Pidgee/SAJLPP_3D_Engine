@@ -86,12 +86,12 @@ std::string ParticleCloud::id() {
 	return "Foo";
 }
 
-bool ParticleCloud::selected() {
-	if(select)
-		select=false;
-	else
-		select=true;
+bool ParticleCloud::getSelected() {
 	return select;
+}
+
+void ParticleCloud::setSelected(bool val) {
+	select = val;
 }
 
 ParticleCloud::~ParticleCloud()

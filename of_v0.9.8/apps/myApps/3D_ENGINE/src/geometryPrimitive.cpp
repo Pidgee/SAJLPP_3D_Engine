@@ -1,6 +1,6 @@
 #include "geometryPrimitive.h"
 
-GeometryPrimitive::GeometryPrimitive(std::string p_type) : m_type(p_type)
+GeometryPrimitive::GeometryPrimitive(std::string p_type) : m_type(p_type), select(false)
 {
 	
 }
@@ -177,6 +177,14 @@ void GeometryPrimitive::translateZ() {
 }
 
 void GeometryPrimitive::scale() {
+}
+
+bool GeometryPrimitive::getSelected() {
+	return select;
+}
+
+void GeometryPrimitive::setSelected(bool val) {
+	select = val;
 }
 
 std::string GeometryPrimitive::id() {

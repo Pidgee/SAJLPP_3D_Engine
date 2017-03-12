@@ -1,6 +1,6 @@
 #include "proceduralGeometry.h"
 
-ProceduralGeometry::ProceduralGeometry(string p_path) : m_path(p_path)
+ProceduralGeometry::ProceduralGeometry(string p_path) : m_path(p_path), select(false)
 {
 
 }
@@ -56,6 +56,14 @@ void ProceduralGeometry::translateZ() {
 }
 
 void ProceduralGeometry::scale() {
+}
+
+bool ProceduralGeometry::getSelected() {
+	return select;
+}
+
+void ProceduralGeometry::setSelected(bool val) {
+	select = val;
 }
 
 std::string ProceduralGeometry::id() {
