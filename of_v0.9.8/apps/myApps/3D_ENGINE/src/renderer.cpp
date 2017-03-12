@@ -157,6 +157,11 @@ void Renderer::draw()
 	fbo.draw(160, 90);
 }
 
+/*ParticleCloud* Renderer::renderParticleCloud() {
+}*/
+
+
+
 void Renderer::renderParticleCloud() {
 	ParticleCloud* part = new ParticleCloud;
 	part->setup();
@@ -166,9 +171,6 @@ void Renderer::renderParticleCloud() {
 void Renderer::renderTransformation() {
 }
 
-Renderer::~Renderer(){
-
-}
 
 std::vector<GeometryObject*>* Renderer::getObjects() {
 	return &geometryObjectContainer;
@@ -176,4 +178,7 @@ std::vector<GeometryObject*>* Renderer::getObjects() {
 
 int Renderer::getNumberOfObjects() {
 	return geometryObjectContainer.size();
+}
+
+Renderer::~Renderer(){
 }

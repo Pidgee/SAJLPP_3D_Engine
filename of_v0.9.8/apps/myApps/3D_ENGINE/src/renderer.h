@@ -3,6 +3,7 @@
 #include <vector>
 #include "ofMain.h"
 #include "particleCloud.h"
+#include "drawing.h"
 #include "imageObjet.h"
 
 class Renderer
