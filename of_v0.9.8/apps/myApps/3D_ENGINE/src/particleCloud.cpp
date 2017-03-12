@@ -1,6 +1,6 @@
 #include "particleCloud.h"
 
-ParticleCloud::ParticleCloud() {}
+ParticleCloud::ParticleCloud():select(false) {}
 
 void ParticleCloud::setup()
 {
@@ -85,6 +85,14 @@ void ParticleCloud::ParticleCloud::translateZ(float z) {
 }
 
 void ParticleCloud::ParticleCloud::scale(float scale) {
+}
+
+bool ParticleCloud::selected() {
+	if(select)
+		select=false;
+	else
+		select=true;
+	return select;
 }
 
 ParticleCloud::~ParticleCloud()

@@ -12,9 +12,6 @@ TransformationToolBar::TransformationToolBar(Renderer* p_renderer): currentPage(
 	pageUpButton.addListener(this,  &TransformationToolBar::pageUp);
 	pageDownButton.addListener(this,  &TransformationToolBar::pageDown);
 	transformButton.addListener(this,  &TransformationToolBar::applyTransform);
-
-
-
 }
 
 //public setup method for transform tools
@@ -120,33 +117,25 @@ void TransformationToolBar::pageDown() {
 
 void TransformationToolBar::updateNames() {
 	int startIndice = currentPage*5;
+	bool selected =false;
 	std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
 	std::string name = "nul";
 	for(int i=0; i<5; i++){
 		if(startIndice+i < objectContainer->size()){
 			name = (((*objectContainer)[startIndice+i])->id());
+			selected = (((*objectContainer)[startIndice+i])->selected());
 		}
 		else{
 			name="nul";
+			selected=false;
 		}
-
+		items[i].operator =(selected);
 		items[i].setName(name);
 		items[i].getName();
 	}
 
 }
 
-void TransformationToolBar::refreshPanel() {
-	m_transformPanel.clear();
-	m_transformPanel.setup();
-	m_transformPanel.setName("Transformation");
-	m_transformPanel.setPosition(1445,90);
-	//add group for selection widgets
-	m_transformPanel.add(selectGroup.setup());
-	//add group for transformation widgets
-	m_transformPanel.add(transformGroup.setup());
-	m_transformPanel.add(transformButton.setup("APPLY TRANSFORM"));
-}
 
 void TransformationToolBar::applyTransform() {
 	float rotx = 0;
@@ -157,4 +146,19 @@ void TransformationToolBar::applyTransform() {
 	float transz = 0;
 	float scale = 0;
 	m_renderer->renderTransformation(rotx, roty, rotz, transx, transz, transy, scale);
+}
+
+void TransformationToolBar::actionItem1() {
+}
+
+void TransformationToolBar::actionItem2() {
+}
+
+void TransformationToolBar::actionItem3() {
+}
+
+void TransformationToolBar::actionItem4() {
+}
+
+void TransformationToolBar::actionItem5() {
 }

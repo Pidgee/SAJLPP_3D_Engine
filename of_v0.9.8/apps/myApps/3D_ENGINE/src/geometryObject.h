@@ -14,6 +14,8 @@
 class GeometryObject{
 public:
 
+	virtual bool selected()=0;
+
 	//rotation transformations must be defined
 	virtual void rotateX(float x)=0;
 	virtual void rotateY(float y)=0;

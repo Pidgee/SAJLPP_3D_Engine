@@ -21,6 +21,8 @@ public:
 	void setup();
 	void draw();
 
+	bool selected();
+
 	void rotateX(float x);
 	void rotateY(float y);
 	void rotateZ(float z);
@@ -37,6 +39,9 @@ public:
 	void drawCloud(int count, float radius, float origin[3]);
 
 	ofMesh mesh;
+
+private:
+	bool select;
 
 	~ParticleCloud();
 };

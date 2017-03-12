@@ -2,7 +2,9 @@
 
 #include "imageObjet.h"
 
-imageObjet::imageObjet() {}
+imageObjet::imageObjet():select(false) {
+
+}
 
 void imageObjet::setup()
 {
@@ -182,6 +184,15 @@ ofImage imageObjet::ajouter_image(ofImage * image_param) {
 	}
 
 	return image;
+
+}
+
+bool imageObjet::selected() {
+	if(select)
+		select=false;
+	else
+		select=true;
+	return select;
 
 }
 
