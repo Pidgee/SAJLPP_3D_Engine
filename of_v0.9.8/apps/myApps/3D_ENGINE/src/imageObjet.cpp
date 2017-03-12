@@ -25,7 +25,7 @@ void imageObjet::draw()
 	
 }
 
-void imageObjet::rotateX(/*int angle*/) {
+void imageObjet::rotateX(float x) {
 
 	//p1.set(p1.x, p1.y* cos(angle) + p1.z * sin(angle), p1.z *cos(angle) - p1.y*sin(angle));
 	//p2.set(p2.x, p2.y* cos(angle) + p2.z * sin(angle), p2.z *cos(angle) - p2.y*sin(angle));
@@ -34,7 +34,7 @@ void imageObjet::rotateX(/*int angle*/) {
 
 }
 
-void imageObjet::rotateY(/*int angle*/) {
+void imageObjet::rotateY(float y) {
 
 	//p1.set(p1.x* cos(angle) + p1.z * sin(angle), p1.y, p1.z *cos(angle) - p1.x*sin(angle));
 	//p2.set(p2.x* cos(angle) + p2.z * sin(angle), p2.y, p2.z *cos(angle) - p2.x*sin(angle));
@@ -43,7 +43,7 @@ void imageObjet::rotateY(/*int angle*/) {
 
 }
 
-void imageObjet::rotateZ(/*int angle*/) {
+void imageObjet::rotateZ(float z) {
 
 	//p1.set(p1.x * cos(angle) + p1.y * sin(angle), p1.y*cos(angle) - p1.x*sin(angle), p1.z);
 	//p2.set(p2.x * cos(angle) + p2.y * sin(angle), p2.y*cos(angle) - p2.x*sin(angle), p2.z);
@@ -52,7 +52,7 @@ void imageObjet::rotateZ(/*int angle*/) {
 
 }
 
-void imageObjet::translateX(/*int valeur*/) {
+void imageObjet::translateX(float x) {
 
 	//coordX += valeur;
 
@@ -62,7 +62,7 @@ void imageObjet::translateX(/*int valeur*/) {
 	//p4.set(p4.x + valeur, p4.y, p4.z);
 }
 
-void imageObjet::translateY(/*int valeur*/) {
+void imageObjet::translateY(float y) {
 
 	//coordY += valeur;
 
@@ -73,7 +73,7 @@ void imageObjet::translateY(/*int valeur*/) {
 	
 }
 
-void imageObjet::translateZ(/*int valeur*/) {
+void imageObjet::translateZ(float z) {
 
 	//coordZ += valeur;
 
@@ -84,7 +84,7 @@ void imageObjet::translateZ(/*int valeur*/) {
 
 }
 
-void imageObjet::scale(/*float proportion*/) {
+void imageObjet::scale(float scale) {
 
 	//width *= proportion;
 	//height *= proportion;
@@ -184,6 +184,12 @@ ofImage imageObjet::ajouter_image(ofImage * image_param) {
 	}
 
 	return image;
+
+}
+
+
+void imageObjet::setSelected(bool val) {
+	select = val;
 
 }
 

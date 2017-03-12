@@ -20,17 +20,17 @@ public:
 	void setSelected(bool val);
 
 	//rotation transformations
-	void rotateX();
-	void rotateY();
-	void rotateZ();
+	void rotateX(float x);
+	void rotateY(float y);
+	void rotateZ(float z);
 
 	//translation transformations
-	void translateX();
-	void translateY();
-	void translateZ();
+	void translateX(float x);
+	void translateY(float y);
+	void translateZ(float z);
 
 	//scale transformation
-	void scale();
+	void scale(float scale);
 
 	//instance name
 	std::string id();

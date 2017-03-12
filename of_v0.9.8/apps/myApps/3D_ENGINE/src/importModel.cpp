@@ -18,25 +18,25 @@ void ImportModel::draw()
 	model.drawFaces();
 }
 
-void ImportModel::rotateX() {
+void ImportModel::rotateX(float x) {
 }
 
-void ImportModel::rotateY() {
+void ImportModel::rotateY(float y) {
 }
 
-void ImportModel::rotateZ() {
+void ImportModel::rotateZ(float z) {
 }
 
-void ImportModel::translateX() {
+void ImportModel::translateX(float x) {
 }
 
-void ImportModel::translateY() {
+void ImportModel::translateY(float y) {
 }
 
-void ImportModel::translateZ() {
+void ImportModel::translateZ(float z) {
 }
 
-void ImportModel::scale() {
+void ImportModel::scale(float scale) {
 }
 
 bool ImportModel::getSelected() {

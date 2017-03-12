@@ -1,28 +1,44 @@
 /*
- * transformToolBar.cpp
- *
- *  Created on: Mar 9, 2017
- *      Author: ada
- */
+* transformToolBar.cpp
+*
+*  Created on: Mar 9, 2017
+*      Author: ada
+*/
 #include "transformToolsInterface.h"
 
-//contructor class for transform toolbar
 
-TransformationToolBar::TransformationToolBar(Renderer* p_renderer): currentPage(0), m_renderer(p_renderer), numberOfObjects(0), lastPage(0), wait(false){
-	pageUpButton.addListener(this,  &TransformationToolBar::pageUp);
-	pageDownButton.addListener(this,  &TransformationToolBar::pageDown);
-	transformButton.addListener(this,  &TransformationToolBar::applyTransform);
+//contructor class for transform toolbar
+TransformationToolBar::TransformationToolBar(Renderer* p_renderer) : currentPage(0), m_renderer(p_renderer), numberOfObjects(0), lastPage(0), wait(false) {
+	pageUpButton.addListener(this, &TransformationToolBar::pageUp);
+	pageDownButton.addListener(this, &TransformationToolBar::pageDown);
+	transformButton.addListener(this, &TransformationToolBar::applyTransform);
+	item_1.addListener(this, &TransformationToolBar::actionItem1);
 
 }
 
 //public setup method for transform tools
 void TransformationToolBar::setup() {
+	std::cout << "page: " << currentPage << std::endl;
+	m_transformPanel.clear();
+	transformGroup.clear();
 	m_transformPanel.setup();
 	m_transformPanel.setName("Transformation");
-	m_transformPanel.setPosition(1445,90);
+	m_transformPanel.setPosition(1445, 90);
+
+	//add group for selection widgets
+	m_transformPanel.add(selectGroup.setup());
 
 	//add group for transformation widgets
 	m_transformPanel.add(transformGroup.setup());
+
+	//add toggles to select group
+	selectGroup.add(pageUpButton.setup("pageUp"));
+	selectGroup.add(item_1.setup("nul_1", false));
+	selectGroup.add(item_2.setup("nul_2", false));
+	selectGroup.add(item_3.setup("nul_3", false));
+	selectGroup.add(item_4.setup("nul_4", false));
+	selectGroup.add(item_5.setup("nul_5", false));
+	selectGroup.add(pageDownButton.setup("pageDown"));
 
 	//add transformation widgets to group
 	transformGroup.add(m_rotateXSlider.setup("Rotate X", 0, -180, 180));
@@ -37,26 +53,40 @@ void TransformationToolBar::setup() {
 
 
 	//set position of toolbar
-	transformGroup.setPosition(1445,90);
+	transformGroup.setPosition(1445, 90);
 
 	//set size of all toolbar widgets
-	m_transformPanel.setSize(150,200);
-	transformGroup.setSize(150,200);
-	m_rotateXSlider.setSize(150,20);
-	m_rotateYSlider.setSize(150,20);
-	m_rotateZSlider.setSize(150,20);
-	m_translateXSlider.setSize(150,20);
-	m_translateYSlider.setSize(150,20);
-	m_translateZSlider.setSize(150,20);
-	m_scaleSlider.setSize(150,20);
-
-
+	m_transformPanel.setSize(150, 200);
+	transformGroup.setSize(150, 200);
+	m_rotateXSlider.setSize(150, 20);
+	m_rotateYSlider.setSize(150, 20);
+	m_rotateZSlider.setSize(150, 20);
+	m_translateXSlider.setSize(150, 20);
+	m_translateYSlider.setSize(150, 20);
+	m_translateZSlider.setSize(150, 20);
+	m_scaleSlider.setSize(150, 20);
 
 
 }
 
+
+
+void TransformationToolBar::update() {
+	if (numberOfObjects != m_renderer->getNumberOfObjects() || lastPage != currentPage) {
+		std::cout << "page: " << currentPage << std::endl;
+		numberOfObjects = m_renderer->getNumberOfObjects();
+		lastPage = currentPage;
+		updateNames();
+		wait = true;
+		setup();
+		wait = false;
+
+	}
+}
+
 //public draw method for transform tools
 void TransformationToolBar::draw() {
+	updateNames();
 	m_transformPanel.draw();
 }
 
@@ -66,42 +96,41 @@ void TransformationToolBar::transform() {
 
 //action listener for pageUp button
 void TransformationToolBar::pageUp() {
-	if(!wait){
-	std::cout<<"Hello"<<std::endl;
-	int pagesAvailable = 1+((m_renderer->getNumberOfObjects())-1)/5;
-	if(pagesAvailable !=0)
-		currentPage = (currentPage+1)%pagesAvailable;
-	updateNames();
+	if (!wait) {
+		int pagesAvailable = 1 + ((m_renderer->getNumberOfObjects()) - 1) / 5;
+		if (pagesAvailable != 0)
+			currentPage = (currentPage + 1) % pagesAvailable;
+		updateNames();
 	}
 }
 
 //action listener for pageDwon button
 void TransformationToolBar::pageDown() {
 
-	if(!wait){
-	int pagesAvailable = (m_renderer->getNumberOfObjects())/5;
-	if(pagesAvailable !=0)
-		currentPage = abs(currentPage-1)%pagesAvailable;
-	updateNames();
+	if (!wait) {
+		int pagesAvailable = (m_renderer->getNumberOfObjects()) / 5;
+		if (pagesAvailable != 0)
+			currentPage = abs(currentPage - 1) % pagesAvailable;
+		updateNames();
 	}
 }
 
 
 void TransformationToolBar::updateNames() {
-	int startIndice = currentPage*5;
-	bool selected =false;
+	int startIndice = currentPage * 5;
+	bool selected = false;
 	std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
 	std::string name = "nul";
-	for(int i=0; i<5; i++){
-		if(startIndice+i < objectContainer->size()){
-			name = (((*objectContainer)[startIndice+i])->id());
-			selected = (((*objectContainer)[startIndice+i])->selected());
+	for (int i = 0; i<5; i++) {
+		if (startIndice + i < objectContainer->size()) {
+			name = (((*objectContainer)[startIndice + i])->id());
+			selected = (((*objectContainer)[startIndice + i])->getSelected());
 		}
-		else{
-			name="nul";
-			selected=false;
+		else {
+			name = "nul";
+			selected = false;
 		}
-		items[i].operator =(selected);
+		//items[i].operator =(selected);
 		items[i].setName(name);
 		items[i].getName();
 	}
@@ -120,17 +149,35 @@ void TransformationToolBar::applyTransform() {
 	m_renderer->renderTransformation(rotx, roty, rotz, transx, transz, transy, scale);
 }
 
-void TransformationToolBar::actionItem1() {
+void TransformationToolBar::actionItem1(bool & inval) {
+	if (!wait) {
+		int startIndice = currentPage * 5;
+		std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
+		if (startIndice < objectContainer->size())
+			(((*objectContainer)[startIndice])->setSelected(inval));
+	}
 }
 
-void TransformationToolBar::actionItem2() {
+void TransformationToolBar::actionItem2(bool & inval) {
+	int startIndice = currentPage * 5;
+	std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
+	//(((*objectContainer)[startIndice+1])->setSelected(inval));
 }
 
-void TransformationToolBar::actionItem3() {
+void TransformationToolBar::actionItem3(bool & inval) {
+	//int startIndice = currentPage*5;
+	//std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
+	//(((*objectContainer)[startIndice+2])->setSelected(inval));
 }
 
-void TransformationToolBar::actionItem4() {
+void TransformationToolBar::actionItem4(bool & inval) {
+	//int startIndice = currentPage*5;
+	//std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
+	//(((*objectContainer)[startIndice+3])->setSelected(inval));
 }
 
-void TransformationToolBar::actionItem5() {
+void TransformationToolBar::actionItem5(bool & inval) {
+	//int startIndice = currentPage*5;
+	//std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
+	//(((*objectContainer)[startIndice+4])->setSelected(inval));
 }

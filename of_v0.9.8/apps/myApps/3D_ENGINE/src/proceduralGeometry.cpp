@@ -37,25 +37,25 @@ void ProceduralGeometry::draw()
 	mesh.draw();
 }
 
-void ProceduralGeometry::rotateX() {
+void ProceduralGeometry::rotateX(float x) {
 }
 
-void ProceduralGeometry::rotateY() {
+void ProceduralGeometry::rotateY(float y) {
 }
 
-void ProceduralGeometry::rotateZ() {
+void ProceduralGeometry::rotateZ(float z) {
 }
 
-void ProceduralGeometry::translateX() {
+void ProceduralGeometry::translateX(float x) {
 }
 
-void ProceduralGeometry::translateY() {
+void ProceduralGeometry::translateY(float y) {
 }
 
-void ProceduralGeometry::translateZ() {
+void ProceduralGeometry::translateZ(float z) {
 }
 
-void ProceduralGeometry::scale() {
+void ProceduralGeometry::scale(float scale) {
 }
 
 bool ProceduralGeometry::getSelected() {

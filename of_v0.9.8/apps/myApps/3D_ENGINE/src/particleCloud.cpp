@@ -91,7 +91,7 @@ bool ParticleCloud::getSelected() {
 }
 
 void ParticleCloud::setSelected(bool val) {
-	select = val;
+	select=val;
 }
 
 ParticleCloud::~ParticleCloud()
