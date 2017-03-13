@@ -2,17 +2,20 @@
 #include <stdio.h>
 
 
-CameraToolBar::CameraToolBar(Renderer* p_renderer) : m_cameraPanel(ofxPanel()),
- m_renderer(p_renderer), visible(false), useEasyCam(true){
+CameraToolBar::CameraToolBar(Renderer* p_renderer) :
+ m_renderer(p_renderer), visible(false){
 }
 
 void CameraToolBar::setup() {
 	m_cameraPanel.setup();
 	m_cameraPanel.setName("Camera Tools");
-	m_cameraPanel.setPosition(5, 90);
-	m_cameraPanel.add(m_toggleEasyCam.setup("Utiliser EasyCam", TRUE, 150, 15));
-
+	CameraObject* cam = m_renderer->getCamera();
+	m_cameraPanel.setup(cam->cameraParameters);
+	m_cameraPanel.setPosition(5, 760);
 	m_cameraPanel.setSize(150, 200);
+
+
+
 }
 
 

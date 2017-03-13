@@ -19,8 +19,12 @@ private:
 	ofxPanel m_cameraPanel;
 	Renderer* m_renderer;
 
-	ofxButton m_buttonButton;
-	ofxToggle m_toggleEasyCam;
+	ofParameter<bool> toggleEasyCam;
+	ofParameter<bool> projMode;
+	ofParameter<float> sliderFOV;
+	ofParameter<float> sliderNearClip;
+	ofParameter<float> slideFarClip;
+	ofParameter<float> sliderAspectRatio;
 
 	bool visible;
 	bool useEasyCam;
