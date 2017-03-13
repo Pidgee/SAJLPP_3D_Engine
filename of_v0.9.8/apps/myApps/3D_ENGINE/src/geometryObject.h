@@ -14,18 +14,22 @@
 class GeometryObject{
 public:
 
+	virtual bool getSelected()=0;
+	virtual void setSelected(bool val)=0;
+
+
 	//rotation transformations must be defined
-	virtual void rotateX()=0;
-	virtual void rotateY()=0;
-	virtual void rotateZ()=0;
+	virtual void rotateX(float x)=0;
+	virtual void rotateY(float y)=0;
+	virtual void rotateZ(float z)=0;
 
 	//translation transformations must be defines
-	virtual void translateX()=0;
-	virtual void translateY()=0;
-	virtual void translateZ()=0;
+	virtual void translateX(float x)=0;
+	virtual void translateY(float y)=0;
+	virtual void translateZ(float z)=0;
 
 	//scale transformation must be defined
-	virtual void scale()=0;
+	virtual void scale(float scale)=0;
 
 	//instance of class must have a name
 	virtual std::string id()=0;

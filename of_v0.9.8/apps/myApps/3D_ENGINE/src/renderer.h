@@ -47,7 +47,7 @@ public:
 	ofVec3f convertionRGB_HSV(ofColor couleur);
 
 	//transformationTools
-	void renderTransformation();
+	void renderTransformation(float rotX, float rotY, float rotZ, float transX, float transY, float transZ, float scale);
 	ofEasyCam cam;
 
 	~Renderer();

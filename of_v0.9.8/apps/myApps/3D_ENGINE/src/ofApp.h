@@ -8,6 +8,7 @@
 #include "imageToolsInterface.h"
 #include "drawToolsInterface.h"
 #include "transformToolsInterface.h"
+#include "cameraToolsInterface.h"
 
 
 class ofApp : public ofBaseApp{
@@ -22,6 +23,7 @@ class ofApp : public ofBaseApp{
 		ImageToolBar* imageToolBar;
 		DrawToolBar* drawToolBar;
 		TransformationToolBar* transformationToolBar;
+		CameraToolBar* cameraToolBar;
 
 		void setup();
 		void update();

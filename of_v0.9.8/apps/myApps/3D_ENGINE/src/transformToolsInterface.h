@@ -67,8 +67,12 @@ private:
 
 	//update toggle names
 	void updateNames();
-	void refreshPanel();
-
+	void applyTransform();
+	void actionItem1(bool & inval);
+	void actionItem2(bool & inval);
+	void actionItem3(bool & inval);
+	void actionItem4(bool & inval);
+	void actionItem5(bool & inval);
 
 };
 

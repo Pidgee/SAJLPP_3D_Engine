@@ -8,13 +8,13 @@
 
 
 MenuBar::MenuBar(GeometryToolBar* p_geoToolBar,
-		ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar):m_menuPanel(ofxPanel()), m_geometryTools(ofxButton()),
-		m_drawTools(ofxButton()), m_imageTools(ofxButton()), m_cameraTools(ofxButton()),
-		m_geoToolBar(p_geoToolBar), m_imgToolBar(p_imgToolBar), m_drwToolBar(p_drwToolBar){
+		ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, CameraToolBar* p_camToolBar):
+		m_geoToolBar(p_geoToolBar), m_imgToolBar(p_imgToolBar), m_drwToolBar(p_drwToolBar), m_camToolBar(p_camToolBar){
 
 	m_geometryTools.addListener(this, &MenuBar::geoToolsClicked);
 	m_imageTools.addListener(this, &MenuBar::imgToolsClicked);
 	m_drawTools.addListener(this, &MenuBar::drwToolsClicked);
+	m_cameraTools.addListener(this, &MenuBar::camToolsClicked);
 }
 
 void MenuBar::setup() {
@@ -47,6 +47,7 @@ void MenuBar::geoToolsClicked() {
 	m_imgToolBar->hide();
 	m_drwToolBar->hide();
 	m_geoToolBar->show();
+	m_camToolBar->hide();
 }
 
 
@@ -54,12 +55,19 @@ void MenuBar::imgToolsClicked() {
 	m_geoToolBar->hide();
 	m_drwToolBar->hide();
 	m_imgToolBar->show();
+	m_camToolBar->hide();
 }
 
 void MenuBar::drwToolsClicked() {
 	m_geoToolBar->hide();
 	m_imgToolBar->hide();
 	m_drwToolBar->show();
+	m_camToolBar->hide();
+}
 
-
+void MenuBar::camToolsClicked() {
+	m_geoToolBar->hide();
+	m_imgToolBar->hide();
+	m_drwToolBar->hide();
+	m_camToolBar->show();
 }
