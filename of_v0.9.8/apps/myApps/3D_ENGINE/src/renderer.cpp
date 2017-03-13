@@ -25,22 +25,6 @@ void Renderer::update(){
 	cameraObject->update();
 }
 
-void Renderer::draw()
-{
-	fbo.begin();
-	ofEnableDepthTest();
-	ofClear(255, 255, 255);
-	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
-	cameraObject->cam.begin();
-	for (int i = 0; i<geometryObjectContainer.size(); i++) {
-		geometryObjectContainer[i]->draw();
-	}
-	cameraObject->cam.end();
-	ofDisableDepthTest();
-	fbo.end();
-	fbo.draw(160, 90);
-}
-
 ofVec3f convertionRGB_HSV(ofColor couleur) {
 
 	ofVec3f hsv;
@@ -167,12 +151,12 @@ void Renderer::draw()
 		fbo.begin();
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
-		ofBackground(255, 255, 255);
-		cam.begin();
+		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
+		cameraObject->cam.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
 			geometryObjectContainer[i]->draw();
 		}
-		cam.end();
+		cameraObject->cam.end();
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
