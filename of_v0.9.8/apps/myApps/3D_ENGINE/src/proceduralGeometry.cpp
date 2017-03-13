@@ -1,6 +1,6 @@
 #include "proceduralGeometry.h"
 
-ProceduralGeometry::ProceduralGeometry(string p_path) : m_path(p_path), select(false)
+ProceduralGeometry::ProceduralGeometry(string p_path, string p_name) : m_path(p_path), m_name(p_name), select(false)
 {
 
 }
@@ -17,9 +17,10 @@ void ProceduralGeometry::setup()
 	for (int y = 0; y < img.getHeight(); y ++) {
 		for (int x = 0; x < img.getWidth(); x ++) {
 			ofColor color = img.getColor(x, y);
-			if (color.a > 0) {
-				// Modifier l'étendue de la composante alpha pour un meilleur résultat
-				float z = ofMap(color.a, 0, 255, -300, 300);
+			int colorAvg = (color.r + color.g + color.b + color.a) / 4;
+			if (color.a > 0 && (color.r+color.g+color.b) > 0) {
+				// Modifier l'étendue de la couleur pour un meilleur résultat
+				float z = ofMap(colorAvg, 0, 255, -300, 300);
 				color.a = 255;
 				mesh.addColor(color);
 				ofVec3f position(x, y, z);
@@ -67,5 +68,5 @@ void ProceduralGeometry::setSelected(bool val) {
 }
 
 std::string ProceduralGeometry::id() {
-	return "Foo";
+	return m_name;
 }

@@ -1,13 +1,13 @@
 #include "importModel.h"
 
-ImportModel::ImportModel(std::string p_path) : m_path(p_path), select(false) {
+ImportModel::ImportModel(std::string p_path, std::string p_name) : m_path(p_path), m_name(p_name), select(false) {
 
 }
 
 void ImportModel::setup()
 {
 	glShadeModel(GL_SMOOTH);
-
+	rotationIndice = 0;
 	//Load l'image au chemin modelPath
 	position = ofPoint(0, 0, 0);
 	model.loadModel(m_path);
@@ -22,15 +22,18 @@ void ImportModel::draw()
 }
 
 void ImportModel::rotateX(float x) {
-	model.setRotation(0, x, 1, 0, 0);
+	model.setRotation(rotationIndice, x, 1, 0, 0);
+	rotationIndice++;
 }
 
 void ImportModel::rotateY(float y) {
-	model.setRotation(0, y, 0, 1, 0);
+	model.setRotation(rotationIndice, y, 0, 1, 0);
+	rotationIndice++;
 }
 
 void ImportModel::rotateZ(float z) {
-	model.setRotation(0, z, 0, 1, 0);
+	model.setRotation(rotationIndice, z, 0, 0, 1);
+	rotationIndice++;
 }
 
 void ImportModel::translateX(float x) {
@@ -64,5 +67,5 @@ void ImportModel::setSelected(bool val) {
 }
 
 std::string ImportModel::id() {
-	return "Foo";
+	return m_name;
 }

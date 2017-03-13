@@ -80,8 +80,9 @@ void GeometryToolBar::renderProcedural() {
 	if (result.bSuccess) {
 
 		string path = result.filePath;
+		string name = result.fileName;
 
-		m_renderer->renderProcedural(path);
+		m_renderer->renderProcedural(path, name);
 
 	}
 
@@ -94,8 +95,9 @@ void GeometryToolBar::renderModel() {
 	if (result.bSuccess) {
 
 		string path = result.filePath;
+		string name = result.fileName;
 
-		m_renderer->renderModel(path);
+		m_renderer->renderModel(path, name);
 
 	}
 

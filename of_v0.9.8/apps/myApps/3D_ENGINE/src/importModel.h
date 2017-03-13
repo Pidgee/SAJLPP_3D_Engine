@@ -9,10 +9,11 @@ class ImportModel : public GeometryObject
 
 public:
 
-	ImportModel(std::string p_path);
+	ImportModel(std::string p_path, std::string p_name);
 
 	ofxAssimpModelLoader model;
 	ofPoint position;
+	int rotationIndice;
 
 	void setup();
 	void draw();
@@ -38,5 +39,6 @@ public:
 
 private:
 	std::string m_path;
+	std::string m_name;
 	bool select;
 };

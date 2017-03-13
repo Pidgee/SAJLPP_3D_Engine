@@ -83,7 +83,7 @@ void ParticleCloud::scale(float scale) {
 }
 
 std::string ParticleCloud::id() {
-	return "Foo";
+	return "Particle Cloud";
 }
 
 bool ParticleCloud::getSelected() {

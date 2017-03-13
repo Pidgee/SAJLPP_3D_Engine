@@ -31,8 +31,8 @@ public:
 	void renderCube();
 	void renderCylinder();
 	void renderCone();
-	void renderModel(string path);
-	void renderProcedural(string path);
+	void renderModel(string path, string name);
+	void renderProcedural(string path, string name);
 
 	//imageTools
 	void renderImage(ofImage* image, string nom, int x, int y, int z);

@@ -7,14 +7,14 @@ void Renderer::setup()
 {
 	fbo.allocate(1280, 720);
 	fbo.begin();
+	
 	for (unsigned int i = 0; i<geometryObjectContainer.size(); i++) {
 		geometryObjectContainer[i]->setup();
 	}
-	//particleCloud = new ParticleCloud;
-	//particleCloud->setup();
 	ofClear(255, 255, 255);
-	ofBackground(255, 255, 255);
+	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
+	
 }
 
 void Renderer::update()
@@ -146,7 +146,7 @@ void Renderer::draw()
 	fbo.begin();
 	ofEnableDepthTest();
 	ofClear(255, 255, 255);
-	ofBackground(255, 255, 255);
+	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	cam.begin();
 	for (int i = 0; i<geometryObjectContainer.size(); i++) {
 		geometryObjectContainer[i]->draw();
@@ -192,16 +192,16 @@ void Renderer::renderCone()
 	geometryObjectContainer.push_back(cone);
 }
 
-void Renderer::renderModel(string path)
+void Renderer::renderModel(string path, string name)
 {
-	ImportModel* model = new ImportModel(path);
+	ImportModel* model = new ImportModel(path, name);
 	model->setup();
 	geometryObjectContainer.push_back(model);
 }
 
-void Renderer::renderProcedural(string path)
+void Renderer::renderProcedural(string path, string name)
 {
-	ProceduralGeometry* procedural = new ProceduralGeometry(path);
+	ProceduralGeometry* procedural = new ProceduralGeometry(path, name);
 	procedural->setup();
 	geometryObjectContainer.push_back(procedural);
 }
@@ -210,6 +210,12 @@ void Renderer::renderTransformation(float rotX, float rotY, float rotZ, float tr
 	for(int i=0; i<geometryObjectContainer.size(); i++){
 		if(geometryObjectContainer[i]->getSelected()){
 			geometryObjectContainer[i]->rotateX(rotX);
+			geometryObjectContainer[i]->rotateY(rotY);
+			geometryObjectContainer[i]->rotateZ(rotZ);
+			geometryObjectContainer[i]->translateX(transX);
+			geometryObjectContainer[i]->translateY(transY);
+			geometryObjectContainer[i]->translateZ(transZ);
+			geometryObjectContainer[i]->scale(scale/100);
 		}
 	}
 }

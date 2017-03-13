@@ -6,7 +6,7 @@ class ProceduralGeometry : public GeometryObject
 {
 public:
 
-	ProceduralGeometry(string p_path);
+	ProceduralGeometry(string p_path, string p_name);
 
 	ofMesh mesh;
 	ofImage img;
@@ -35,6 +35,7 @@ public:
 
 private:
 	string m_path;
+	string m_name;
 	bool select;
 };
 

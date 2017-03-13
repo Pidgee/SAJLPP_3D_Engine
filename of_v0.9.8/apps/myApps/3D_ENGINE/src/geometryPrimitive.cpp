@@ -22,24 +22,21 @@ void GeometryPrimitive::setup()
 	else {
 		
 	}
-	ofColor color = (255, 0, 255, 0.4);
+	ofColor color = (255, 0, 255);
+	position = ofVec3f(0, 0, 0);
 }
 
 void GeometryPrimitive::draw()
 {
-	position = ofVec3f(0, 0, 0);
 	primitive.setPosition(position);
 	ofFill();
-	mesh = primitive.getMesh();
-	mesh.enableColors();
-	vector<ofIndexType> indices = mesh.getIndices();
-	/*vector<ofIndexType>::iterator iter;
-	for (iter = indices.begin(); iter != indices.end(); iter++)
-	{
-		mesh.addColor(ofColor(0, 0, 0, 0.4));
-	*/
-	mesh.setColorForIndices(0, indices.size() - 1, ofColor(0, 0, 0, 0.4));
-	mesh.drawFaces();
+	//mesh = primitive.getMesh();
+	//mesh.enableColors();
+	//vector<ofIndexType> indices = mesh.getIndices();
+	//mesh.setColorForIndices(0, indices.size() - 1, ofColor(0, 0, 0, 0.4));
+	ofColor(255, 0, 0);
+	primitive.draw();
+	//mesh.draw();
 }
 
 void GeometryPrimitive::setupCube(float width)
@@ -75,19 +72,19 @@ void GeometryPrimitive::setupCone(float radius, float height)
 
 void GeometryPrimitive::rotateX(float x) {
 	position = primitive.getPosition();
-	primitive.rotateAround(ofQuaternion(x, ofVec3f(1,0,0)), position);
+	primitive.rotate(x, 1, 0, 0);
 	position = primitive.getPosition();
 }
 
 void GeometryPrimitive::rotateY(float y) {
 	position = primitive.getPosition();
-	primitive.rotateAround(ofQuaternion(y, ofVec3f(0, 1, 0)), position);
+	primitive.rotate(y, 0, 1, 0);
 	position = primitive.getPosition();
 }
 
 void GeometryPrimitive::rotateZ(float z) {
 	position = primitive.getPosition();
-	primitive.rotateAround(ofQuaternion(z, ofVec3f(0, 0, 1)), position);
+	primitive.rotate(z, 0, 0, 1);
 	position = primitive.getPosition();
 }
 
@@ -122,5 +119,19 @@ void GeometryPrimitive::setSelected(bool val) {
 }
 
 std::string GeometryPrimitive::id() {
-	return "Foo";
+	if (m_type == "sphere") {
+		return "Sphere";
+	}
+	else if (m_type == "cube") {
+		return "Cube";
+	}
+	else if (m_type == "cylinder") {
+		return "Cylinder";
+	}
+	else if (m_type == "cone") {
+		return "Cone";
+	}
+	else {
+
+	}
 }
