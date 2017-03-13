@@ -1,7 +1,9 @@
 ﻿#include "renderer.h"
 #include <string>
 
-Renderer::Renderer() {}
+Renderer::Renderer():cameraObject(new CameraObject()) {
+	cameraObject->setup();
+}
 
 void Renderer::setup()
 {
@@ -17,8 +19,24 @@ void Renderer::setup()
 	fbo.end();
 }
 
-void Renderer::update()
+void Renderer::update(){
+	cameraObject->update();
+}
+
+void Renderer::draw()
 {
+	fbo.begin();
+	ofEnableDepthTest();
+	ofClear(255, 255, 255);
+	ofBackground(255, 255, 255);
+	cameraObject->cam.begin();
+	for(int i=0; i<geometryObjectContainer.size(); i++){
+		geometryObjectContainer[i]->draw();
+	}
+	cameraObject->cam.end();
+	ofDisableDepthTest();
+	fbo.end();
+	fbo.draw(160, 90);
 }
 
 ofVec3f convertionRGB_HSV(ofColor couleur) {
@@ -141,26 +159,6 @@ void Renderer::renderImage(ofImage * image, string nom, int x, int y, int z, ofI
 
 }
 
-void Renderer::draw()
-{
-	fbo.begin();
-	ofEnableDepthTest();
-	ofClear(255, 255, 255);
-	ofBackground(255, 255, 255);
-	cam.begin();
-	for(int i=0; i<geometryObjectContainer.size(); i++){
-		geometryObjectContainer[i]->draw();
-	}
-	cam.end();
-	ofDisableDepthTest();
-	fbo.end();
-	fbo.draw(160, 90);
-}
-
-/*ParticleCloud* Renderer::renderParticleCloud() {
-}*/
-
-
 
 void Renderer::renderParticleCloud() {
 	ParticleCloud* part = new ParticleCloud;
@@ -183,6 +181,11 @@ std::vector<GeometryObject*>* Renderer::getObjects() {
 
 int Renderer::getNumberOfObjects() {
 	return geometryObjectContainer.size();
+}
+
+
+CameraObject* Renderer::getCamera() {
+	return cameraObject;
 }
 
 Renderer::~Renderer(){

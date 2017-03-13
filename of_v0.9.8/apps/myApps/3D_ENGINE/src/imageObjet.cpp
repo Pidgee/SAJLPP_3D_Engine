@@ -26,73 +26,74 @@ void imageObjet::draw()
 }
 
 void imageObjet::rotateX(float x) {
+	float angle = x*M_2_PI/360;
 
-	//p1.set(p1.x, p1.y* cos(angle) + p1.z * sin(angle), p1.z *cos(angle) - p1.y*sin(angle));
-	//p2.set(p2.x, p2.y* cos(angle) + p2.z * sin(angle), p2.z *cos(angle) - p2.y*sin(angle));
-	//p3.set(p3.x, p3.y* cos(angle) + p3.z * sin(angle), p3.z *cos(angle) - p3.y*sin(angle));
-	//p4.set(p4.x, p4.y* cos(angle) + p4.z * sin(angle), p4.z *cos(angle) - p4.y*sin(angle));
+	p1.set(p1.x, p1.y* cos(angle) + p1.z * sin(angle), p1.z *cos(angle) - p1.y*sin(angle));
+	p2.set(p2.x, p2.y* cos(angle) + p2.z * sin(angle), p2.z *cos(angle) - p2.y*sin(angle));
+	p3.set(p3.x, p3.y* cos(angle) + p3.z * sin(angle), p3.z *cos(angle) - p3.y*sin(angle));
+	p4.set(p4.x, p4.y* cos(angle) + p4.z * sin(angle), p4.z *cos(angle) - p4.y*sin(angle));
 
 }
 
 void imageObjet::rotateY(float y) {
+	float angle = y*M_2_PI/360;
 
-	//p1.set(p1.x* cos(angle) + p1.z * sin(angle), p1.y, p1.z *cos(angle) - p1.x*sin(angle));
-	//p2.set(p2.x* cos(angle) + p2.z * sin(angle), p2.y, p2.z *cos(angle) - p2.x*sin(angle));
-	//p3.set(p3.x* cos(angle) + p3.z * sin(angle), p3.y, p3.z *cos(angle) - p3.x*sin(angle));
-	//p4.set(p4.x* cos(angle) + p4.z * sin(angle), p4.y, p4.z *cos(angle) - p4.x*sin(angle));
+
+	p1.set(p1.x* cos(angle) + p1.z * sin(angle), p1.y, p1.z *cos(angle) - p1.x*sin(angle));
+	p2.set(p2.x* cos(angle) + p2.z * sin(angle), p2.y, p2.z *cos(angle) - p2.x*sin(angle));
+	p3.set(p3.x* cos(angle) + p3.z * sin(angle), p3.y, p3.z *cos(angle) - p3.x*sin(angle));
+	p4.set(p4.x* cos(angle) + p4.z * sin(angle), p4.y, p4.z *cos(angle) - p4.x*sin(angle));
 
 }
 
 void imageObjet::rotateZ(float z) {
+	float angle = z*M_2_PI/360;
 
-	//p1.set(p1.x * cos(angle) + p1.y * sin(angle), p1.y*cos(angle) - p1.x*sin(angle), p1.z);
-	//p2.set(p2.x * cos(angle) + p2.y * sin(angle), p2.y*cos(angle) - p2.x*sin(angle), p2.z);
-	//p3.set(p3.x * cos(angle) + p3.y * sin(angle), p3.y*cos(angle) - p3.x*sin(angle), p3.z);
-	//p4.set(p4.x * cos(angle) + p4.y * sin(angle), p4.y*cos(angle) - p4.x*sin(angle), p4.z);
+
+	p1.set(p1.x * cos(angle) + p1.y * sin(angle), p1.y*cos(angle) - p1.x*sin(angle), p1.z);
+	p2.set(p2.x * cos(angle) + p2.y * sin(angle), p2.y*cos(angle) - p2.x*sin(angle), p2.z);
+	p3.set(p3.x * cos(angle) + p3.y * sin(angle), p3.y*cos(angle) - p3.x*sin(angle), p3.z);
+	p4.set(p4.x * cos(angle) + p4.y * sin(angle), p4.y*cos(angle) - p4.x*sin(angle), p4.z);
 
 }
 
 void imageObjet::translateX(float x) {
+	float valeur = x;
 
-	//coordX += valeur;
-
-	//p1.set(p1.x + valeur, p1.y, p1.z);
-	//p2.set(p2.x + valeur, p2.y, p2.z);
-	//p3.set(p3.x + valeur, p3.y, p3.z);
-	//p4.set(p4.x + valeur, p4.y, p4.z);
+	p1.set(p1.x + valeur, p1.y, p1.z);
+	p2.set(p2.x + valeur, p2.y, p2.z);
+	p3.set(p3.x + valeur, p3.y, p3.z);
+	p4.set(p4.x + valeur, p4.y, p4.z);
 }
 
 void imageObjet::translateY(float y) {
+	float valeur = y;
 
-	//coordY += valeur;
-
-	//p1.set(p1.x, p1.y + valeur, p1.z);
-	//p2.set(p2.x, p2.y + valeur, p2.z);
-	//p3.set(p3.x, p3.y + valeur, p3.z);
-	//p4.set(p4.x, p4.y + valeur, p4.z);
+	p1.set(p1.x, p1.y + valeur, p1.z);
+	p2.set(p2.x, p2.y + valeur, p2.z);
+	p3.set(p3.x, p3.y + valeur, p3.z);
+	p4.set(p4.x, p4.y + valeur, p4.z);
 	
 }
 
 void imageObjet::translateZ(float z) {
+	float valeur = z;
 
-	//coordZ += valeur;
 
-	//p1.set(p1.x, p1.y, p1.z + valeur);
-	//p2.set(p2.x, p2.y, p2.z + valeur);
-	//p3.set(p3.x, p3.y, p3.z + valeur);
-	//p4.set(p4.x, p4.y, p4.z + valeur);
+	p1.set(p1.x, p1.y, p1.z + valeur);
+	p2.set(p2.x, p2.y, p2.z + valeur);
+	p3.set(p3.x, p3.y, p3.z + valeur);
+	p4.set(p4.x, p4.y, p4.z + valeur);
 
 }
 
 void imageObjet::scale(float scale) {
+	float proportion = scale;
 
-	//width *= proportion;
-	//height *= proportion;
-
-	//p1.set(p1.x * proportion, p1.y * proportion, p1.z * proportion);
-	//p2.set(p2.x * proportion, p2.y * proportion, p2.z * proportion);
-	//p3.set(p3.x * proportion, p3.y * proportion, p3.z * proportion);
-	//p4.set(p4.x * proportion, p4.y * proportion, p4.z * proportion);
+	p1.set(p1.x * proportion, p1.y * proportion, p1.z * proportion);
+	p2.set(p2.x * proportion, p2.y * proportion, p2.z * proportion);
+	p3.set(p3.x * proportion, p3.y * proportion, p3.z * proportion);
+	p4.set(p4.x * proportion, p4.y * proportion, p4.z * proportion);
 
 }
 
