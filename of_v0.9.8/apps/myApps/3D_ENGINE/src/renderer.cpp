@@ -7,14 +7,14 @@ void Renderer::setup()
 {
 	fbo.allocate(1280, 720);
 	fbo.begin();
-	for(unsigned int i=0; i<geometryObjectContainer.size(); i++){
+	
+	for (unsigned int i = 0; i<geometryObjectContainer.size(); i++) {
 		geometryObjectContainer[i]->setup();
 	}
-	//particleCloud = new ParticleCloud;
-	//particleCloud->setup();
 	ofClear(255, 255, 255);
-	ofBackground(255, 255, 255);
+	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
+	
 }
 
 void Renderer::update()
@@ -25,9 +25,9 @@ ofVec3f convertionRGB_HSV(ofColor couleur) {
 
 	ofVec3f hsv;
 
-	float val_r = couleur.r/255;
-	float val_g = couleur.g/255;
-	float val_b = couleur.b/255;
+	float val_r = couleur.r / 255;
+	float val_g = couleur.g / 255;
+	float val_b = couleur.b / 255;
 
 	float maximum1 = max(val_r, val_g);
 	float maximum = max(maximum1, val_b);
@@ -156,6 +156,7 @@ void Renderer::draw()
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
+
 	}
 	else if (drawingToolActivated) {
 		drawing->draw();
@@ -200,16 +201,66 @@ void Renderer::saveDrawing() {
 }
 
 
+
+//Géométrie
 void Renderer::renderParticleCloud() {
 	ParticleCloud* part = new ParticleCloud;
 	part->setup();
 	geometryObjectContainer.push_back(part);
 }
 
+void Renderer::renderSphere()
+{
+	GeometryPrimitive* sphere = new GeometryPrimitive("sphere");
+	sphere->setup();
+	geometryObjectContainer.push_back(sphere);
+}
+
+void Renderer::renderCube()
+{
+	GeometryPrimitive* cube = new GeometryPrimitive("cube");
+	cube->setup();
+	geometryObjectContainer.push_back(cube);
+}
+
+void Renderer::renderCylinder()
+{
+	GeometryPrimitive* cylinder = new GeometryPrimitive("cylinder");
+	cylinder->setup();
+	geometryObjectContainer.push_back(cylinder);
+}
+
+void Renderer::renderCone()
+{
+	GeometryPrimitive* cone = new GeometryPrimitive("cone");
+	cone->setup();
+	geometryObjectContainer.push_back(cone);
+}
+
+void Renderer::renderModel(string path, string name)
+{
+	ImportModel* model = new ImportModel(path, name);
+	model->setup();
+	geometryObjectContainer.push_back(model);
+}
+
+void Renderer::renderProcedural(string path, string name)
+{
+	ProceduralGeometry* procedural = new ProceduralGeometry(path, name);
+	procedural->setup();
+	geometryObjectContainer.push_back(procedural);
+}
+
 void Renderer::renderTransformation(float rotX, float rotY, float rotZ, float transX, float transY, float transZ, float scale) {
 	for(int i=0; i<geometryObjectContainer.size(); i++){
 		if(geometryObjectContainer[i]->getSelected()){
 			geometryObjectContainer[i]->rotateX(rotX);
+			geometryObjectContainer[i]->rotateY(rotY);
+			geometryObjectContainer[i]->rotateZ(rotZ);
+			geometryObjectContainer[i]->translateX(transX);
+			geometryObjectContainer[i]->translateY(transY);
+			geometryObjectContainer[i]->translateZ(transZ);
+			geometryObjectContainer[i]->scale(scale/100);
 		}
 	}
 }
@@ -223,5 +274,5 @@ int Renderer::getNumberOfObjects() {
 	return geometryObjectContainer.size();
 }
 
-Renderer::~Renderer(){
+Renderer::~Renderer() {
 }

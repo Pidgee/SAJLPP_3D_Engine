@@ -2,10 +2,11 @@
  * drawing.h
  *
  *  Created on: Mar 9, 2017
- *      Author: Phil Giroux
+ *      Author: ada
  */
 
-#pragma once
+#ifndef SRC_DRAWING_H_
+#define SRC_DRAWING_H_
 
 #include "ofMain.h"
 #include "geometryObject.h"
@@ -17,7 +18,6 @@ class Drawing : public GeometryObject
 public:
 
 	Drawing();
-
 	ofFbo canvas;
 
 	void setup();
@@ -57,3 +57,5 @@ private:
 
 	~Drawing();
 };
+
+#endif /* SRC_DRAWING_H_ */

@@ -1,45 +1,41 @@
 #pragma once
-
-#include "ofMain.h"
 #include "geometryObject.h"
+#include "ofMain.h"
 
-class ParticleCloud : public GeometryObject
+class ProceduralGeometry : public GeometryObject
 {
-
 public:
 
-	ParticleCloud();
+	ProceduralGeometry(string p_path, string p_name);
 
-	float cloudRadius;
-	int particleCount;
-	float origin[3];
-
-	int particleBufferSize;
-	int particleBufferHead;
-
+	ofMesh mesh;
+	ofImage img;
+	
 	void setup();
 	void draw();
 
 	bool getSelected();
 	void setSelected(bool val);
 
+	//rotation transformations
 	void rotateX(float x);
 	void rotateY(float y);
 	void rotateZ(float z);
+
+	//translation transformations
 	void translateX(float x);
 	void translateY(float y);
 	void translateZ(float z);
+
+	//scale transformation
 	void scale(float scale);
 
 	//instance name
 	std::string id();
 
-	void drawCloud(int count, float radius, float origin[3]);
-
-	ofMesh mesh;
-
 private:
+	string m_path;
+	string m_name;
 	bool select;
-
-	~ParticleCloud();
 };
+

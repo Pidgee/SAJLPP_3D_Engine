@@ -2,7 +2,7 @@
  * drawing.cpp
  *
  *  Created on: Mar 9, 2017
- *      Author: Phil Giroux
+ *      Author: ada
  */
 #include "drawing.h"
 
@@ -104,3 +104,4 @@ Drawing::~Drawing()
 {
 
 }
+

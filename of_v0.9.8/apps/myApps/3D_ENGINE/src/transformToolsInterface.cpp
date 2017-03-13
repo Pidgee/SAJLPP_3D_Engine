@@ -1,9 +1,9 @@
 /*
- * transformToolBar.cpp
- *
- *  Created on: Mar 9, 2017
- *      Author: ada
- */
+* transformToolBar.cpp
+*
+*  Created on: Mar 9, 2017
+*      Author: ada
+*/
 #include "transformToolsInterface.h"
 
 
@@ -18,18 +18,16 @@ TransformationToolBar::TransformationToolBar(Renderer* p_renderer): currentPage(
 	item_4.addListener(this,  &TransformationToolBar::actionItem4);
 	item_5.addListener(this,  &TransformationToolBar::actionItem5);
 
-
-
 }
 
 //public setup method for transform tools
 void TransformationToolBar::setup() {
-	std::cout<<"page: "<<currentPage<<std::endl;
+	std::cout << "page: " << currentPage << std::endl;
 	m_transformPanel.clear();
 	transformGroup.clear();
 	m_transformPanel.setup();
 	m_transformPanel.setName("Transformation");
-	m_transformPanel.setPosition(1445,90);
+	m_transformPanel.setPosition(1445, 90);
 
 	//add group for selection widgets
 	m_transformPanel.add(selectGroup.setup());
@@ -59,18 +57,18 @@ void TransformationToolBar::setup() {
 
 
 	//set position of toolbar
-	transformGroup.setPosition(1445,90);
+	transformGroup.setPosition(1445, 90);
 
 	//set size of all toolbar widgets
-	m_transformPanel.setSize(150,200);
-	transformGroup.setSize(150,200);
-	m_rotateXSlider.setSize(150,20);
-	m_rotateYSlider.setSize(150,20);
-	m_rotateZSlider.setSize(150,20);
-	m_translateXSlider.setSize(150,20);
-	m_translateYSlider.setSize(150,20);
-	m_translateZSlider.setSize(150,20);
-	m_scaleSlider.setSize(150,20);
+	m_transformPanel.setSize(150, 200);
+	transformGroup.setSize(150, 200);
+	m_rotateXSlider.setSize(150, 20);
+	m_rotateYSlider.setSize(150, 20);
+	m_rotateZSlider.setSize(150, 20);
+	m_translateXSlider.setSize(150, 20);
+	m_translateYSlider.setSize(150, 20);
+	m_translateZSlider.setSize(150, 20);
+	m_scaleSlider.setSize(150, 20);
 
 
 }
@@ -78,14 +76,14 @@ void TransformationToolBar::setup() {
 
 
 void TransformationToolBar::update() {
-	if(numberOfObjects != m_renderer->getNumberOfObjects()|| lastPage!=currentPage){
-		std::cout<<"page: "<<currentPage<<std::endl;
+	if (numberOfObjects != m_renderer->getNumberOfObjects() || lastPage != currentPage) {
+		std::cout << "page: " << currentPage << std::endl;
 		numberOfObjects = m_renderer->getNumberOfObjects();
 		lastPage = currentPage;
 		updateNames();
 		wait = true;
 		setup();
-		wait=false;
+		wait = false;
 
 	}
 }
@@ -102,11 +100,11 @@ void TransformationToolBar::transform() {
 
 //action listener for pageUp button
 void TransformationToolBar::pageUp() {
-	if(!wait){
-	int pagesAvailable = 1+((m_renderer->getNumberOfObjects())-1)/5;
-	if(pagesAvailable !=0)
-		currentPage = (currentPage+1)%pagesAvailable;
-	updateNames();
+	if (!wait) {
+		int pagesAvailable = 1 + ((m_renderer->getNumberOfObjects()) - 1) / 5;
+		if (pagesAvailable != 0)
+			currentPage = (currentPage + 1) % pagesAvailable;
+		updateNames();
 	}
 
 
@@ -132,6 +130,7 @@ void TransformationToolBar::pageUp() {
 
 //action listener for pageDwon button
 void TransformationToolBar::pageDown() {
+
 
 	if(!wait){
 	int pagesAvailable = (m_renderer->getNumberOfObjects())/5;
@@ -161,18 +160,18 @@ void TransformationToolBar::pageDown() {
 
 
 void TransformationToolBar::updateNames() {
-	int startIndice = currentPage*5;
-	bool selected =false;
+	int startIndice = currentPage * 5;
+	bool selected = false;
 	std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
 	std::string name = "nul";
-	for(int i=0; i<5; i++){
-		if(startIndice+i < objectContainer->size()){
-			name = (((*objectContainer)[startIndice+i])->id());
-			selected = (((*objectContainer)[startIndice+i])->getSelected());
+	for (int i = 0; i<5; i++) {
+		if (startIndice + i < objectContainer->size()) {
+			name = (((*objectContainer)[startIndice + i])->id());
+			selected = (((*objectContainer)[startIndice + i])->getSelected());
 		}
-		else{
-			name="nul";
-			selected=false;
+		else {
+			name = "nul";
+			selected = false;
 		}
 		items[i].operator =(selected);
 		items[i].setName(name);
@@ -234,6 +233,7 @@ void TransformationToolBar::actionItem4(bool & inval) {
 }
 
 void TransformationToolBar::actionItem5(bool & inval) {
+
 	if(!wait){
 	unsigned int startIndice = currentPage*5;
 	std::vector<GeometryObject*>* objectContainer = m_renderer->getObjects();

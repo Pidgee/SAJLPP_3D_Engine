@@ -1,67 +1,44 @@
-#include "particleCloud.h"
+#include "proceduralGeometry.h"
 
-ParticleCloud::ParticleCloud():select(false) {}
+ProceduralGeometry::ProceduralGeometry(string p_path, string p_name) : m_path(p_path), m_name(p_name), select(false)
+{
 
-void ParticleCloud::setup()
+}
+
+void ProceduralGeometry::setup()
 {
 	ofSetVerticalSync(true);
-	cloudRadius = 200;
-	particleCount = 1000;
-	origin[0] = 0;
-	origin[1] = 0;
-	origin[2] = 0;
 
-	particleBufferSize = particleCount;
-
-	drawCloud(particleCount, cloudRadius, origin);
-
-}
-
-
-void ParticleCloud::draw()
-{
-	mesh.draw();
-}
-
-void ParticleCloud::drawCloud(int count, float radius, float origin[3])
-{
-	// validations
-	if (count <= 0 || radius <= 0 || count > particleBufferSize)
-		return;	
-
-	particleBufferHead = count;
-
-	float x;
-	float y;
-	float z;
-	int r;
-	int g;
-	int b;
-	int a;
+	// Charger une image
+	img.load(m_path);
 
 	mesh.setMode(OF_PRIMITIVE_POINTS);
-	for (int i = 0; i < particleBufferHead; i++)
-	{
-
-		x = origin[0] + ofRandom(-radius, radius);
-		y = origin[1] + ofRandom(-radius, radius);
-		z = origin[2] + ofRandom(-radius, radius);
-
-		r = ofRandom(0, 255);
-		g = ofRandom(0, 255);
-		b = ofRandom(0, 255);
-		a = 255;
-
-		ofColor color(r, g, b, a);
-		mesh.addColor(color);
-		ofVec3f position(x, y, z);
-		mesh.addVertex(position);
+	// Boucle dans l'image pour les coordonnées x et y
+	for (int y = 0; y < img.getHeight(); y ++) {
+		for (int x = 0; x < img.getWidth(); x ++) {
+			ofColor color = img.getColor(x, y);
+			int colorAvg = (color.r + color.g + color.b + color.a) / 4;
+			if (color.a > 0 && (color.r+color.g+color.b) > 0) {
+				// Modifier l'étendue de la couleur pour un meilleur résultat
+				float z = ofMap(colorAvg, 0, 255, -300, 300);
+				color.a = 255;
+				mesh.addColor(color);
+				ofVec3f position(x, y, z);
+				mesh.addVertex(position);
+			}
+		}
 	}
+
 	glEnable(GL_POINT_SMOOTH);
 	glPointSize(3);
 }
 
-void ParticleCloud::rotateX(float x) {
+void ProceduralGeometry::draw()
+{
+	mesh.draw();
+}
+
+void ProceduralGeometry::rotateX(float x) {
 	vector<ofVec3f> vertices = mesh.getVertices();
 	mesh.clearVertices();
 	x = x * M_TWO_PI / 360;
@@ -73,7 +50,7 @@ void ParticleCloud::rotateX(float x) {
 	}
 }
 
-void ParticleCloud::rotateY(float y ) {
+void ProceduralGeometry::rotateY(float y) {
 	vector<ofVec3f> vertices = mesh.getVertices();
 	mesh.clearVertices();
 	y = y * M_TWO_PI / 360;
@@ -85,7 +62,7 @@ void ParticleCloud::rotateY(float y ) {
 	}
 }
 
-void ParticleCloud::rotateZ(float z) {
+void ProceduralGeometry::rotateZ(float z) {
 	vector<ofVec3f> vertices = mesh.getVertices();
 	mesh.clearVertices();
 	z = z * M_TWO_PI / 360;
@@ -97,7 +74,7 @@ void ParticleCloud::rotateZ(float z) {
 	}
 }
 
-void ParticleCloud::translateX(float x) {
+void ProceduralGeometry::translateX(float x) {
 	vector<ofVec3f> vertices = mesh.getVertices();
 	mesh.clearVertices();
 	for (int i = 0; i < vertices.size(); i++)
@@ -107,7 +84,7 @@ void ParticleCloud::translateX(float x) {
 	}
 }
 
-void ParticleCloud::translateY(float y) {
+void ProceduralGeometry::translateY(float y) {
 	vector<ofVec3f> vertices = mesh.getVertices();
 	mesh.clearVertices();
 	for (int i = 0; i < vertices.size(); i++)
@@ -117,7 +94,7 @@ void ParticleCloud::translateY(float y) {
 	}
 }
 
-void ParticleCloud::translateZ(float z) {
+void ProceduralGeometry::translateZ(float z) {
 	vector<ofVec3f> vertices = mesh.getVertices();
 	mesh.clearVertices();
 	for (int i = 0; i < vertices.size(); i++)
@@ -127,7 +104,7 @@ void ParticleCloud::translateZ(float z) {
 	}
 }
 
-void ParticleCloud::scale(float scale) {
+void ProceduralGeometry::scale(float scale) {
 	vector<ofVec3f> vertices = mesh.getVertices();
 	mesh.clearVertices();
 	for (int i = 0; i < vertices.size(); i++)
@@ -137,19 +114,14 @@ void ParticleCloud::scale(float scale) {
 	}
 }
 
-std::string ParticleCloud::id() {
-	return "Particle Cloud";
-}
-
-bool ParticleCloud::getSelected() {
+bool ProceduralGeometry::getSelected() {
 	return select;
 }
 
-void ParticleCloud::setSelected(bool val) {
-	select=val;
+void ProceduralGeometry::setSelected(bool val) {
+	select = val;
 }
 
-ParticleCloud::~ParticleCloud()
-{
-
+std::string ProceduralGeometry::id() {
+	return m_name;
 }

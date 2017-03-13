@@ -17,7 +17,6 @@ public:
 	virtual bool getSelected()=0;
 	virtual void setSelected(bool val)=0;
 
-
 	//rotation transformations must be defined
 	virtual void rotateX(float x)=0;
 	virtual void rotateY(float y)=0;

@@ -3,6 +3,9 @@
 #include <vector>
 #include "ofMain.h"
 #include "particleCloud.h"
+#include "importModel.h"
+#include "proceduralGeometry.h"
+#include "geometryPrimitive.h"
 #include "drawing.h"
 #include "imageObjet.h"
 
@@ -13,7 +16,7 @@ public:
 	ofFbo fbo;
 	
 	Renderer();
-		
+
 
 	void setup();
 	void update();
@@ -32,6 +35,12 @@ public:
 	int yMouseCurrent;
 
 	void renderParticleCloud();
+	void renderSphere();
+	void renderCube();
+	void renderCylinder();
+	void renderCone();
+	void renderModel(string path, string name);
+	void renderProcedural(string path, string name);
 
 	void drawLine(float x1, float y1, float x2, float y2);
 	void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3);
@@ -58,3 +67,4 @@ private:
 	Drawing* drawing;
 	bool drawingToolActivated;
 };
+

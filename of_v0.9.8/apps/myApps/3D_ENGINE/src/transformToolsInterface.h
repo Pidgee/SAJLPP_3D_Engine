@@ -1,16 +1,16 @@
 /*
- * transformToolBar.h
- *
- *  Created on: Mar 9, 2017
- *      Author: ada
- */
+* transformToolBar.h
+*
+*  Created on: Mar 9, 2017
+*      Author: ada
+*/
 #include "ofxGui.h"
 #include "renderer.h"
 
 #ifndef SRC_TRANSFORMTOOLBAR_H_
 #define SRC_TRANSFORMTOOLBAR_H_
 
-class TransformationToolBar{
+class TransformationToolBar {
 
 public:
 	TransformationToolBar(Renderer* p_renderer);
@@ -61,7 +61,7 @@ private:
 	ofxToggle item_4;
 	ofxToggle item_5;
 
-	ofxToggle items[5]={item_1, item_2, item_3, item_4, item_5};
+	ofxToggle items[5] = { item_1, item_2, item_3, item_4, item_5 };
 
 	ofxButton transformButton;
 

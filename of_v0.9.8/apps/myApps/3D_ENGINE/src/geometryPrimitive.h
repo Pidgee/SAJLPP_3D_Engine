@@ -1,32 +1,31 @@
-
+#pragma once
 
 #include "ofMain.h"
 #include "geometryObject.h"
-#include "ofxAssimpModelLoader.h"
 
-class imageObjet : public GeometryObject
+class GeometryPrimitive : public GeometryObject
 {
 
 public:
 
-	imageObjet();
+	GeometryPrimitive(std::string p_type);
 
-	ofImage image;
+	void setupCube(float width);
+	void setupSphere(float radius);
+	void setupCylinder(float radius, float height);
+	void setupCone(float radius, float height);
 
-	ofPoint p1;
-	ofPoint p2;
-	ofPoint p3;
-	ofPoint p4;
+	ofBoxPrimitive cube;
+	ofSpherePrimitive sphere;
+	ofCylinderPrimitive cylinder;
+	ofConePrimitive cone;
+	ofMesh mesh;
+	of3dPrimitive primitive;
 
-	string nom;
+	ofVec3f position;
 
 	void setup();
 	void draw();
-
-	ofImage ajouter_teinte(ofColor couleur);
-	ofImage ajouter_image(ofImage * image_param);
-
-	void setImage(ofImage * image_param);
 
 	bool getSelected();
 	void setSelected(bool val);
@@ -47,8 +46,7 @@ public:
 	//instance name
 	std::string id();
 
-	~imageObjet();
-
 private:
 	bool select;
+	std::string m_type;
 };

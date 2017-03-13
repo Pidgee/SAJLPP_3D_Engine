@@ -187,6 +187,7 @@ ofImage imageObjet::ajouter_image(ofImage * image_param) {
 
 }
 
+
 void imageObjet::setSelected(bool val) {
 	select = val;
 
@@ -194,7 +195,6 @@ void imageObjet::setSelected(bool val) {
 
 bool imageObjet::getSelected() {
 	return select;
-
 }
 
 imageObjet::~imageObjet()
