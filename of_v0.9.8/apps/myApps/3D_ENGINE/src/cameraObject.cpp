@@ -6,7 +6,7 @@
  */
 #include "cameraObject.h"
 
-CameraObject::CameraObject() {
+CameraObject::CameraObject(): select(false) {
 
 }
 
@@ -39,9 +39,11 @@ void CameraObject::update() {
 
 
 bool CameraObject::getSelected() {
+	return select;
 }
 
 void CameraObject::setSelected(bool val) {
+	
 }
 
 void CameraObject::rotateX(float x) {
@@ -67,4 +69,5 @@ void CameraObject::scale(float scale) {
 
 
 std::string CameraObject::id() {
+	return "Foo";
 }

@@ -27,18 +27,47 @@ void Renderer::update(){
 
 void Renderer::draw()
 {
-	fbo.begin();
-	ofEnableDepthTest();
-	ofClear(255, 255, 255);
-	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
-	cameraObject->cam.begin();
-	for (int i = 0; i<geometryObjectContainer.size(); i++) {
-		geometryObjectContainer[i]->draw();
+	if (!drawingToolActivated) {
+		/*fbo.begin();
+		ofEnableDepthTest();
+		ofClear(255, 255, 255);
+		ofBackground(255, 255, 255);
+		cam.begin();
+		for (int i = 0; i<geometryObjectContainer.size(); i++) {
+			geometryObjectContainer[i]->draw();
+		}
+		cam.end();
+		ofDisableDepthTest();
+		fbo.end();
+		fbo.draw(160, 90);
+		*/
+		fbo.begin();
+		ofEnableDepthTest();
+		ofClear(255, 255, 255);
+		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
+		cameraObject->cam.begin();
+		for (int i = 0; i<geometryObjectContainer.size(); i++) {
+			geometryObjectContainer[i]->draw();
+		}
+		cameraObject->cam.end();
+		ofDisableDepthTest();
+		fbo.end();
+		fbo.draw(160, 90);
+
 	}
-	cameraObject->cam.end();
-	ofDisableDepthTest();
-	fbo.end();
-	fbo.draw(160, 90);
+	else if (drawingToolActivated) {
+		drawing->draw();
+		if (lineCursorActivated) {
+			drawing->drawLineCursor(xMouseCurrent, yMouseCurrent);
+		}
+		else if (triangleCursorActivated) {
+			drawing->drawTriangleCursor(xMouseCurrent, yMouseCurrent);
+		}
+		else if (circleCursorActivated) {
+			drawing->drawCircleCursor(xMouseCurrent, yMouseCurrent);
+		}
+	}
+
 }
 
 ofVec3f convertionRGB_HSV(ofColor couleur) {
@@ -159,38 +188,6 @@ void Renderer::renderImage(ofImage * image, string nom, int x, int y, int z, ofI
 	image_compose->nom = nom;
 	geometryObjectContainer.push_back(image_compose);
 
-}
-
-void Renderer::draw()
-{
-	if (!drawingToolActivated) {
-		fbo.begin();
-		ofEnableDepthTest();
-		ofClear(255, 255, 255);
-		ofBackground(255, 255, 255);
-		cam.begin();
-		for (int i = 0; i<geometryObjectContainer.size(); i++) {
-			geometryObjectContainer[i]->draw();
-		}
-		cam.end();
-		ofDisableDepthTest();
-		fbo.end();
-		fbo.draw(160, 90);
-
-	}
-	else if (drawingToolActivated) {
-		drawing->draw();
-		if (lineCursorActivated) {
-			drawing->drawLineCursor(xMouseCurrent, yMouseCurrent);
-		}
-		else if (triangleCursorActivated) {
-			drawing->drawTriangleCursor(xMouseCurrent, yMouseCurrent);
-		}
-		else if (circleCursorActivated) {
-			drawing->drawCircleCursor(xMouseCurrent, yMouseCurrent);
-		}
-	}
-	
 }
 
 /*ParticleCloud* Renderer::renderParticleCloud() {
