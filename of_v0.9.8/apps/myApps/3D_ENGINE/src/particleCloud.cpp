@@ -62,24 +62,79 @@ void ParticleCloud::drawCloud(int count, float radius, float origin[3])
 }
 
 void ParticleCloud::rotateX(float x) {
+	vector<ofVec3f> vertices = mesh.getVertices();
+	mesh.clearVertices();
+	x = x * M_TWO_PI / 360;
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		vertices[i][1] = (vertices[i][1] * cos(x)) - (vertices[i][2] * sin(x));
+		vertices[i][2] = (vertices[i][1] * sin(x)) + (vertices[i][2] * cos(x));
+		mesh.addVertex(vertices[i]);
+	}
 }
 
 void ParticleCloud::rotateY(float y ) {
+	vector<ofVec3f> vertices = mesh.getVertices();
+	mesh.clearVertices();
+	y = y * M_TWO_PI / 360;
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		vertices[i][0] = vertices[i][0] * cos(y) + vertices[i][2] * sin(y);
+		vertices[i][2] = vertices[i][2] * cos(y) - vertices[i][0] * sin(y);
+		mesh.addVertex(vertices[i]);
+	}
 }
 
 void ParticleCloud::rotateZ(float z) {
+	vector<ofVec3f> vertices = mesh.getVertices();
+	mesh.clearVertices();
+	z = z * M_TWO_PI / 360;
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		vertices[i][0] = vertices[i][0] * cos(z) - vertices[i][1] * sin(z);
+		vertices[i][1] = vertices[i][0] * sin(z) + vertices[i][1] * cos(z);
+		mesh.addVertex(vertices[i]);
+	}
 }
 
 void ParticleCloud::translateX(float x) {
+	vector<ofVec3f> vertices = mesh.getVertices();
+	mesh.clearVertices();
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		vertices[i][0] = vertices[i][0] + x;
+		mesh.addVertex(vertices[i]);
+	}
 }
 
 void ParticleCloud::translateY(float y) {
+	vector<ofVec3f> vertices = mesh.getVertices();
+	mesh.clearVertices();
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		vertices[i][1] = vertices[i][1] + y;
+		mesh.addVertex(vertices[i]);
+	}
 }
 
 void ParticleCloud::translateZ(float z) {
+	vector<ofVec3f> vertices = mesh.getVertices();
+	mesh.clearVertices();
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		vertices[i][2] = vertices[i][2] + z;
+		mesh.addVertex(vertices[i]);
+	}
 }
 
 void ParticleCloud::scale(float scale) {
+	vector<ofVec3f> vertices = mesh.getVertices();
+	mesh.clearVertices();
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		vertices[i] = vertices[i] * scale;
+		mesh.addVertex(vertices[i]);
+	}
 }
 
 std::string ParticleCloud::id() {
