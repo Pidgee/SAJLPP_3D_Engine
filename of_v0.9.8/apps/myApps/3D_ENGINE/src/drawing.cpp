@@ -6,7 +6,7 @@
  */
 #include "drawing.h"
 
-Drawing::Drawing() {}
+Drawing::Drawing() : select(false) {}
 
 void Drawing::setup()
 {
@@ -24,25 +24,25 @@ void Drawing::draw()
 }
 
 
-void Drawing::rotateX() {
+void Drawing::rotateX(float x) {
 }
 
-void Drawing::rotateY() {
+void Drawing::rotateY(float y) {
 }
 
-void Drawing::rotateZ() {
+void Drawing::rotateZ(float z) {
 }
 
-void Drawing::translateX() {
+void Drawing::translateX(float x) {
 }
 
-void Drawing::translateY() {
+void Drawing::translateY(float y) {
 }
 
-void Drawing::translateZ() {
+void Drawing::translateZ(float z) {
 }
 
-void Drawing::scale() {
+void Drawing::scale(float scale) {
 }
 
 void Drawing::drawLineCursor(int x, int y) {
@@ -90,6 +90,14 @@ void Drawing::drawCircle(float centerX, float centerY, float radiusX, float radi
 
 std::string Drawing::id() {
 	return "Foo";
+}
+
+bool Drawing::getSelected() {
+	return select;
+}
+
+void Drawing::setSelected(bool val) {
+	select = val;
 }
 
 Drawing::~Drawing()

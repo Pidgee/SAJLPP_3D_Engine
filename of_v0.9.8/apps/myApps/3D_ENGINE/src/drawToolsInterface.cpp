@@ -63,9 +63,9 @@ void DrawToolBar::lineDrawing() {
 	triangleDrawingActivated = false;
 	circleDrawingActivated = false;
 	if (lineDrawingActivated) {
-		m_renderer->circle = false;
-		m_renderer->triangle = false;
-		m_renderer->line = true;
+		m_renderer->circleCursorActivated = false;
+		m_renderer->triangleCursorActivated = false;
+		m_renderer->lineCursorActivated = true;
 	}
 }
 
@@ -75,9 +75,9 @@ void DrawToolBar::triangleDrawing() {
 	circleDrawingActivated = false;
 	lineDrawingActivated = false;
 	if (triangleDrawingActivated) {
-		m_renderer->circle = false;
-		m_renderer->line = false;
-		m_renderer->triangle = true;
+		m_renderer->circleCursorActivated = false;
+		m_renderer->lineCursorActivated = false;
+		m_renderer->triangleCursorActivated = true;
 	}
 }
 
@@ -87,9 +87,9 @@ void DrawToolBar::circleDrawing() {
 	triangleDrawingActivated = false;
 	lineDrawingActivated = false;
 	if (circleDrawingActivated) {
-		m_renderer->triangle = false;
-		m_renderer->line = false;
-		m_renderer->circle = true;
+		m_renderer->triangleCursorActivated = false;
+		m_renderer->lineCursorActivated = false;
+		m_renderer->circleCursorActivated = true;
 	}
 }
 

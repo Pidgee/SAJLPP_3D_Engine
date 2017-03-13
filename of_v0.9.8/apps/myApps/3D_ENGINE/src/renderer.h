@@ -24,9 +24,9 @@ public:
 	int getNumberOfObjects();
 
 	//geometryTools
-	bool line;
-	bool triangle;
-	bool circle;
+	bool lineCursorActivated;
+	bool triangleCursorActivated;
+	bool circleCursorActivated;
 
 	int xMouseCurrent;
 	int yMouseCurrent;

@@ -1,7 +1,7 @@
 ﻿#include "renderer.h"
 #include <string>
 
-Renderer::Renderer() :drawingToolActivated(false), line(false), triangle(false), circle(false) {}
+Renderer::Renderer() :drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {}
 
 void Renderer::setup()
 {
@@ -159,13 +159,13 @@ void Renderer::draw()
 	}
 	else if (drawingToolActivated) {
 		drawing->draw();
-		if (line) {
+		if (lineCursorActivated) {
 			drawing->drawLineCursor(xMouseCurrent, yMouseCurrent);
 		}
-		else if (triangle) {
+		else if (triangleCursorActivated) {
 			drawing->drawTriangleCursor(xMouseCurrent, yMouseCurrent);
 		}
-		else if (circle) {
+		else if (circleCursorActivated) {
 			drawing->drawCircleCursor(xMouseCurrent, yMouseCurrent);
 		}
 	}
