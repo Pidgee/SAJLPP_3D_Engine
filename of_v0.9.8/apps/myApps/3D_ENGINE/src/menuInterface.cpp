@@ -34,12 +34,12 @@ void MenuBar::setup() {
 	m_drawTools.setPosition(360,70);
 	m_imageTools.setPosition(560,70);
 	m_cameraTools.setPosition(760,70);
-
 }
 
 
 void MenuBar::draw() {
 	m_menuPanel.draw();
+	m_camToolBar->show();
 }
 
 
@@ -47,7 +47,6 @@ void MenuBar::geoToolsClicked() {
 	m_imgToolBar->hide();
 	m_drwToolBar->hide();
 	m_geoToolBar->show();
-	m_camToolBar->hide();
 }
 
 
@@ -55,19 +54,14 @@ void MenuBar::imgToolsClicked() {
 	m_geoToolBar->hide();
 	m_drwToolBar->hide();
 	m_imgToolBar->show();
-	m_camToolBar->hide();
 }
 
 void MenuBar::drwToolsClicked() {
 	m_geoToolBar->hide();
 	m_imgToolBar->hide();
 	m_drwToolBar->show();
-	m_camToolBar->hide();
 }
 
 void MenuBar::camToolsClicked() {
-	m_geoToolBar->hide();
-	m_imgToolBar->hide();
-	m_drwToolBar->hide();
 	m_camToolBar->show();
 }

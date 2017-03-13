@@ -1,7 +1,11 @@
 ﻿#include "renderer.h"
 #include <string>
 
-Renderer::Renderer() :drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {}
+
+Renderer::Renderer():cameraObject(new CameraObject()), drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {
+	cameraObject->setup();
+}
+
 
 void Renderer::setup()
 {
@@ -17,8 +21,24 @@ void Renderer::setup()
 	
 }
 
-void Renderer::update()
+void Renderer::update(){
+	cameraObject->update();
+}
+
+void Renderer::draw()
 {
+	fbo.begin();
+	ofEnableDepthTest();
+	ofClear(255, 255, 255);
+	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
+	cameraObject->cam.begin();
+	for (int i = 0; i<geometryObjectContainer.size(); i++) {
+		geometryObjectContainer[i]->draw();
+	}
+	cameraObject->cam.end();
+	ofDisableDepthTest();
+	fbo.end();
+	fbo.draw(160, 90);
 }
 
 ofVec3f convertionRGB_HSV(ofColor couleur) {
@@ -200,8 +220,6 @@ void Renderer::saveDrawing() {
 	drawingToolActivated = false;
 }
 
-
-
 //Géométrie
 void Renderer::renderParticleCloud() {
 	ParticleCloud* part = new ParticleCloud;
@@ -274,5 +292,10 @@ int Renderer::getNumberOfObjects() {
 	return geometryObjectContainer.size();
 }
 
-Renderer::~Renderer() {
+
+CameraObject* Renderer::getCamera() {
+	return cameraObject;
+}
+
+Renderer::~Renderer(){
 }
