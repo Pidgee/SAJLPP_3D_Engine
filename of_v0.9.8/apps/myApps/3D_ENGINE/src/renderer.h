@@ -11,7 +11,7 @@ class Renderer
 public:
 
 	ofFbo fbo;
-	Drawing* drawing;
+	
 	Renderer();
 		
 
@@ -24,7 +24,15 @@ public:
 	int getNumberOfObjects();
 
 	//geometryTools
+	bool line;
+	bool triangle;
+	bool circle;
+
+	int xMouseCurrent;
+	int yMouseCurrent;
+
 	void renderParticleCloud();
+
 	void drawLine(float x1, float y1, float x2, float y2);
 	void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3);
 	void drawCircle(float x1, float y1, float x2, float y2);
@@ -47,6 +55,6 @@ public:
 private:
 	//geometryObject container
 	std::vector<GeometryObject*> geometryObjectContainer;
+	Drawing* drawing;
 	bool drawingToolActivated;
-
 };

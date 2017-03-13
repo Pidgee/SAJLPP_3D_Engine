@@ -58,11 +58,14 @@ void DrawToolBar::renderDrawing() {
 }
 
 void DrawToolBar::lineDrawing() {
+	compteur = 0;
 	lineDrawingActivated = !lineDrawingActivated;
 	triangleDrawingActivated = false;
 	circleDrawingActivated = false;
 	if (lineDrawingActivated) {
-
+		m_renderer->circle = false;
+		m_renderer->triangle = false;
+		m_renderer->line = true;
 	}
 }
 
@@ -71,32 +74,50 @@ void DrawToolBar::triangleDrawing() {
 	triangleDrawingActivated = !triangleDrawingActivated;
 	circleDrawingActivated = false;
 	lineDrawingActivated = false;
+	if (triangleDrawingActivated) {
+		m_renderer->circle = false;
+		m_renderer->line = false;
+		m_renderer->triangle = true;
+	}
 }
 
 void DrawToolBar::circleDrawing() {
+	compteur = 0;
 	circleDrawingActivated = !circleDrawingActivated;
 	triangleDrawingActivated = false;
 	lineDrawingActivated = false;
+	if (circleDrawingActivated) {
+		m_renderer->triangle = false;
+		m_renderer->line = false;
+		m_renderer->circle = true;
+	}
 }
 
 void DrawToolBar::saveDrawing() {
-
+	compteur = 0;
+	lineDrawingActivated = false;
+	triangleDrawingActivated = false;
+	circleDrawingActivated = false;
+	m_renderer->saveDrawing();
 }
 
 void DrawToolBar::mousePressed(int x, int y, int button) {
 	if (lineDrawingActivated || triangleDrawingActivated || circleDrawingActivated) {
+		m_renderer->xMouseCurrent = x;
+		m_renderer->yMouseCurrent = y;
+	}
+
+	if ((lineDrawingActivated || triangleDrawingActivated || circleDrawingActivated) && compteur == 0) {
 		x1 = x;
 		y1 = y;
 		compteur++;
 	}
-
-	if (triangleDrawingActivated && compteur == 1) {
+	else if (triangleDrawingActivated && compteur == 1) {
 		x2 = x;
 		y2 = y;
 		compteur++;
 	}
-
-	if (triangleDrawingActivated && compteur == 2) {
+	else if (triangleDrawingActivated && compteur == 2) {
 		x3 = x;
 		y3 = y;
 		m_renderer->drawTriangle(x1, y1, x2, y2, x3, y3);
@@ -105,10 +126,44 @@ void DrawToolBar::mousePressed(int x, int y, int button) {
 }
 
 void DrawToolBar::mouseReleased(int x, int y, int button) {
+	if (lineDrawingActivated || triangleDrawingActivated || circleDrawingActivated) {
+		m_renderer->xMouseCurrent = x;
+		m_renderer->yMouseCurrent = y;
+	}
 	if (lineDrawingActivated) {
 		m_renderer->drawLine(x1, y1, x, y);
+		compteur = 0;
 	}
 	else if (circleDrawingActivated) {
 		m_renderer->drawCircle(x1, y1, x, y);
+		compteur = 0;
+	}
+}
+
+void DrawToolBar::mouseMoved(int x, int y) {
+	if (lineDrawingActivated || triangleDrawingActivated || circleDrawingActivated) {
+		m_renderer->xMouseCurrent = x;
+		m_renderer->yMouseCurrent = y;
+	}
+}
+
+void DrawToolBar::mouseDragged(int x, int y) {
+	if (lineDrawingActivated || triangleDrawingActivated || circleDrawingActivated) {
+		m_renderer->xMouseCurrent = x;
+		m_renderer->yMouseCurrent = y;
+	}
+}
+
+void DrawToolBar::mouseEntered(int x, int y) {
+	if (lineDrawingActivated || triangleDrawingActivated || circleDrawingActivated) {
+		m_renderer->xMouseCurrent = x;
+		m_renderer->yMouseCurrent = y;
+	}
+}
+
+void DrawToolBar::mouseExited(int x, int y) {
+	if (lineDrawingActivated || triangleDrawingActivated || circleDrawingActivated) {
+		m_renderer->xMouseCurrent = x;
+		m_renderer->yMouseCurrent = y;
 	}
 }

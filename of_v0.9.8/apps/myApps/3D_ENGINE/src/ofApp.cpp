@@ -47,12 +47,12 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+	drawToolBar->mouseMoved(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
+	drawToolBar->mouseDragged(x, y);
 }
 
 //--------------------------------------------------------------
@@ -67,12 +67,12 @@ void ofApp::mouseReleased(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseEntered(int x, int y){
-
+	drawToolBar->mouseEntered(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseExited(int x, int y){
-
+	drawToolBar->mouseExited(x, y);
 }
 
 //--------------------------------------------------------------

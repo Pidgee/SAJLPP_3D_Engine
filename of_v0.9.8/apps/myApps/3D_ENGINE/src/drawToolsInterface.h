@@ -24,6 +24,14 @@ public:
 	void hide();
 	void mousePressed(int x, int y, int button);
 	void mouseReleased(int x, int y, int button);
+	void mouseMoved(int x, int y);
+	void mouseDragged(int x, int y);
+	void mouseEntered(int x, int y);
+	void mouseExited(int x, int y);
+
+	bool lineDrawingActivated;
+	bool triangleDrawingActivated;
+	bool circleDrawingActivated;
 
 private:
 	int compteur;
@@ -46,10 +54,6 @@ private:
 	void triangleDrawing();
 	void circleDrawing();
 	void saveDrawing();
-
-	bool lineDrawingActivated;
-	bool triangleDrawingActivated;
-	bool circleDrawingActivated;
 
 };
 
