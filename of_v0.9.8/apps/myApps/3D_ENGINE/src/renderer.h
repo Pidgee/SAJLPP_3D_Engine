@@ -25,6 +25,10 @@ public:
 
 	CameraObject* getCamera();
 
+	void ajouterLumiere(ofColor couleur);
+	void ajouterLumiere(int type, ofVec3f position, ofColor couleur);
+	void ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor couleur);
+
 	//getters
 	std::vector<GeometryObject*>* getObjects();
 	int getNumberOfObjects();
@@ -67,6 +71,7 @@ public:
 private:
 	//geometryObject container
 	std::vector<GeometryObject*> geometryObjectContainer;
+	std::vector<ofLight> lumiereContainer;
 	CameraObject* cameraObject;
 	Drawing* drawing;
 	bool drawingToolActivated;

@@ -17,12 +17,45 @@ void Renderer::setup()
 	}
 	ofClear(255, 255, 255);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
+	ajouterLumiere(ofColor(100, 100, 100));
+	ajouterLumiere(0, ofVec3f(0, 0, 300), ofColor(255, 0, 0)); //point
+	ajouterLumiere(1, ofVec3f(45, 45, 0), ofColor(0, 255, 0)); //direction
+	ajouterLumiere(ofVec3f(0, 300, 0), ofVec3f(0, 0, 0), ofColor(0, 0, 255)); //spot
 	fbo.end();
 	
 }
 
 void Renderer::update(){
 	cameraObject->update();
+}
+
+void Renderer::ajouterLumiere(ofColor couleur) {
+	ofSetGlobalAmbientColor(couleur);
+	ofSetSmoothLighting(true);
+}
+
+void Renderer::ajouterLumiere(int type, ofVec3f vecteur, ofColor couleur) {
+	ofLight lumiere;
+	if (type == 0) {
+		lumiere.setPointLight();
+		lumiere.setPosition(vecteur);
+		lumiere.setDiffuseColor(couleur);
+	}
+	else if (type == 1) {
+		lumiere.setDirectional();
+		lumiere.setOrientation(vecteur);
+		lumiere.setDiffuseColor(couleur);
+	}
+	lumiereContainer.push_back(lumiere);
+}
+
+void Renderer::ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor couleur) {
+	ofLight lumiere;
+	lumiere.setSpotlight();
+	lumiere.setPosition(position);
+	lumiere.lookAt(direction);
+	lumiere.setDiffuseColor(couleur);
+	lumiereContainer.push_back(lumiere);
 }
 
 void Renderer::draw()
@@ -45,11 +78,28 @@ void Renderer::draw()
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
 		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
+		//data.lightType = OF_LIGHT_DIRECTIONAL;
+		//data.direction = ofVec3f(0, 1, 0);
+		//lumiere.setup();
+		//lumiere.setDirectional();
+		//ofSetGlobalAmbientColor(ofColor(255, 255, 255));
+		//lumiere.setAmbientColor(ofColor(150,100,200));
+		//lumiere.setSpotlightCutOff(50);
+		//lumiere.setOrientation();
+		//lumiere.setAmbientColor(ofColor(150, 100, 200));
+		//lumiere.setDiffuseColor(ofColor(200, 200, 150));
+		//lumiere.setAreaLight(100,100);
+		for (int i = 0; i<lumiereContainer.size(); i++) {
+			lumiereContainer[i].enable();
+		}
 		cameraObject->cam.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
 			geometryObjectContainer[i]->draw();
 		}
 		cameraObject->cam.end();
+		for (int i = 0; i<lumiereContainer.size(); i++) {
+			lumiereContainer[i].disable();
+		}
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
