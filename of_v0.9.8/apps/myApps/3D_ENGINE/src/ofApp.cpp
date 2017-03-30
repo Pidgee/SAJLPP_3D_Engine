@@ -8,9 +8,10 @@ void ofApp::setup() {
 	cameraToolBar = new CameraToolBar(renderer);
 	imageToolBar = new ImageToolBar(renderer);
 	drawToolBar = new DrawToolBar(renderer);
+	lightToolBar = new LightToolBar(renderer);
 
 	transformationToolBar = new TransformationToolBar(renderer);
-	menuBar = new MenuBar(geometryToolBar, imageToolBar, drawToolBar, cameraToolBar);
+	menuBar = new MenuBar(geometryToolBar, imageToolBar, drawToolBar, cameraToolBar, lightToolBar);
 
 	menuBar->setup();
 	transformationToolBar->setup();
@@ -18,6 +19,7 @@ void ofApp::setup() {
 	cameraToolBar->setup();
 	imageToolBar->setup();
 	drawToolBar->setup();
+	lightToolBar->setup();
 	renderer->setup();
 
 }
@@ -36,6 +38,7 @@ void ofApp::draw() {
 	imageToolBar->draw();
 	drawToolBar->draw();
 	cameraToolBar->draw();
+	lightToolBar->draw();
 	renderer->draw();
 
 }

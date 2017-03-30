@@ -17,10 +17,6 @@ void Renderer::setup()
 	}
 	ofClear(255, 255, 255);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
-	ajouterLumiere(ofColor(100, 100, 100));
-	ajouterLumiere(0, ofVec3f(0, 0, 300), ofColor(255, 0, 0)); //point
-	ajouterLumiere(1, ofVec3f(45, 45, 0), ofColor(0, 255, 0)); //direction
-	ajouterLumiere(ofVec3f(0, 300, 0), ofVec3f(0, 0, 0), ofColor(0, 0, 255)); //spot
 	fbo.end();
 	
 }
