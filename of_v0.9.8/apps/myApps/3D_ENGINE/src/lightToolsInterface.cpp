@@ -13,6 +13,10 @@ LightToolBar::LightToolBar(Renderer* p_renderer) :
 	m_directionnelButton.addListener(this, &LightToolBar::directionel);
 	m_pointButton.addListener(this, &LightToolBar::point);
 	m_spotButton.addListener(this, &LightToolBar::spot);
+	m_glaceButton.addListener(this, &LightToolBar::materialGlace);
+	m_natureButton.addListener(this, &LightToolBar::materialNature);
+	m_magmaButton.addListener(this, &LightToolBar::materialMagma);
+	m_luneButton.addListener(this, &LightToolBar::materialLune);
 }
 
 void LightToolBar::setup() {
@@ -23,6 +27,10 @@ void LightToolBar::setup() {
 	m_lightPanel.add(m_directionnelButton.setup("Lumiere directionnelle"));
 	m_lightPanel.add(m_pointButton.setup("Lumiere point"));
 	m_lightPanel.add(m_spotButton.setup("Lumiere spotlight"));
+	m_lightPanel.add(m_glaceButton.setup("Materiaux glace"));
+	m_lightPanel.add(m_natureButton.setup("Materiaux nature"));
+	m_lightPanel.add(m_magmaButton.setup("Materiaux magma"));
+	m_lightPanel.add(m_luneButton.setup("Materiaux lune"));
 
 
 	m_lightPanel.setSize(200, 200);
@@ -30,6 +38,10 @@ void LightToolBar::setup() {
 	m_directionnelButton.setSize(200, 15);
 	m_pointButton.setSize(200, 15);
 	m_spotButton.setSize(200, 15);
+	m_glaceButton.setSize(200, 15);
+	m_natureButton.setSize(200, 15);
+	m_magmaButton.setSize(200, 15);
+	m_luneButton.setSize(200, 15);
 
 
 }
@@ -233,5 +245,57 @@ void LightToolBar::fermerBoiteSpot() {
 	m_confirm.removeListener(this, &LightToolBar::fermerBoiteSpot);
 
 	ouvert_boite = false;
+
+}
+
+void LightToolBar::materialGlace() {
+
+	ofMaterial material;
+
+	material.setSpecularColor(ofColor(255, 255, 255));
+	material.setDiffuseColor(ofColor(43, 250, 250));
+	material.setAmbientColor(ofColor(128, 208, 208));
+	material.setShininess(10);
+
+	m_renderer->setMaterial(material);
+
+}
+
+void LightToolBar::materialNature() {
+
+	ofMaterial material;
+
+	material.setSpecularColor(ofColor(151, 223, 198));
+	material.setDiffuseColor(ofColor(58, 242, 75));
+	material.setAmbientColor(ofColor(58, 137, 35));
+	material.setShininess(9);
+
+	m_renderer->setMaterial(material);
+
+}
+
+void LightToolBar::materialMagma() {
+
+	ofMaterial material;
+
+	material.setSpecularColor(ofColor(204, 78, 92));
+	material.setDiffuseColor(ofColor(247, 35, 12));
+	material.setAmbientColor(ofColor(188, 32, 1));
+	material.setShininess(8);
+
+	m_renderer->setMaterial(material);
+
+}
+
+void LightToolBar::materialLune() {
+
+	ofMaterial material;
+
+	material.setSpecularColor(ofColor(239, 239, 239));
+	material.setDiffuseColor(ofColor(199, 208, 204));
+	material.setAmbientColor(ofColor(103, 113, 121));
+	material.setShininess(10);
+
+	m_renderer->setMaterial(material);
 
 }

@@ -24,6 +24,10 @@ public:
 	void directionel();
 	void point();
 	void spot();
+	void materialGlace();
+	void materialNature();
+	void materialMagma();
+	void materialLune();
 	void fermerBoiteAmbient();
 	void fermerBoiteDirection();
 	void fermerBoiteSpot();
@@ -37,6 +41,10 @@ private:
 	ofxButton m_directionnelButton;
 	ofxButton m_pointButton;
 	ofxButton m_spotButton;
+	ofxButton m_glaceButton;
+	ofxButton m_natureButton;
+	ofxButton m_magmaButton;
+	ofxButton m_luneButton;
 	Renderer* m_renderer;
 
 	int type;

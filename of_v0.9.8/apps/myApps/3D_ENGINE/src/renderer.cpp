@@ -16,6 +16,8 @@ void Renderer::setup()
 		geometryObjectContainer[i]->setup();
 	}
 	ofClear(255, 255, 255);
+	ofSetGlobalAmbientColor(ofColor(150,150,150));
+	ofSetSmoothLighting(true);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
 	
@@ -54,6 +56,11 @@ void Renderer::ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor coule
 	lumiereContainer.push_back(lumiere);
 }
 
+void Renderer::setMaterial(ofMaterial material) {
+
+	mate = material;
+}
+
 void Renderer::draw()
 {
 	if (!drawingToolActivated) {
@@ -74,23 +81,14 @@ void Renderer::draw()
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
 		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
-		//data.lightType = OF_LIGHT_DIRECTIONAL;
-		//data.direction = ofVec3f(0, 1, 0);
-		//lumiere.setup();
-		//lumiere.setDirectional();
-		//ofSetGlobalAmbientColor(ofColor(255, 255, 255));
-		//lumiere.setAmbientColor(ofColor(150,100,200));
-		//lumiere.setSpotlightCutOff(50);
-		//lumiere.setOrientation();
-		//lumiere.setAmbientColor(ofColor(150, 100, 200));
-		//lumiere.setDiffuseColor(ofColor(200, 200, 150));
-		//lumiere.setAreaLight(100,100);
 		for (int i = 0; i<lumiereContainer.size(); i++) {
 			lumiereContainer[i].enable();
 		}
 		cameraObject->cam.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
+			mate.begin();
 			geometryObjectContainer[i]->draw();
+			mate.end();
 		}
 		cameraObject->cam.end();
 		for (int i = 0; i<lumiereContainer.size(); i++) {

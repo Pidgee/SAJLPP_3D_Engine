@@ -28,6 +28,7 @@ public:
 	void ajouterLumiere(ofColor couleur);
 	void ajouterLumiere(int type, ofVec3f position, ofColor couleur);
 	void ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor couleur);
+	void setMaterial(ofMaterial materiau);
 
 	//getters
 	std::vector<GeometryObject*>* getObjects();
@@ -75,6 +76,8 @@ private:
 	CameraObject* cameraObject;
 	Drawing* drawing;
 	bool drawingToolActivated;
+
+	ofMaterial mate;
 };
 
 	
