@@ -16,7 +16,8 @@ void Renderer::setup()
 		geometryObjectContainer[i]->setup();
 	}
 	ofClear(255, 255, 255);
-	ofSetGlobalAmbientColor(ofColor(150,150,150));
+	ofEnableLighting();
+	ofSetGlobalAmbientColor(ofColor(255,255,255));
 	ofSetSmoothLighting(true);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
