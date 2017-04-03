@@ -38,6 +38,7 @@ void Renderer::ajouterLumiere(int type, ofVec3f vecteur, ofColor couleur) {
 		lumiere.setPointLight();
 		lumiere.setPosition(vecteur);
 		lumiere.setDiffuseColor(couleur);
+		lumiere.setAttenuation(1.0, 0.002, 0.000003);
 	}
 	else if (type == 1) {
 		lumiere.setDirectional();
@@ -53,6 +54,8 @@ void Renderer::ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor coule
 	lumiere.setPosition(position);
 	lumiere.lookAt(direction);
 	lumiere.setDiffuseColor(couleur);
+	lumiere.setAttenuation(1.0, 0.002, 0.000003);
+	lumiere.setSpotlightCutOff(30);
 	lumiereContainer.push_back(lumiere);
 }
 
