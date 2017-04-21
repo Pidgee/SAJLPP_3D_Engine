@@ -26,7 +26,7 @@ void imageObjet::draw()
 }
 
 void imageObjet::rotateX(float x) {
-	float angle = x*M_2_PI/360;
+	float angle = x*M_TWO_PI/360;
 
 	p1.set(p1.x, p1.y* cos(angle) + p1.z * sin(angle), p1.z *cos(angle) - p1.y*sin(angle));
 	p2.set(p2.x, p2.y* cos(angle) + p2.z * sin(angle), p2.z *cos(angle) - p2.y*sin(angle));
@@ -36,7 +36,7 @@ void imageObjet::rotateX(float x) {
 }
 
 void imageObjet::rotateY(float y) {
-	float angle = y*M_2_PI/360;
+	float angle = y*M_TWO_PI /360;
 
 
 	p1.set(p1.x* cos(angle) + p1.z * sin(angle), p1.y, p1.z *cos(angle) - p1.x*sin(angle));
@@ -47,7 +47,7 @@ void imageObjet::rotateY(float y) {
 }
 
 void imageObjet::rotateZ(float z) {
-	float angle = z*M_2_PI/360;
+	float angle = z*M_TWO_PI /360;
 
 
 	p1.set(p1.x * cos(angle) + p1.y * sin(angle), p1.y*cos(angle) - p1.x*sin(angle), p1.z);
