@@ -1,4 +1,4 @@
-﻿#include "renderer.h"
+#include "renderer.h"
 #include <string>
 
 
@@ -15,12 +15,53 @@ void Renderer::setup()
 		geometryObjectContainer[i]->setup();
 	}
 	ofClear(255, 255, 255);
+	ofEnableLighting();
+	ofSetGlobalAmbientColor(ofColor(255,255,255));
+	ofSetSmoothLighting(true);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
 	
 }
 
 void Renderer::update(){
+}
+
+void Renderer::ajouterLumiere(ofColor couleur) {
+	ofLight lumiere;
+	lumiere.setAmbientColor(couleur);
+	lumiereContainer.push_back(lumiere);
+}
+
+void Renderer::ajouterLumiere(int type, ofVec3f vecteur, ofColor couleur) {
+	ofLight lumiere;
+	if (type == 0) {
+		lumiere.setPointLight();
+		lumiere.setPosition(vecteur);
+		lumiere.setDiffuseColor(couleur);
+		lumiere.setAttenuation(1.0, 0.002, 0.000003);
+	}
+	else if (type == 1) {
+		lumiere.setDirectional();
+		lumiere.setOrientation(vecteur);
+		lumiere.setDiffuseColor(couleur);
+	}
+	lumiereContainer.push_back(lumiere);
+}
+
+void Renderer::ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor couleur) {
+	ofLight lumiere;
+	lumiere.setSpotlight();
+	lumiere.setPosition(position);
+	lumiere.lookAt(direction);
+	lumiere.setDiffuseColor(couleur);
+	lumiere.setAttenuation(1.0, 0.002, 0.000003);
+	lumiere.setSpotlightCutOff(30);
+	lumiereContainer.push_back(lumiere);
+}
+
+void Renderer::setMaterial(ofMaterial material) {
+
+	mate = material;
 }
 
 void Renderer::draw()
@@ -30,9 +71,12 @@ void Renderer::draw()
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
 		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
+
 		cam.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
+			mate.begin();
 			geometryObjectContainer[i]->draw();
+			mate.end();
 		}
 		cam.end();
 		ofDisableDepthTest();

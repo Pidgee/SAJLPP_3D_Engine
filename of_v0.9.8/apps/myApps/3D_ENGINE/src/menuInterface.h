@@ -10,6 +10,7 @@
 #include "imageToolsInterface.h"
 #include "drawToolsInterface.h"
 #include "cameraToolsInterface.h"
+#include "lightToolsInterface.h"
 
 #ifndef SRC_MENUINTERFACE_H_
 #define SRC_MENUINTERFACE_H_
@@ -19,7 +20,7 @@ class MenuBar
 public:
 
 	MenuBar( GeometryToolBar* p_geoToolBar,
-			ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, CameraToolBar* p_camToolBar);
+			ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, CameraToolBar* p_camToolBar, LightToolBar* p_lghToolBar);
 
 	void setup();
 	void draw();
@@ -27,6 +28,7 @@ public:
 	void imgToolsClicked();
 	void drwToolsClicked();
 	void camToolsClicked();
+	void lghToolsClicked();
 
 
 private:
@@ -35,10 +37,12 @@ private:
 	ofxButton m_drawTools;
 	ofxButton m_imageTools;
 	ofxButton m_cameraTools;
+	ofxButton m_lightTools;
 	GeometryToolBar* m_geoToolBar;
 	ImageToolBar* m_imgToolBar;
 	DrawToolBar* m_drwToolBar;
 	CameraToolBar* m_camToolBar;
+	LightToolBar* m_lghToolBar;
 
 
 };

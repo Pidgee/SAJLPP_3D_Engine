@@ -8,13 +8,14 @@
 
 
 MenuBar::MenuBar(GeometryToolBar* p_geoToolBar,
-		ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, CameraToolBar* p_camToolBar):
-		m_geoToolBar(p_geoToolBar), m_imgToolBar(p_imgToolBar), m_drwToolBar(p_drwToolBar), m_camToolBar(p_camToolBar){
+		ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, CameraToolBar* p_camToolBar, LightToolBar* p_lghToolBar):
+		m_geoToolBar(p_geoToolBar), m_imgToolBar(p_imgToolBar), m_drwToolBar(p_drwToolBar), m_camToolBar(p_camToolBar), m_lghToolBar(p_lghToolBar){
 
 	m_geometryTools.addListener(this, &MenuBar::geoToolsClicked);
 	m_imageTools.addListener(this, &MenuBar::imgToolsClicked);
 	m_drawTools.addListener(this, &MenuBar::drwToolsClicked);
 	m_cameraTools.addListener(this, &MenuBar::camToolsClicked);
+	m_lightTools.addListener(this, &MenuBar::lghToolsClicked);
 }
 
 void MenuBar::setup() {
@@ -40,6 +41,7 @@ void MenuBar::setup() {
 void MenuBar::draw() {
 	m_menuPanel.draw();
 	m_camToolBar->show();
+	m_lghToolBar->show();
 }
 
 
@@ -64,4 +66,8 @@ void MenuBar::drwToolsClicked() {
 
 void MenuBar::camToolsClicked() {
 	m_camToolBar->show();
+}
+
+void MenuBar::lghToolsClicked() {
+	m_lghToolBar->show();
 }
