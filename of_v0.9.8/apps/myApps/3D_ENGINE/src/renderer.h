@@ -8,7 +8,6 @@
 #include "geometryPrimitive.h"
 #include "drawing.h"
 #include "imageObjet.h"
-#include "cameraObject.h"
 
 class Renderer
 {
@@ -23,13 +22,10 @@ public:
 	void update();
 	void draw();
 
-	CameraObject* getCamera();
-
 	void ajouterLumiere(ofColor couleur);
 	void ajouterLumiere(int type, ofVec3f position, ofColor couleur);
 	void ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor couleur);
 	void setMaterial(ofMaterial materiau);
-
 	//getters
 	std::vector<GeometryObject*>* getObjects();
 	int getNumberOfObjects();
@@ -72,8 +68,9 @@ public:
 private:
 	//geometryObject container
 	std::vector<GeometryObject*> geometryObjectContainer;
+
 	std::vector<ofLight> lumiereContainer;
-	CameraObject* cameraObject;
+
 	Drawing* drawing;
 	bool drawingToolActivated;
 

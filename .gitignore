@@ -18,7 +18,7 @@
 x64/
 x86/
 bld/
-[Bb]in/
+#[Bb]in/
 [Oo]bj/
 [Ll]og/
 
@@ -269,21 +269,25 @@ of_v0.9.8/CODE_OF_CONDUCT.md
 of_v0.9.8/INSTALL.md
 of_v0.9.8/LICENSE.md
 of_v0.9.8/README.md
-of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.sln
-of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE/
+#of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.sln
+#of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE
 of_v0.9.8/projectGenerator-vs/
-of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.vcxproj
-of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.vcxproj.filters
-of_v0.9.8/apps/myApps/3D_ENGINE/icon.rc
-of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.qbs
+#of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.vcxproj
+#of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.vcxproj.filters
+#of_v0.9.8/apps/myApps/3D_ENGINE/icon.rc
+#of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.qbs
 
 
 
 
 #MyApps metadata
 of_v0.9.8/apps/myApps/3D_ENGINE/.settings/
-of_v0.9.8/apps/myApps/3D_ENGINE/bin/
+of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.qbs
 of_v0.9.8/apps/myApps/3D_ENGINE/obj/
+of_v0.9.8/apps/myApps/3D_ENGINE/bin/*
+!of_v0.9.8/apps/myApps/3D_ENGINE/bin/data/
+of_v0.9.8/apps/myApps/3D_ENGINE/bin/data/*
+!of_v0.9.8/apps/myApps/3D_ENGINE/bin/data/shaders/
 of_v0.9.8/apps/myApps/3D_ENGINE/.cproject
 of_v0.9.8/apps/myApps/3D_ENGINE/.project
 of_v0.9.8/apps/myApps/3D_ENGINE/addons.make
@@ -291,5 +295,4 @@ of_v0.9.8/apps/myApps/3D_ENGINE/config.make
 of_v0.9.8/apps/myApps/3D_ENGINE/Makefile
 of_v0.9.8/apps/myApps/3D_ENGINE/qtcreator.qbs
 of_v0.9.8/apps/myApps/3D_ENGINE/template.xml
-
 

@@ -1,9 +1,8 @@
-﻿#include "renderer.h"
+#include "renderer.h"
 #include <string>
 
 
-Renderer::Renderer():cameraObject(new CameraObject()), drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {
-	cameraObject->setup();
+Renderer::Renderer(): drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {
 }
 
 
@@ -25,7 +24,6 @@ void Renderer::setup()
 }
 
 void Renderer::update(){
-	cameraObject->update();
 }
 
 void Renderer::ajouterLumiere(ofColor couleur) {
@@ -69,36 +67,18 @@ void Renderer::setMaterial(ofMaterial material) {
 void Renderer::draw()
 {
 	if (!drawingToolActivated) {
-		/*fbo.begin();
-		ofEnableDepthTest();
-		ofClear(255, 255, 255);
-		ofBackground(255, 255, 255);
-		cam.begin();
-		for (int i = 0; i<geometryObjectContainer.size(); i++) {
-			geometryObjectContainer[i]->draw();
-		}
-		cam.end();
-		ofDisableDepthTest();
-		fbo.end();
-		fbo.draw(160, 90);
-		*/
 		fbo.begin();
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
 		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
-		for (int i = 0; i<lumiereContainer.size(); i++) {
-			lumiereContainer[i].enable();
-		}
-		cameraObject->cam.begin();
+
+		cam.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
 			mate.begin();
 			geometryObjectContainer[i]->draw();
 			mate.end();
 		}
-		cameraObject->cam.end();
-		for (int i = 0; i<lumiereContainer.size(); i++) {
-			lumiereContainer[i].disable();
-		}
+		cam.end();
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
@@ -239,8 +219,6 @@ void Renderer::renderImage(ofImage * image, string nom, int x, int y, int z, ofI
 
 }
 
-/*ParticleCloud* Renderer::renderParticleCloud() {
-}*/
 
 void Renderer::renderDrawing() {
 	drawing = new Drawing();
@@ -338,10 +316,6 @@ int Renderer::getNumberOfObjects() {
 	return geometryObjectContainer.size();
 }
 
-
-CameraObject* Renderer::getCamera() {
-	return cameraObject;
-}
 
 Renderer::~Renderer(){
 }
