@@ -8,6 +8,18 @@ Renderer::Renderer(): drawingToolActivated(false), lineCursorActivated(false), t
 
 void Renderer::setup()
 {
+
+#ifdef TARGET_OPENGLES
+	simpleColorShader.load("shaders/shader120");
+#else
+	if(ofIsGLProgrammableRenderer()){
+		simpleColorShader.load("shaders/shader150");
+	}else{
+		simpleColorShader.load("shaders/shader120");
+	}
+#endif
+
+
 	fbo.allocate(1280, 720);
 	fbo.begin();
 	
@@ -17,8 +29,10 @@ void Renderer::setup()
 	ofClear(255, 255, 255);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
-	
 }
+
+
+
 
 void Renderer::update(){
 }
@@ -31,9 +45,11 @@ void Renderer::draw()
 		ofClear(255, 255, 255);
 		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 		cam.begin();
+		simpleColorShader.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
 			geometryObjectContainer[i]->draw();
 		}
+		simpleColorShader.end();
 		cam.end();
 		ofDisableDepthTest();
 		fbo.end();

@@ -66,6 +66,8 @@ private:
 	std::vector<GeometryObject*> geometryObjectContainer;
 	Drawing* drawing;
 	bool drawingToolActivated;
+
+	ofShader simpleColorShader;
 };
 
 	

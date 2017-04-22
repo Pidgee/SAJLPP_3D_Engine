@@ -9,7 +9,7 @@
 #include "geometryToolsInterface.h"
 #include "imageToolsInterface.h"
 #include "drawToolsInterface.h"
-#include "cameraToolsInterface.h"
+#include "shaderToolsInterface.h"
 
 #ifndef SRC_MENUINTERFACE_H_
 #define SRC_MENUINTERFACE_H_
@@ -18,8 +18,7 @@ class MenuBar
 {
 public:
 
-	MenuBar( GeometryToolBar* p_geoToolBar,
-			ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, CameraToolBar* p_camToolBar);
+	MenuBar(GeometryToolBar* p_geoToolBar, ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, ShaderToolBar* p_shaderToolBar);
 
 	void setup();
 	void draw();
@@ -34,11 +33,11 @@ private:
 	ofxButton m_geometryTools;
 	ofxButton m_drawTools;
 	ofxButton m_imageTools;
-	ofxButton m_cameraTools;
+	ofxButton m_shaderTools;
 	GeometryToolBar* m_geoToolBar;
 	ImageToolBar* m_imgToolBar;
 	DrawToolBar* m_drwToolBar;
-	CameraToolBar* m_camToolBar;
+	ShaderToolBar* m_shaderToolBar;
 
 
 };
