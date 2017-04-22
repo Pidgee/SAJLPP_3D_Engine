@@ -29,8 +29,9 @@ void Renderer::update(){
 }
 
 void Renderer::ajouterLumiere(ofColor couleur) {
-	ofSetGlobalAmbientColor(couleur);
-	ofSetSmoothLighting(true);
+	ofLight lumiere;
+	lumiere.setAmbientColor(couleur);
+	lumiereContainer.push_back(lumiere);
 }
 
 void Renderer::ajouterLumiere(int type, ofVec3f vecteur, ofColor couleur) {
