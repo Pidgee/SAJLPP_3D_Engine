@@ -2,8 +2,7 @@
 #include <string>
 
 
-Renderer::Renderer():cameraObject(new CameraObject()), drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {
-	cameraObject->setup();
+Renderer::Renderer(): drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {
 }
 
 
@@ -22,34 +21,20 @@ void Renderer::setup()
 }
 
 void Renderer::update(){
-	cameraObject->update();
 }
 
 void Renderer::draw()
 {
 	if (!drawingToolActivated) {
-		/*fbo.begin();
+		fbo.begin();
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
-		ofBackground(255, 255, 255);
+		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 		cam.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
 			geometryObjectContainer[i]->draw();
 		}
 		cam.end();
-		ofDisableDepthTest();
-		fbo.end();
-		fbo.draw(160, 90);
-		*/
-		fbo.begin();
-		ofEnableDepthTest();
-		ofClear(255, 255, 255);
-		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
-		cameraObject->cam.begin();
-		for (int i = 0; i<geometryObjectContainer.size(); i++) {
-			geometryObjectContainer[i]->draw();
-		}
-		cameraObject->cam.end();
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
@@ -287,10 +272,6 @@ int Renderer::getNumberOfObjects() {
 	return geometryObjectContainer.size();
 }
 
-
-CameraObject* Renderer::getCamera() {
-	return cameraObject;
-}
 
 Renderer::~Renderer(){
 }
