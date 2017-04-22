@@ -67,11 +67,14 @@ void Renderer::setMaterial(ofMaterial material) {
 void Renderer::draw()
 {
 	if (!drawingToolActivated) {
+
 		fbo.begin();
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
 		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
-
+		for (int i = 0; i<lumiereContainer.size(); i++) {
+			lumiereContainer[i].enable();
+		}
 		cam.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
 			mate.begin();
@@ -79,24 +82,26 @@ void Renderer::draw()
 			mate.end();
 		}
 		cam.end();
+		for (int i = 0; i<lumiereContainer.size(); i++) {
+			lumiereContainer[i].disable();
+		}
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
 
 	}
-	else if (drawingToolActivated) {
-		drawing->draw();
-		if (lineCursorActivated) {
-			drawing->drawLineCursor(xMouseCurrent, yMouseCurrent);
-		}
-		else if (triangleCursorActivated) {
-			drawing->drawTriangleCursor(xMouseCurrent, yMouseCurrent);
-		}
-		else if (circleCursorActivated) {
-			drawing->drawCircleCursor(xMouseCurrent, yMouseCurrent);
-		}
+		else if (drawingToolActivated) {
+			drawing->draw();
+			if (lineCursorActivated) {
+				drawing->drawLineCursor(xMouseCurrent, yMouseCurrent);
+			}
+			else if (triangleCursorActivated) {
+				drawing->drawTriangleCursor(xMouseCurrent, yMouseCurrent);
+			}
+			else if (circleCursorActivated) {
+				drawing->drawCircleCursor(xMouseCurrent, yMouseCurrent);
+			}
 	}
-
 }
 
 ofVec3f convertionRGB_HSV(ofColor couleur) {
