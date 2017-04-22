@@ -12,8 +12,6 @@ void CameraToolBar::setup() {
 	m_cameraPanel.setPosition(5, 760);
 	m_cameraPanel.setSize(150, 200);
 
-
-
 }
 
 

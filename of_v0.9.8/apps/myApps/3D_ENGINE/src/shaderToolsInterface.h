@@ -10,6 +10,10 @@
 #ifndef SRC_SHADERTOOLSINTERFACE_H_
 #define SRC_SHADERTOOLSINTERFACE_H_
 
+class ShaderToolBar (Renderer* p_renderer){
+
+}
+
 
 
 
