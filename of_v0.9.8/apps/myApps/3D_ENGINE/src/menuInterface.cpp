@@ -7,13 +7,15 @@
 #include "menuInterface.h"
 
 
-MenuBar::MenuBar(GeometryToolBar* p_geoToolBar, ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, ShaderToolBar* p_shaderToolBar):
-		m_geoToolBar(p_geoToolBar), m_imgToolBar(p_imgToolBar), m_drwToolBar(p_drwToolBar), m_shaderToolBar(p_shaderToolBar){
 
+MenuBar::MenuBar(GeometryToolBar* p_geoToolBar,
+		ImageToolBar* p_imgToolBar, DrawToolBar* p_drwToolBar, ShaderToolBar* p_shaderToolBar, LightToolBar* p_lghToolBar):
+		m_geoToolBar(p_geoToolBar), m_imgToolBar(p_imgToolBar), m_drwToolBar(p_drwToolBar),  m_shaderToolBar(p_shaderToolBar), m_lghToolBar(p_lghToolBar){
 	m_geometryTools.addListener(this, &MenuBar::geoToolsClicked);
 	m_imageTools.addListener(this, &MenuBar::imgToolsClicked);
 	m_drawTools.addListener(this, &MenuBar::drwToolsClicked);
 	m_shaderTools.addListener(this, &MenuBar::camToolsClicked);
+	m_lightTools.addListener(this, &MenuBar::lghToolsClicked);
 }
 
 void MenuBar::setup() {
@@ -38,6 +40,7 @@ void MenuBar::setup() {
 
 void MenuBar::draw() {
 	m_menuPanel.draw();
+	m_lghToolBar->show();
 }
 
 
@@ -68,4 +71,8 @@ void MenuBar::camToolsClicked() {
 	m_drwToolBar->hide();
 	m_imgToolBar->hide();
 	m_shaderToolBar->show();
+}
+
+void MenuBar::lghToolsClicked() {
+	m_lghToolBar->show();
 }

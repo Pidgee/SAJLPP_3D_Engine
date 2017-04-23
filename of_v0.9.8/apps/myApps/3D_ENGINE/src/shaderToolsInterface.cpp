@@ -40,8 +40,5 @@ void ShaderToolBar::hide() {
 }
 
 void ShaderToolBar::colorShader() {
-	//TODO
-	std::cout<<"Hello"<<std::endl;
-
-
+	m_renderer->enableColorShader();
 }

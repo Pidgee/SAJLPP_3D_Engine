@@ -8,9 +8,10 @@ void ofApp::setup() {
 	shaderToolBar = new ShaderToolBar(renderer);
 	imageToolBar = new ImageToolBar(renderer);
 	drawToolBar = new DrawToolBar(renderer);
+	lightToolBar = new LightToolBar(renderer);
 
 	transformationToolBar = new TransformationToolBar(renderer);
-	menuBar = new MenuBar(geometryToolBar, imageToolBar, drawToolBar, shaderToolBar);
+	menuBar = new MenuBar(geometryToolBar, imageToolBar, drawToolBar, shaderToolBar, lightToolBar);
 
 	menuBar->setup();
 	transformationToolBar->setup();
@@ -18,6 +19,7 @@ void ofApp::setup() {
 	shaderToolBar->setup();
 	imageToolBar->setup();
 	drawToolBar->setup();
+	lightToolBar->setup();
 	renderer->setup();
 
 }
@@ -36,6 +38,7 @@ void ofApp::draw() {
 	imageToolBar->draw();
 	drawToolBar->draw();
 	shaderToolBar->draw();
+	lightToolBar->draw();
 	renderer->draw();
 
 }

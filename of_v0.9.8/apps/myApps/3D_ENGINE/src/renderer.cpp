@@ -1,8 +1,9 @@
-﻿#include "renderer.h"
+#include "renderer.h"
 #include <string>
 
 
-Renderer::Renderer(): drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {
+Renderer::Renderer(): drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false),
+materialsEnabled(true), colorShaderEnabled(true) {
 }
 
 
@@ -20,13 +21,16 @@ void Renderer::setup()
 #endif
 
 
-	fbo.allocate(1280, 720);
+	fbo.allocate(1200, 720);
 	fbo.begin();
 	
 	for (unsigned int i = 0; i<geometryObjectContainer.size(); i++) {
 		geometryObjectContainer[i]->setup();
 	}
 	ofClear(255, 255, 255);
+	ofEnableLighting();
+	ofSetGlobalAmbientColor(ofColor(255,255,255));
+	ofSetSmoothLighting(true);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
 }
@@ -37,38 +41,94 @@ void Renderer::setup()
 void Renderer::update(){
 }
 
+void Renderer::ajouterLumiere(ofColor couleur) {
+	ofLight lumiere;
+	lumiere.setAmbientColor(couleur);
+	lumiereContainer.push_back(lumiere);
+}
+
+void Renderer::ajouterLumiere(int type, ofVec3f vecteur, ofColor couleur) {
+	ofLight lumiere;
+	if (type == 0) {
+		lumiere.setPointLight();
+		lumiere.setPosition(vecteur);
+		lumiere.setDiffuseColor(couleur);
+		lumiere.setAttenuation(1.0, 0.002, 0.000003);
+	}
+	else if (type == 1) {
+		lumiere.setDirectional();
+		lumiere.setOrientation(vecteur);
+		lumiere.setDiffuseColor(couleur);
+	}
+	lumiereContainer.push_back(lumiere);
+}
+
+void Renderer::ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor couleur) {
+	ofLight lumiere;
+	lumiere.setSpotlight();
+	lumiere.setPosition(position);
+	lumiere.lookAt(direction);
+	lumiere.setDiffuseColor(couleur);
+	lumiere.setAttenuation(1.0, 0.002, 0.000003);
+	lumiere.setSpotlightCutOff(30);
+	lumiereContainer.push_back(lumiere);
+}
+
+void Renderer::setMaterial(ofMaterial material) {
+
+	mate = material;
+	materialsEnabled=true;
+	colorShaderEnabled = false;
+
+
+}
+
 void Renderer::draw()
 {
 	if (!drawingToolActivated) {
+
 		fbo.begin();
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
 		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 		cam.begin();
-		simpleColorShader.begin();
+		for (int i = 0; i<lumiereContainer.size(); i++) {
+			lumiereContainer[i].enable();
+		}
+		if (colorShaderEnabled)
+			simpleColorShader.begin();
+		else
+			mate.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
 			geometryObjectContainer[i]->draw();
+
 		}
-		simpleColorShader.end();
+		if (colorShaderEnabled)
+			simpleColorShader.end();
+		else
+			mate.end();
+
+		for (int i = 0; i<lumiereContainer.size(); i++) {
+			lumiereContainer[i].disable();
+		}
 		cam.end();
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
 
 	}
-	else if (drawingToolActivated) {
-		drawing->draw();
-		if (lineCursorActivated) {
-			drawing->drawLineCursor(xMouseCurrent, yMouseCurrent);
-		}
-		else if (triangleCursorActivated) {
-			drawing->drawTriangleCursor(xMouseCurrent, yMouseCurrent);
-		}
-		else if (circleCursorActivated) {
-			drawing->drawCircleCursor(xMouseCurrent, yMouseCurrent);
-		}
+		else if (drawingToolActivated) {
+			drawing->draw();
+			if (lineCursorActivated) {
+				drawing->drawLineCursor(xMouseCurrent, yMouseCurrent);
+			}
+			else if (triangleCursorActivated) {
+				drawing->drawTriangleCursor(xMouseCurrent, yMouseCurrent);
+			}
+			else if (circleCursorActivated) {
+				drawing->drawCircleCursor(xMouseCurrent, yMouseCurrent);
+			}
 	}
-
 }
 
 ofVec3f convertionRGB_HSV(ofColor couleur) {
@@ -288,6 +348,15 @@ int Renderer::getNumberOfObjects() {
 	return geometryObjectContainer.size();
 }
 
+void Renderer::enableMaterials() {
+	colorShaderEnabled = false;
+	materialsEnabled = true;
+}
+
+void Renderer::enableColorShader() {
+	materialsEnabled = false;
+	colorShaderEnabled = true;
+}
 
 Renderer::~Renderer(){
 }

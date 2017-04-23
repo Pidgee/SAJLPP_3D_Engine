@@ -22,6 +22,10 @@ public:
 	void update();
 	void draw();
 
+	void ajouterLumiere(ofColor couleur);
+	void ajouterLumiere(int type, ofVec3f position, ofColor couleur);
+	void ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor couleur);
+	void setMaterial(ofMaterial materiau);
 	//getters
 	std::vector<GeometryObject*>* getObjects();
 	int getNumberOfObjects();
@@ -41,6 +45,9 @@ public:
 	void renderCone();
 	void renderModel(string path, string name);
 	void renderProcedural(string path, string name);
+
+	void enableMaterials();
+	void enableColorShader();
 
 	void drawLine(float x1, float y1, float x2, float y2);
 	void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3);
@@ -64,10 +71,18 @@ public:
 private:
 	//geometryObject container
 	std::vector<GeometryObject*> geometryObjectContainer;
+
+	std::vector<ofLight> lumiereContainer;
+
 	Drawing* drawing;
 	bool drawingToolActivated;
 
+	bool materialsEnabled;
+
+	bool colorShaderEnabled;
+
 	ofShader simpleColorShader;
+	ofMaterial mate;
 };
 
 	

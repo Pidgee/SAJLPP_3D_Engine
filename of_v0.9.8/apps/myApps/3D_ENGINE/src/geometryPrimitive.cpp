@@ -132,6 +132,7 @@ std::string GeometryPrimitive::id() {
 		return "Cone";
 	}
 	else {
+		return "";
 
 	}
 }
