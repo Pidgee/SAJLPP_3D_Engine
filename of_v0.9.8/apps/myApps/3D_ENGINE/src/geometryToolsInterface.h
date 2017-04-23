@@ -31,6 +31,11 @@ public:
 	void renderProcedural();
 	void renderModel();
 
+	void renderBezierQuad();
+	void renderBezierCubic();
+	void renderBezierSix();
+	void renderHermiteCurve();
+
 private:
 	ofxPanel m_geometryPanel;
 	ofxButton m_particleCloudButton;
@@ -40,6 +45,12 @@ private:
 	ofxButton m_coneButton;
 	ofxButton m_proceduralButton;
 	ofxButton m_loadModelButton;
+
+	ofxButton m_bezierQuadButton;
+	ofxButton m_bezierCubicButton;
+	ofxButton m_bezierSixButton;
+	ofxButton m_hermiteCurveButton;
+
 	Renderer* m_renderer;
 	bool visible;
 

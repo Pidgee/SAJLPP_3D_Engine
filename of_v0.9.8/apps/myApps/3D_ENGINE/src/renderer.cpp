@@ -312,6 +312,32 @@ void Renderer::renderTransformation(float rotX, float rotY, float rotZ, float tr
 	}
 }
 
+//Parametric Curves
+void Renderer::renderBezierCubic()
+{
+	ParametricCurve* bezierCubic = new ParametricCurve("bezier_cubic");
+	bezierCubic->setup();
+	geometryObjectContainer.push_back(bezierCubic);
+}
+void Renderer::renderBezierQuad()
+{
+	ParametricCurve* bezierQuad = new ParametricCurve("bezier_quad");
+	bezierQuad->setup();
+	geometryObjectContainer.push_back(bezierQuad);
+}
+void Renderer::renderBezierSix()
+{
+	ParametricCurve* bezierSix = new ParametricCurve("bezier_six");
+	bezierSix->setup();
+	geometryObjectContainer.push_back(bezierSix);
+}
+void Renderer::renderHermiteCurve()
+{
+	ParametricCurve* hermiteCurve = new ParametricCurve("hermite");
+	hermiteCurve->setup();
+	geometryObjectContainer.push_back(hermiteCurve);
+}
+
 
 std::vector<GeometryObject*>* Renderer::getObjects() {
 	return &geometryObjectContainer;
