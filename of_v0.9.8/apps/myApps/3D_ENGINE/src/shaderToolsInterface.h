@@ -24,6 +24,7 @@ public:
 	void hide();
 	void colorShader();
 	void displacementShader();
+	void blurShader();
 	void disableShaders();
 
 private:
@@ -31,13 +32,11 @@ private:
 	ofxButton m_noShader;
 	ofxButton m_colorShaderButton;
 	ofxButton m_displacementShaderButton;
+	ofxButton m_blurShaderButton;
 	Renderer* m_renderer;
 	bool visible;
 
 };
-
-
-
 
 
 #endif /* SRC_SHADERTOOLSINTERFACE_H_ */

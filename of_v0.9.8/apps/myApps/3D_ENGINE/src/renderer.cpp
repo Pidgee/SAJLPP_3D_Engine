@@ -7,6 +7,7 @@ materialsEnabled(true), colorShaderEnabled(false), displacementShaderEnabled(fal
 }
 
 
+
 void Renderer::setup()
 {
 
@@ -21,6 +22,9 @@ void Renderer::setup()
 	}else{
 		simpleColorShader.load("shaders/shaders120/sinShader");
 		displacementShader.load("shaders/shaders120/disShader");
+		blurShader_1.load("shaders/shaders120/blurShader_1");
+		blurShader_2.load("shaders/shaders120/blurShader_2");
+
 
 	}
 #endif
@@ -38,6 +42,7 @@ void Renderer::setup()
 	ofSetSmoothLighting(true);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
+	secondaryFbo.allocate(1200, 720);
 }
 
 
@@ -360,6 +365,7 @@ int Renderer::getNumberOfObjects() {
 
 void Renderer::enableMaterials() {
 	displacementShaderEnabled = false;
+	blurShaderEnabled=false;
 	colorShaderEnabled = false;
 	materialsEnabled = true;
 }
@@ -367,12 +373,14 @@ void Renderer::enableMaterials() {
 void Renderer::enableColorShader() {
 	displacementShaderEnabled = false;
 	materialsEnabled = false;
+	blurShaderEnabled=false;
 	colorShaderEnabled = true;
 }
 
 void Renderer::enableDisplacementShader() {
 	materialsEnabled = false;
 	colorShaderEnabled = false;
+	blurShaderEnabled=false;
 	displacementShaderEnabled = true;
 }
 
@@ -380,8 +388,17 @@ void Renderer::disableShaders() {
 	materialsEnabled = false;
 	colorShaderEnabled = false;
 	displacementShaderEnabled = false;
+	blurShaderEnabled=false;
+
+}
+void Renderer::enableBlurShader() {
+	materialsEnabled = false;
+	colorShaderEnabled = false;
+	displacementShaderEnabled = false;
+	blurShaderEnabled=true;
 }
 
 Renderer::~Renderer(){
 }
+
 

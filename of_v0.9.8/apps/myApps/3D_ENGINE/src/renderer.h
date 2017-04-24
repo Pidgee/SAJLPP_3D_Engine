@@ -14,6 +14,7 @@ class Renderer
 public:
 
 	ofFbo fbo;
+	ofFbo secondaryFbo;
 	
 	Renderer();
 
@@ -49,6 +50,7 @@ public:
 	void enableMaterials();
 	void enableColorShader();
 	void enableDisplacementShader();
+	void enableBlurShader();
 	void disableShaders();
 
 	void drawLine(float x1, float y1, float x2, float y2);
@@ -82,9 +84,13 @@ private:
 	bool materialsEnabled;
 	bool colorShaderEnabled;
 	bool displacementShaderEnabled;
+	bool blurShaderEnabled;
 
 	ofShader simpleColorShader;
 	ofShader displacementShader;
+	ofShader blurShader_1;
+	ofShader blurShader_2;
+
 
 	ofMaterial mate;
 };

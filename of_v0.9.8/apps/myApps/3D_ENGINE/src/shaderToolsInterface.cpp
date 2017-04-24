@@ -9,9 +9,10 @@
 
 
 ShaderToolBar::ShaderToolBar(Renderer* p_renderer):m_renderer(p_renderer), visible(false), m_colorShaderButton(ofxButton()), m_displacementShaderButton(ofxButton()),
-							m_noShader(ofxButton()){
+							m_noShader(ofxButton()), m_blurShaderButton(ofxButton()){
 	m_colorShaderButton.addListener(this,  &ShaderToolBar::colorShader);
 	m_displacementShaderButton.addListener(this,  &ShaderToolBar::displacementShader);
+	m_blurShaderButton.addListener(this, &ShaderToolBar::blurShader);
 	m_noShader.addListener(this, &ShaderToolBar::disableShaders);
 }
 
@@ -23,11 +24,14 @@ void ShaderToolBar::setup() {
 	m_shaderPanel.add(m_noShader.setup("No Shaders"));
 	m_shaderPanel.add(m_colorShaderButton.setup("Colorful"));
 	m_shaderPanel.add(m_displacementShaderButton.setup("Displacement"));
+	m_shaderPanel.add(m_blurShaderButton.setup("Blur"));
+
 
 	m_shaderPanel.setSize(150,200);
 	m_noShader.setSize(150, 15);
 	m_colorShaderButton.setSize(150,15);
 	m_displacementShaderButton.setSize(150,15);
+	m_blurShaderButton.setSize(150, 15);
 }
 
 void ShaderToolBar::draw() {
@@ -49,6 +53,10 @@ void ShaderToolBar::colorShader() {
 
 void ShaderToolBar::displacementShader() {
 	m_renderer->enableDisplacementShader();
+}
+
+void ShaderToolBar::blurShader() {
+	m_renderer->enableBlurShader();
 }
 
 void ShaderToolBar::disableShaders() {

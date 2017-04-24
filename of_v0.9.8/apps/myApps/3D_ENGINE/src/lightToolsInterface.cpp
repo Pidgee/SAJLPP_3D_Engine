@@ -111,7 +111,7 @@ void LightToolBar::directionel() {
 	
 	m_boiteInfo.setup();
 	m_boiteInfo.setName("Lumiere directionnelle");
-	m_boiteInfo.setPosition(1385, 810);
+	m_boiteInfo.setPosition(1385, 640);
 	m_boiteInfo.setSize(200, 200);
 
 	m_RSlider.setSize(200, 15);
@@ -163,7 +163,7 @@ void LightToolBar::point() {
 
 	m_boiteInfo.setup();
 	m_boiteInfo.setName("Lumiere point");
-	m_boiteInfo.setPosition(1385, 810);
+	m_boiteInfo.setPosition(1385, 640);
 	m_boiteInfo.setSize(200, 200);
 
 	m_RSlider.setSize(200, 15);
@@ -192,7 +192,7 @@ void LightToolBar::spot() {
 
 	m_boiteInfo.setup();
 	m_boiteInfo.setName("Lumiere Spotlight");
-	m_boiteInfo.setPosition(1385, 810);
+	m_boiteInfo.setPosition(1385, 640);
 	m_boiteInfo.setSize(200, 200);
 
 	m_RSlider.setSize(200, 15);
