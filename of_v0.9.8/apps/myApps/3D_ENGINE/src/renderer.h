@@ -70,6 +70,8 @@ public:
 	void renderTransformation(float rotX, float rotY, float rotZ, float transX, float transY, float transZ, float scale);
 	ofEasyCam cam;
 
+	void clearAll();
+
 	~Renderer();
 
 private:
