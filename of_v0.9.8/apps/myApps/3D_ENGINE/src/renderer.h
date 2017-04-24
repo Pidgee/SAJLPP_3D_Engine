@@ -46,6 +46,7 @@ public:
 	void renderModel(string path, string name);
 	void renderProcedural(string path, string name);
 
+	void raytracing();
 	void drawLine(float x1, float y1, float x2, float y2);
 	void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3);
 	void drawCircle(float x1, float y1, float x2, float y2);
