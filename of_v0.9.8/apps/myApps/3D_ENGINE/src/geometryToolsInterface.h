@@ -31,8 +31,11 @@ public:
 	void renderProcedural();
 	void renderModel();
 
+	void clearAll();
+
 private:
 	ofxPanel m_geometryPanel;
+	ofxButton m_clearAllButton;
 	ofxButton m_particleCloudButton;
 	ofxButton m_sphereButton;
 	ofxButton m_cubeButton;
