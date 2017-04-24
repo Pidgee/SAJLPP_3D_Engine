@@ -26,7 +26,7 @@ void TransformationToolBar::setup() {
 	transformGroup.clear();
 	m_transformPanel.setup();
 	m_transformPanel.setName("Transformation");
-	m_transformPanel.setPosition(1445, 90);
+	m_transformPanel.setPosition(1385, 90);
 
 	//add group for selection widgets
 	m_transformPanel.add(selectGroup.setup());
@@ -57,7 +57,7 @@ void TransformationToolBar::setup() {
 
 
 	//set position of toolbar
-	transformGroup.setPosition(1445, 90);
+	transformGroup.setPosition(1385, 90);
 
 	//set size of all toolbar widgets
 	m_transformPanel.setSize(150, 200);

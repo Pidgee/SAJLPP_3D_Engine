@@ -46,6 +46,11 @@ public:
 	void renderModel(string path, string name);
 	void renderProcedural(string path, string name);
 
+	void enableMaterials();
+	void enableColorShader();
+	void enableDisplacementShader();
+	void disableShaders();
+
 	void drawLine(float x1, float y1, float x2, float y2);
 	void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3);
 	void drawCircle(float x1, float y1, float x2, float y2);
@@ -75,6 +80,13 @@ private:
 
 	Drawing* drawing;
 	bool drawingToolActivated;
+
+	bool materialsEnabled;
+	bool colorShaderEnabled;
+	bool displacementShaderEnabled;
+
+	ofShader simpleColorShader;
+	ofShader displacementShader;
 
 	ofMaterial mate;
 };
