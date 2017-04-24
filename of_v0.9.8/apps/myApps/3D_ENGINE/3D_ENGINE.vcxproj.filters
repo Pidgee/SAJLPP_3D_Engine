@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClCompile>
@@ -85,15 +94,31 @@
     <ClCompile Include="src\renderer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\transformToolsInterface.cpp">
       <Filter>src</Filter>
     </ClCompile>
+=======
+    <ClCompile Include="src\shaderToolsInterface.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transformToolsInterface.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\parametricCurve.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\parametricMesh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons">
+<<<<<<< HEAD
       <UniqueIdentifier>{43acaab9-bd9f-482c-a284-55ca73b47bc0}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxAssimpModelLoader">
@@ -125,6 +150,42 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+=======
+      <UniqueIdentifier>{f65c037c-26c4-45b1-998a-946ea2797ea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAssimpModelLoader">
+      <UniqueIdentifier>{72d206c4-26b3-4dbb-82b0-be8b3288fff2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAssimpModelLoader\src">
+      <UniqueIdentifier>{f152c9dc-ee41-4e06-8bb3-925e03d954af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAssimpModelLoader\libs">
+      <UniqueIdentifier>{25eccc8a-dd4b-4ec3-94e8-b26d3ef26fa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAssimpModelLoader\libs\assimp">
+      <UniqueIdentifier>{31b0ec1b-e426-4ee4-b1d1-cb3b41d284b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include">
+      <UniqueIdentifier>{2c1fce71-dd9a-40a7-a2eb-a1363c0543b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp">
+      <UniqueIdentifier>{5d5d4300-05a9-4f99-8acb-a76215639d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler">
+      <UniqueIdentifier>{e30ee965-6a2d-4b15-8b57-569b6832299a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui">
+      <UniqueIdentifier>{a4fd252f-c079-4f5b-b898-55246a5d08bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui\src">
+      <UniqueIdentifier>{f0ea1edb-95da-42be-9187-aa89bfb84414}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
     <ClInclude Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h">
       <Filter>addons\ofxAssimpModelLoader\src</Filter>
     </ClInclude>
@@ -323,9 +384,24 @@
     <ClInclude Include="src\renderer.h">
       <Filter>src</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="src\transformToolsInterface.h">
       <Filter>src</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="src\shaderToolsInterface.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\transformToolsInterface.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parametricCurve.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parametricMesh.h">
+      <Filter>src</Filter>
+    </ClInclude>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

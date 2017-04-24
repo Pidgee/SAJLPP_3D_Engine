@@ -32,6 +32,12 @@ public:
 	void renderModel();
 
 	void clearAll();
+	void renderBezierQuad();
+	void renderBezierCubic();
+	void renderBezierSix();
+	void renderHermiteCurve();
+
+	void renderParametricMesh();
 
 private:
 	ofxPanel m_geometryPanel;
@@ -43,6 +49,14 @@ private:
 	ofxButton m_coneButton;
 	ofxButton m_proceduralButton;
 	ofxButton m_loadModelButton;
+
+	ofxButton m_bezierQuadButton;
+	ofxButton m_bezierCubicButton;
+	ofxButton m_bezierSixButton;
+	ofxButton m_hermiteCurveButton;
+
+	ofxButton m_parametricMeshButton;
+
 	Renderer* m_renderer;
 	bool visible;
 

@@ -8,6 +8,8 @@
 #include "geometryPrimitive.h"
 #include "drawing.h"
 #include "imageObjet.h"
+#include "parametricCurve.h"
+#include "parametricMesh.h"
 
 class Renderer
 {
@@ -72,7 +74,13 @@ public:
 	void renderTransformation(float rotX, float rotY, float rotZ, float transX, float transY, float transZ, float scale);
 	ofEasyCam cam;
 
-	void clearAll();
+	//parametricCurveTools
+	void renderBezierQuad();
+	void renderBezierCubic();
+	void renderBezierSix();
+	void renderHermiteCurve();
+
+	void renderParametricMesh();
 
 	~Renderer();
 

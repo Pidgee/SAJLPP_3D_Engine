@@ -21,7 +21,11 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+<<<<<<< HEAD
     <RootNamespace>_3D_ENGINE</RootNamespace>
+=======
+    <RootNamespace>3D_ENGINE</RootNamespace>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -49,6 +53,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+<<<<<<< HEAD
     <Import Project="C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
@@ -62,6 +67,21 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+=======
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -95,19 +115,32 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
+<<<<<<< HEAD
       <CompileAs>CompileAsCpp</CompileAs>
       <AdditionalIncludeDirectories>C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\src;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
 C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\src;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+<<<<<<< HEAD
       <AdditionalDependencies>C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
     </PostBuildEvent>
+=======
+      <AdditionalDependencies>
+C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent />
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -116,10 +149,17 @@ C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
+<<<<<<< HEAD
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\src;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
 C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\src;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -127,10 +167,16 @@ C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%3b
+<<<<<<< HEAD
 C:\Users\Jeffrey\Desktop\Infographie\TP2;-TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
     </PostBuildEvent>
+=======
+C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent />
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -138,10 +184,17 @@ C:\Users\Jeffrey\Desktop\Infographie\TP2;-TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
+<<<<<<< HEAD
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\src;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
 C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\src;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -152,10 +205,16 @@ C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%3b
+<<<<<<< HEAD
 C:\Users\Jeffrey\Desktop\Infographie\TP2;-TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
     </PostBuildEvent>
+=======
+C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32\assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent />
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -163,9 +222,15 @@ C:\Users\Jeffrey\Desktop\Infographie\TP2;-TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
+<<<<<<< HEAD
       <CompileAs>CompileAsCpp</CompileAs>
       <AdditionalIncludeDirectories>C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\src;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
 C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxGui\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\src;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;
+C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -176,10 +241,16 @@ C:\Users\Jeffrey\Desktop\Infographie\TP2 -TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%3b
+<<<<<<< HEAD
 C:\Users\Jeffrey\Desktop\Infographie\TP2;-TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
     </PostBuildEvent>
+=======
+C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64\assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent />
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
@@ -207,9 +278,18 @@ C:\Users\Jeffrey\Desktop\Infographie\TP2;-TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\menuInterface.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="src\particleCloud.cpp" />
     <ClCompile Include="src\proceduralGeometry.cpp" />
     <ClCompile Include="src\renderer.cpp" />
+=======
+    <ClCompile Include="src\parametricCurve.cpp" />
+    <ClCompile Include="src\parametricMesh.cpp" />
+    <ClCompile Include="src\particleCloud.cpp" />
+    <ClCompile Include="src\proceduralGeometry.cpp" />
+    <ClCompile Include="src\renderer.cpp" />
+    <ClCompile Include="src\shaderToolsInterface.cpp" />
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
     <ClCompile Include="src\transformToolsInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -276,9 +356,18 @@ C:\Users\Jeffrey\Desktop\Infographie\TP2;-TP3\SAJLPP_3D_Engine\of_v0.9.8\addons\
     <ClInclude Include="src\lightToolsInterface.h" />
     <ClInclude Include="src\menuInterface.h" />
     <ClInclude Include="src\ofApp.h" />
+<<<<<<< HEAD
     <ClInclude Include="src\particleCloud.h" />
     <ClInclude Include="src\proceduralGeometry.h" />
     <ClInclude Include="src\renderer.h" />
+=======
+    <ClInclude Include="src\parametricCurve.h" />
+    <ClInclude Include="src\parametricMesh.h" />
+    <ClInclude Include="src\particleCloud.h" />
+    <ClInclude Include="src\proceduralGeometry.h" />
+    <ClInclude Include="src\renderer.h" />
+    <ClInclude Include="src\shaderToolsInterface.h" />
+>>>>>>> 1b10dddc3ed8772712edfc2810b5548a79581e6f
     <ClInclude Include="src\transformToolsInterface.h" />
   </ItemGroup>
   <ItemGroup>
