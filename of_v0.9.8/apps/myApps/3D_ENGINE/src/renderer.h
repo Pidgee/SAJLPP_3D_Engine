@@ -14,6 +14,7 @@ class Renderer
 public:
 
 	ofFbo fbo;
+	ofFbo secondaryFbo;
 	
 	Renderer();
 
@@ -47,6 +48,12 @@ public:
 	void renderProcedural(string path, string name);
 
 	void raytracing();
+	void enableMaterials();
+	void enableColorShader();
+	void enableDisplacementShader();
+	void enableBlurShader();
+	void disableShaders();
+
 	void drawLine(float x1, float y1, float x2, float y2);
 	void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3);
 	void drawCircle(float x1, float y1, float x2, float y2);
@@ -64,6 +71,8 @@ public:
 	void renderTransformation(float rotX, float rotY, float rotZ, float transX, float transY, float transZ, float scale);
 	ofEasyCam cam;
 
+	void clearAll();
+
 	~Renderer();
 
 private:
@@ -74,6 +83,17 @@ private:
 
 	Drawing* drawing;
 	bool drawingToolActivated;
+
+	bool materialsEnabled;
+	bool colorShaderEnabled;
+	bool displacementShaderEnabled;
+	bool blurShaderEnabled;
+
+	ofShader simpleColorShader;
+	ofShader displacementShader;
+	ofShader blurShader_1;
+	ofShader blurShader_2;
+
 
 	ofMaterial mate;
 };

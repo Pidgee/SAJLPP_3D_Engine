@@ -61,6 +61,9 @@ private:
 	ofxToggle item_4;
 	ofxToggle item_5;
 
+	//clear all command
+	ofxButton clearAllButton;
+
 	ofxToggle items[5] = { item_1, item_2, item_3, item_4, item_5 };
 
 	ofxButton transformButton;

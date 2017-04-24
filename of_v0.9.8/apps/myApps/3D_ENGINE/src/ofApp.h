@@ -8,7 +8,7 @@
 #include "imageToolsInterface.h"
 #include "drawToolsInterface.h"
 #include "transformToolsInterface.h"
-#include "cameraToolsInterface.h"
+#include "shaderToolsInterface.h"
 #include "lightToolsInterface.h"
 
 
@@ -25,7 +25,7 @@ public:
 		ImageToolBar* imageToolBar;
 		DrawToolBar* drawToolBar;
 		TransformationToolBar* transformationToolBar;
-		CameraToolBar* cameraToolBar;
+		ShaderToolBar* shaderToolBar;
 
 	void setup();
 	void update();
@@ -42,13 +42,6 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-
-	//draw toolbar widgets
-	ofxPanel drawPanel;
-	ofxButton lineButton;
-	ofxButton triangleButton;
-	ofxButton circleButton;
-
 
 
 

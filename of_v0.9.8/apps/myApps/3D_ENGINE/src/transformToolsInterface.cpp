@@ -17,7 +17,6 @@ TransformationToolBar::TransformationToolBar(Renderer* p_renderer): currentPage(
 	item_3.addListener(this,  &TransformationToolBar::actionItem3);
 	item_4.addListener(this,  &TransformationToolBar::actionItem4);
 	item_5.addListener(this,  &TransformationToolBar::actionItem5);
-
 }
 
 //public setup method for transform tools
@@ -27,7 +26,7 @@ void TransformationToolBar::setup() {
 	transformGroup.clear();
 	m_transformPanel.setup();
 	m_transformPanel.setName("Transformation");
-	m_transformPanel.setPosition(1445, 90);
+	m_transformPanel.setPosition(1385, 90);
 
 	//add group for selection widgets
 	m_transformPanel.add(selectGroup.setup());
@@ -44,6 +43,7 @@ void TransformationToolBar::setup() {
 	selectGroup.add(item_5.setup("nul_5", false));
 	selectGroup.add(pageDownButton.setup("pageDown"));
 
+
 	//add transformation widgets to group
 	transformGroup.add(m_rotateXSlider.setup("Rotate X", 0, -180, 180));
 	transformGroup.add(m_rotateYSlider.setup("Rotate Y", 0, -180, 180));
@@ -57,7 +57,7 @@ void TransformationToolBar::setup() {
 
 
 	//set position of toolbar
-	transformGroup.setPosition(1445, 90);
+	transformGroup.setPosition(1385, 90);
 
 	//set size of all toolbar widgets
 	m_transformPanel.setSize(150, 200);
@@ -84,7 +84,6 @@ void TransformationToolBar::update() {
 		wait = true;
 		setup();
 		wait = false;
-
 	}
 }
 
@@ -242,3 +241,4 @@ void TransformationToolBar::actionItem5(bool & inval) {
 		}
 	}
 }
+

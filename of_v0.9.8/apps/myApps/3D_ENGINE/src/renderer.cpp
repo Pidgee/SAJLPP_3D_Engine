@@ -2,13 +2,35 @@
 #include <string>
 
 
-Renderer::Renderer(): drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false) {
+Renderer::Renderer(): drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false),
+materialsEnabled(true), colorShaderEnabled(false), displacementShaderEnabled(false) {
 }
+
 
 
 void Renderer::setup()
 {
-	fbo.allocate(1280, 720);
+
+#ifdef TARGET_OPENGLES
+	simpleColorShader.load("shaders/shadersesl/sinShader");
+	displacementShader.load("shaders/shadersesl/disShader");
+
+#else
+	if(ofIsGLProgrammableRenderer()){
+		simpleColorShader.load("shaders/shaders150/sinShader");
+		displacementShader.load("shaders/shaders150/disShader");
+	}else{
+		simpleColorShader.load("shaders/shaders120/sinShader");
+		displacementShader.load("shaders/shaders120/disShader");
+		blurShader_1.load("shaders/shaders120/blurShader_1");
+		blurShader_2.load("shaders/shaders120/blurShader_2");
+
+
+	}
+#endif
+
+
+	fbo.allocate(1200, 720);
 	fbo.begin();
 	
 	for (unsigned int i = 0; i<geometryObjectContainer.size(); i++) {
@@ -20,8 +42,11 @@ void Renderer::setup()
 	ofSetSmoothLighting(true);
 	ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
 	fbo.end();
-	
+	secondaryFbo.allocate(1200, 720);
 }
+
+
+
 
 void Renderer::update(){
 }
@@ -62,7 +87,12 @@ void Renderer::ajouterLumiere(ofVec3f position, ofVec3f direction, ofColor coule
 void Renderer::setMaterial(ofMaterial material) {
 
 	mate = material;
+	materialsEnabled=true;
+	colorShaderEnabled = false;
+
+
 }
+
 
 void Renderer::draw()
 {
@@ -72,19 +102,31 @@ void Renderer::draw()
 		ofEnableDepthTest();
 		ofClear(255, 255, 255);
 		ofBackgroundGradient(ofColor(119, 136, 153), ofColor(105, 105, 105));
+		cam.begin();
 		for (int i = 0; i<lumiereContainer.size(); i++) {
 			lumiereContainer[i].enable();
 		}
-		cam.begin();
-		for (int i = 0; i<geometryObjectContainer.size(); i++) {
+		if (colorShaderEnabled)
+			simpleColorShader.begin();
+		else if(displacementShaderEnabled)
+			displacementShader.begin();
+		else
 			mate.begin();
+		for (int i = 0; i<geometryObjectContainer.size(); i++) {
 			geometryObjectContainer[i]->draw();
-			mate.end();
+
 		}
-		cam.end();
+		if (colorShaderEnabled)
+			simpleColorShader.end();
+		else if(displacementShaderEnabled)
+			displacementShader.end();
+		else
+			mate.end();
+
 		for (int i = 0; i<lumiereContainer.size(); i++) {
 			lumiereContainer[i].disable();
 		}
+		cam.end();
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
@@ -324,6 +366,42 @@ int Renderer::getNumberOfObjects() {
 	return geometryObjectContainer.size();
 }
 
+void Renderer::enableMaterials() {
+	displacementShaderEnabled = false;
+	blurShaderEnabled=false;
+	colorShaderEnabled = false;
+	materialsEnabled = true;
+}
+
+void Renderer::enableColorShader() {
+	displacementShaderEnabled = false;
+	materialsEnabled = false;
+	blurShaderEnabled=false;
+	colorShaderEnabled = true;
+}
+
+void Renderer::enableDisplacementShader() {
+	materialsEnabled = false;
+	colorShaderEnabled = false;
+	blurShaderEnabled=false;
+	displacementShaderEnabled = true;
+}
+
+void Renderer::disableShaders() {
+	materialsEnabled = false;
+	colorShaderEnabled = false;
+	displacementShaderEnabled = false;
+	blurShaderEnabled=false;
+
+}
+void Renderer::enableBlurShader() {
+	materialsEnabled = false;
+	colorShaderEnabled = false;
+	displacementShaderEnabled = false;
+	blurShaderEnabled=true;
+}
 
 Renderer::~Renderer(){
 }
+
+
