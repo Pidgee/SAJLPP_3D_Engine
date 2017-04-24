@@ -205,6 +205,7 @@ C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModel
     <ClCompile Include="src\menuInterface.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\parametricCurve.cpp" />
+    <ClCompile Include="src\parametricMesh.cpp" />
     <ClCompile Include="src\particleCloud.cpp" />
     <ClCompile Include="src\proceduralGeometry.cpp" />
     <ClCompile Include="src\renderer.cpp" />
@@ -276,6 +277,7 @@ C:\Users\lppaq\Documents\GitHub\SAJLPP_3D_Engine\of_v0.9.8\addons\ofxAssimpModel
     <ClInclude Include="src\menuInterface.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\parametricCurve.h" />
+    <ClInclude Include="src\parametricMesh.h" />
     <ClInclude Include="src\particleCloud.h" />
     <ClInclude Include="src\proceduralGeometry.h" />
     <ClInclude Include="src\renderer.h" />

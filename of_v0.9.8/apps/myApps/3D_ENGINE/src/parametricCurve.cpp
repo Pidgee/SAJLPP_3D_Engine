@@ -6,20 +6,13 @@ ParametricCurve::ParametricCurve(string p_curveType) : m_curveType(p_curveType),
 
 void ParametricCurve::setup()
 {
-	ofSetFrameRate(60);
-	ofSetSphereResolution(32);
-	ofDisableDepthTest();
-
 	// paramètres
 	lineResolution = 100;
 
 	radius = 32.0f;
-	offset = 64.0f;
 
 	lineWidthOutline = 4.0f;
 	lineWidthCurve = 8.0f;
-
-	motionSpeed = 250.0f;
 
 	// initialisation des sommets de la ligne
 	for (index = 0; index <= lineResolution; ++index)
@@ -27,11 +20,6 @@ void ParametricCurve::setup()
 
 
 	// initialisation de la scène
-	reset();
-}
-
-void ParametricCurve::reset()
-{
 	// initialisation des variables
 	framebufferWidth = ofGetWidth();
 	framebufferHeight = ofGetHeight();
@@ -47,71 +35,17 @@ void ParametricCurve::reset()
 	float h_1_3 = framebufferHeight / 3.0f;
 	float h_4_5 = framebufferHeight * 4.0f / 5.0f;
 
-	initialPosition1 = { w_1_8, h_4_5, 0 };
-	initialPosition2 = { w_1_4, h_1_3, 0 };
-	initialPosition3 = { w_1_2, h_1_5, 0 };
-	initialPosition4 = { w_3_4, h_1_3, 0 };
-	initialPosition5 = { w_7_8, h_4_5, 0 };
-	initialPosition6 = { w_8_9, h_1_5, 0 };
-
-	// paramètres selon le type de courbe
-	if (m_curveType == "bezier_quad")
-	{
-
-		curveName = "Bézier quadratique";
-
-		ctrlPoint1 = initialPosition1;
-		ctrlPoint2 = initialPosition3;
-		ctrlPoint3 = initialPosition5;
-		ctrlPoint4 = initialPosition5;
-		ctrlPoint5 = initialPosition5;
-		ctrlPoint6 = initialPosition5;
-
-	} else if (m_curveType == "bezier_cubic")
-	{
-		curveName = "Bézier cubique";
-
-		ctrlPoint1 = initialPosition1;
-		ctrlPoint2 = initialPosition2;
-		ctrlPoint3 = initialPosition4;
-		ctrlPoint4 = initialPosition5;
-		ctrlPoint5 = initialPosition5;
-		ctrlPoint6 = initialPosition5;
-
-	}
-
-	else if (m_curveType == "bezier_six") {
-
-		curveName = "Bézier à six points de contrôle";
-
-		ctrlPoint1 = initialPosition1;
-		ctrlPoint2 = initialPosition2;
-		ctrlPoint3 = initialPosition3;
-		ctrlPoint4 = initialPosition4;
-		ctrlPoint5 = initialPosition5;
-		ctrlPoint6 = initialPosition6;
-
-	}
-	else if (m_curveType == "hermite") {
-
-		curveName = "Courbe de type hermite";
-
-		ctrlPoint1 = initialPosition1;
-		ctrlPoint2 = initialPosition2;
-		ctrlPoint3 = initialPosition3;
-		ctrlPoint4 = initialPosition4;
-		ctrlPoint5 = initialPosition4;
-		ctrlPoint6 = initialPosition4;
-
-	}
-
-	xDelta = motionSpeed;
-	yDelta = motionSpeed;
-
+	ctrlPoint1 = { w_1_8, h_4_5, 0 };
+	ctrlPoint2 = { w_1_4, h_1_3, 0 };
+	ctrlPoint3 = { w_1_2, h_1_5, 0 };
+	ctrlPoint4 = { w_3_4, h_1_3, 0 };
+	ctrlPoint5 = { w_7_8, h_4_5, 0 };
+	ctrlPoint6 = { w_8_9, h_1_5, 0 };
 }
 
-void ParametricCurve::update()
+void ParametricCurve::draw()
 {
+	
 	for (index = 0; index <= lineResolution; ++index)
 	{
 		// paramètres selon le type de courbe
@@ -124,7 +58,11 @@ void ParametricCurve::update()
 				ctrlPoint3.x, ctrlPoint3.y, ctrlPoint3.z,
 				position.x, position.y, position.z);
 
-			// pour masquer le 4ième point de contrôle
+			//Masquer les points de contrôles non utilisés
+
+			ctrlPoint4 = ctrlPoint3;
+			ctrlPoint5 = ctrlPoint3;
+			ctrlPoint6 = ctrlPoint3;
 		}
 		else if (m_curveType == "bezier_cubic")
 		{
@@ -135,6 +73,9 @@ void ParametricCurve::update()
 				ctrlPoint3.x, ctrlPoint3.y, ctrlPoint3.z,
 				ctrlPoint4.x, ctrlPoint4.y, ctrlPoint4.z,
 				position.x, position.y, position.z);
+
+			ctrlPoint5 = ctrlPoint4;
+			ctrlPoint6 = ctrlPoint4;
 		}
 		else if (m_curveType == "bezier_six")
 		{
@@ -153,31 +94,17 @@ void ParametricCurve::update()
 			hermiteCurve(
 				index / (float)lineResolution,
 				ctrlPoint1.x, ctrlPoint1.y, ctrlPoint1.z,
-				ctrlPoint2.x, ctrlPoint2.y, ctrlPoint2.z,
+				ctrlPoint6.x, ctrlPoint6.y, ctrlPoint6.z,
 				ctrlPoint3.x, ctrlPoint3.y, ctrlPoint3.z,
 				ctrlPoint4.x, ctrlPoint4.y, ctrlPoint4.z,
 				position.x, position.y, position.z);
+			ctrlPoint2 = ctrlPoint4;
+			ctrlPoint5 = ctrlPoint4;
 		}
 		// affecter la position du point sur la courbe
 		lineRenderer[index] = position;
 	}
-}
 
-void ParametricCurve::draw()
-{
-	update();
-	// dessiner les positions initiales
-	ofSetColor(63, 63, 63);
-
-	ofDrawEllipse(initialPosition1.x, initialPosition1.y, radius / 2, radius / 2);
-	ofDrawEllipse(initialPosition2.x, initialPosition2.y, radius / 2, radius / 2);
-	ofDrawEllipse(initialPosition3.x, initialPosition3.y, radius / 2, radius / 2);
-	ofDrawEllipse(initialPosition4.x, initialPosition4.y, radius / 2, radius / 2);
-	ofDrawEllipse(initialPosition5.x, initialPosition5.y, radius / 2, radius / 2);
-	ofDrawEllipse(initialPosition6.x, initialPosition6.y, radius / 2, radius / 2);
-
-
-	ofSetColor(255, 255, 255);
 	ofSetLineWidth(lineWidthCurve);
 
 	lineRenderer.draw();

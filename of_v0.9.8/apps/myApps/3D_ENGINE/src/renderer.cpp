@@ -338,6 +338,13 @@ void Renderer::renderHermiteCurve()
 	geometryObjectContainer.push_back(hermiteCurve);
 }
 
+void Renderer::renderParametricMesh()
+{
+	ParametricMesh* paraMesh = new ParametricMesh();
+	paraMesh->setup();
+	geometryObjectContainer.push_back(paraMesh);
+}
+
 
 std::vector<GeometryObject*>* Renderer::getObjects() {
 	return &geometryObjectContainer;

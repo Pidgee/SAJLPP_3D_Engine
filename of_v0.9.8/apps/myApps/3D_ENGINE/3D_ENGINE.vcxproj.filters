@@ -100,6 +100,9 @@
     <ClCompile Include="src\parametricCurve.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\parametricMesh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -345,6 +348,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\parametricCurve.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parametricMesh.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

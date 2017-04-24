@@ -9,6 +9,7 @@
 #include "drawing.h"
 #include "imageObjet.h"
 #include "parametricCurve.h"
+#include "parametricMesh.h"
 
 class Renderer
 {
@@ -69,6 +70,8 @@ public:
 	void renderBezierCubic();
 	void renderBezierSix();
 	void renderHermiteCurve();
+
+	void renderParametricMesh();
 
 	~Renderer();
 

@@ -3,9 +3,6 @@
 #include "ofMain.h"
 #include "geometryObject.h"
 
-// énumération de types de courbe
-enum class Curve { BEZIER_QUADRATIC, BEZIER_CUBIC, BEZIER_SIX };
-
 class ParametricCurve : public GeometryObject
 {
 public:
@@ -20,13 +17,6 @@ public:
 	ofVec3f ctrlPoint5;
 	ofVec3f ctrlPoint6;
 
-	ofVec3f initialPosition1;
-	ofVec3f initialPosition2;
-	ofVec3f initialPosition3;
-	ofVec3f initialPosition4;
-	ofVec3f initialPosition5;
-	ofVec3f initialPosition6;
-
 	ofVec3f position;
 
 	float lineWidthOutline;
@@ -39,8 +29,6 @@ public:
 	float xDelta;
 	float yDelta;
 
-	float motionSpeed;
-
 	int framebufferWidth;
 	int framebufferHeight;
 
@@ -49,9 +37,7 @@ public:
 	int index;
 
 	void setup();
-	void update();
 	void draw();
-	void reset();
 
 	//rotation transformations
 	void rotateX(float x);
