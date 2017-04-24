@@ -3,7 +3,7 @@
 
 
 Renderer::Renderer(): drawingToolActivated(false), lineCursorActivated(false), triangleCursorActivated(false), circleCursorActivated(false),
-materialsEnabled(true), colorShaderEnabled(true) {
+materialsEnabled(true), colorShaderEnabled(false), displacementShaderEnabled(false) {
 }
 
 
@@ -11,12 +11,17 @@ void Renderer::setup()
 {
 
 #ifdef TARGET_OPENGLES
-	simpleColorShader.load("shaders/shader120");
+	simpleColorShader.load("shaders/shadersesl/sinShader");
+	displacementShader.load("shaders/shadersesl/disShader");
+
 #else
 	if(ofIsGLProgrammableRenderer()){
-		simpleColorShader.load("shaders/shader150");
+		simpleColorShader.load("shaders/shaders150/sinShader");
+		displacementShader.load("shaders/shaders150/disShader");
 	}else{
-		simpleColorShader.load("shaders/shader120");
+		simpleColorShader.load("shaders/shaders120/sinShader");
+		displacementShader.load("shaders/shaders120/disShader");
+
 	}
 #endif
 
@@ -83,6 +88,7 @@ void Renderer::setMaterial(ofMaterial material) {
 
 }
 
+
 void Renderer::draw()
 {
 	if (!drawingToolActivated) {
@@ -97,6 +103,8 @@ void Renderer::draw()
 		}
 		if (colorShaderEnabled)
 			simpleColorShader.begin();
+		else if(displacementShaderEnabled)
+			displacementShader.begin();
 		else
 			mate.begin();
 		for (int i = 0; i<geometryObjectContainer.size(); i++) {
@@ -105,6 +113,8 @@ void Renderer::draw()
 		}
 		if (colorShaderEnabled)
 			simpleColorShader.end();
+		else if(displacementShaderEnabled)
+			displacementShader.end();
 		else
 			mate.end();
 
@@ -349,14 +359,29 @@ int Renderer::getNumberOfObjects() {
 }
 
 void Renderer::enableMaterials() {
+	displacementShaderEnabled = false;
 	colorShaderEnabled = false;
 	materialsEnabled = true;
 }
 
 void Renderer::enableColorShader() {
+	displacementShaderEnabled = false;
 	materialsEnabled = false;
 	colorShaderEnabled = true;
 }
 
+void Renderer::enableDisplacementShader() {
+	materialsEnabled = false;
+	colorShaderEnabled = false;
+	displacementShaderEnabled = true;
+}
+
+void Renderer::disableShaders() {
+	materialsEnabled = false;
+	colorShaderEnabled = false;
+	displacementShaderEnabled = false;
+}
+
 Renderer::~Renderer(){
 }
+

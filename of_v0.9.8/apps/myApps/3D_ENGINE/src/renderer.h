@@ -48,6 +48,8 @@ public:
 
 	void enableMaterials();
 	void enableColorShader();
+	void enableDisplacementShader();
+	void disableShaders();
 
 	void drawLine(float x1, float y1, float x2, float y2);
 	void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3);
@@ -78,10 +80,12 @@ private:
 	bool drawingToolActivated;
 
 	bool materialsEnabled;
-
 	bool colorShaderEnabled;
+	bool displacementShaderEnabled;
 
 	ofShader simpleColorShader;
+	ofShader displacementShader;
+
 	ofMaterial mate;
 };
 
