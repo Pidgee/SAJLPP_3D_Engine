@@ -19,12 +19,14 @@ GeometryToolBar::GeometryToolBar(Renderer* p_renderer): m_geometryPanel(ofxPanel
 	m_coneButton.addListener(this, &GeometryToolBar::renderCone);
 	m_proceduralButton.addListener(this, &GeometryToolBar::renderProcedural);
 	m_loadModelButton.addListener(this, &GeometryToolBar::renderModel);
+	m_clearAllButton.addListener(this, &GeometryToolBar::clearAll);
 }
 
 void GeometryToolBar::setup() {
 	m_geometryPanel.setup();
 	m_geometryPanel.setName("Geometry Tools");
 	m_geometryPanel.setPosition(5,90);
+	m_geometryPanel.add(m_clearAllButton.setup("Clear all"));
 	m_geometryPanel.add(m_particleCloudButton.setup("Particle Cloud"));
 	m_geometryPanel.add(m_sphereButton.setup("Sphere"));
 	m_geometryPanel.add(m_cubeButton.setup("Cube"));
@@ -101,5 +103,13 @@ void GeometryToolBar::renderModel() {
 
 	}
 
+}
+
+void GeometryToolBar::clearAll() {
+
+	std::cout << "Bonjour" << std::endl;
+	vector<GeometryObject*>* objectContainer = m_renderer->getObjects();
+	int numberObjects = m_renderer->getNumberOfObjects();
+	objectContainer->clear();
 }
 
