@@ -130,7 +130,8 @@ void Renderer::draw()
 		ofDisableDepthTest();
 		fbo.end();
 		fbo.draw(160, 90);
-
+		if(blurShaderEnabled)
+			drawBlur();
 	}
 		else if (drawingToolActivated) {
 			drawing->draw();
@@ -396,6 +397,41 @@ void Renderer::enableBlurShader() {
 	colorShaderEnabled = false;
 	displacementShaderEnabled = false;
 	blurShaderEnabled=true;
+
+}
+
+void Renderer::drawBlur() {
+    //----------------------------------------------------------
+    secondaryFbo.begin();
+    cam.begin();
+    blurShader_1.begin();
+    blurShader_1.setUniform1f("blurAmnt", 10);
+
+	for (int i = 0; i<geometryObjectContainer.size(); i++) {
+		geometryObjectContainer[i]->draw();
+
+	}
+	blurShader_1.end();
+	cam.end();
+    secondaryFbo.end();
+
+    fbo.begin();
+
+    blurShader_2.begin();
+    blurShader_2.setUniform1f("blurAmnt", 10);
+
+    secondaryFbo.draw(0, 0);
+
+    blurShader_2.end();
+
+    blurShader_2.end();
+
+    //----------------------------------------------------------
+    ofSetColor(ofColor::white);
+    fbo.draw(0, 0);
+
+
+
 }
 
 Renderer::~Renderer(){

@@ -46,6 +46,7 @@ public:
 	void renderCone();
 	void renderModel(string path, string name);
 	void renderProcedural(string path, string name);
+	void drawBlur();
 
 	void enableMaterials();
 	void enableColorShader();
