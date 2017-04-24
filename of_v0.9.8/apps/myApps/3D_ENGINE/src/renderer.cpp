@@ -267,6 +267,9 @@ void Renderer::renderImage(ofImage * image, string nom, int x, int y, int z, ofI
 
 }
 
+void Renderer::raytracing() {
+	drawing->executeRaytracing();
+}
 
 void Renderer::renderDrawing() {
 	drawing = new Drawing();

@@ -42,6 +42,7 @@ private:
 	float y2;
 	float y3;
 	ofxPanel m_drawPanel;
+	ofxButton m_raytracingButton;
 	ofxButton m_newDrawingButton;
 	ofxButton m_lineButton;
 	ofxButton m_triangleButton;
@@ -49,6 +50,7 @@ private:
 	ofxButton m_saveDrawingButton;
 	Renderer* m_renderer;
 	bool visible;
+	void raytracing();
 	void renderDrawing();
 	void lineDrawing();
 	void triangleDrawing();

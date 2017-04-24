@@ -48,6 +48,7 @@ public:
 	void renderProcedural(string path, string name);
 	void drawBlur();
 
+	void raytracing();
 	void enableMaterials();
 	void enableColorShader();
 	void enableDisplacementShader();

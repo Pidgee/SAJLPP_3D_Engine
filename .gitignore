@@ -295,4 +295,9 @@ of_v0.9.8/apps/myApps/3D_ENGINE/config.make
 of_v0.9.8/apps/myApps/3D_ENGINE/Makefile
 of_v0.9.8/apps/myApps/3D_ENGINE/qtcreator.qbs
 of_v0.9.8/apps/myApps/3D_ENGINE/template.xml
+of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.sln
+of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.vcxproj
+of_v0.9.8/apps/myApps/3D_ENGINE/3D_ENGINE.vcxproj.filters
+of_v0.9.8/apps/myApps/3D_ENGINE/icon.rc
+
 
