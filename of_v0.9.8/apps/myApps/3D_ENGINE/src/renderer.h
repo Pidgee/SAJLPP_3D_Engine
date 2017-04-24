@@ -47,6 +47,7 @@ public:
 	void renderModel(string path, string name);
 	void renderProcedural(string path, string name);
 
+	void raytracing();
 	void enableMaterials();
 	void enableColorShader();
 	void enableDisplacementShader();

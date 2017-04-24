@@ -25,6 +25,9 @@ public:
 	bool getSelected();
 	void setSelected(bool val);
 
+	// execute raytracing
+	void executeRaytracing();
+
 	//cursor
 	void drawLineCursor(int x, int y);
 	void drawTriangleCursor(int x, int y);
@@ -54,6 +57,12 @@ public:
 	ofMesh mesh;
 private:
 	bool select;
+	std::vector<of3dPrimitive*> m_primitiveVector;
+	ofImage image;
+	
+	int getIntersection(vector<of3dPrimitive*>::iterator it, int x, int y);
+	bool getPlaneIntersection(int x, int y, int width);
+
 
 	~Drawing();
 };
